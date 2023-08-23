@@ -1,0 +1,89 @@
+menu {
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+    transform: translateX(-100%);
+    background: linear-gradient(353.51deg, rgba(103, 1, 225, 0.1) 4.32%, rgba(82, 76, 87, 0.1) 98.97%), #18161B;    border: 1px solid rgba(196, 196, 196, 0.2);
+    width: 100%;
+    max-width: 32rem;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+    padding: 5rem 4rem 5rem 5rem;
+    transition: transform 350ms ease-in-out;
+    border: 1px solid rgba(196, 196, 196, 0.2);
+    overflow: scroll;
+
+    &.active {
+        transform: translateX(0);
+    }
+
+}
+
+.nav__title {
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+    margin-bottom: 10rem;
+
+    img {
+        width: 100%;
+    }
+
+    svg {
+        cursor: pointer;
+    }
+}
+
+li {
+    max-height: 7rem;
+    transition: max-height 350ms ease-in-out;
+    overflow: hidden;
+
+    svg {
+        margin-right: 1rem;
+        transition: transform 350ms ease-in-out
+    }
+
+    span {
+        display: flex;
+        justify-content: space-between;
+        place-items: center;
+        padding-block: 2.5rem;
+    }
+
+    p {
+        color: #E9E9E9;
+        font-size: 1.4rem;
+
+    }
+
+    a {
+        color: #C4C4C4;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+    }
+
+    &.active {
+        max-height: 50rem;
+
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+
+}
+
+.body li {
+    padding-block: 2rem;
+    border-bottom: 1px solid rgba(196, 196, 196, 0.2);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 15;
+    background: rgba(0,0,0,0.7);
+}

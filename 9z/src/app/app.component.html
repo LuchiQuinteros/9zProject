@@ -1,0 +1,28 @@
+<app-header *ngIf="!loading" (activeMenu)="activeMenu = $event; disableScrollbar($event)" ></app-header>
+<div class="left-layer"></div>
+<div class="left-layer left-layer--2"></div>
+<div class="left-layer left-layer--3"></div>
+<div class="left-layer left-layer--4"></div>
+<app-sidebar class="isMobile" [activeMenu]="activeMenu" (openCloseMenu)="activeMenu = $event; disableScrollbar($event)"></app-sidebar>
+<app-preloader *ngIf="loading" (hidePreloader)="loading = $event"></app-preloader>
+
+<main id="main">
+  <ul>
+    <li *ngFor="let post of posts">
+       <h1>{{post.title.rendered}}</h1>
+         <p>Posted on: {{post.date | date:'longDate'}}</p>
+        <img *ngIf="post._embedded['wp:featuredmedia'] !== undefined" src="{{ post._embedded['wp:featuredmedia']['0'].media_details.sizes.thumbnail.source_url }}">
+        <p [innerHTML]='post.excerpt.rendered'></p>
+    </li>
+  </ul>
+
+  <div [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']">
+    <router-outlet #o="outlet"></router-outlet>
+
+  </div>
+
+  <app-footer></app-footer>
+  <div [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']"></div>
+</main>
+
+<!-- <app-coming-soon></app-coming-soon> -->

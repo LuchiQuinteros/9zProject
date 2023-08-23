@@ -1,0 +1,111 @@
+.preloader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: #160A27;
+  z-index: 100;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  max-width: 35rem;
+  margin: auto;
+  gap: 3rem;
+  // height: 50%;
+
+  p {
+    text-align: center;
+
+    span {
+      font-family: 'Blender Pro';
+    }
+  }
+
+  .logo {
+    width: 60%;
+    margin-inline: auto;
+  }
+}
+
+.progress {
+  --loaded: 0%;
+  position: relative;
+  width: 80%;
+  margin-inline: auto;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: var(--loaded);
+    border-radius: 24px;
+    height: 1px;
+    background: var(--9z-primary-2);
+    box-shadow: 0px 0px 2px 3px var(--9z-primary-2);
+  }
+
+}
+
+.sponsors {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  place-items: center;
+  margin-top: auto;
+  max-width: min(90%, 45rem);
+  margin-inline: auto;
+  gap: 2.5rem;
+  justify-content: center;
+  padding-inline: 0;
+
+  @media (max-width: 1023px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 75%;
+    flex-wrap: wrap;
+
+    img {
+      max-width: 5rem;
+      object-fit: contain;
+
+      &.small {
+        max-width: 6rem;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    max-width: 8rem;
+    max-height: 3.5rem;
+
+    @media (max-width: 767px) {
+      max-width: 6rem;
+      max-height: 3rem;
+    }
+
+    &.small {
+      max-width: 5rem;
+
+      @media (max-width: 767px) {
+        max-width: 4rem;
+      }
+    }
+  }
+}
+
+@keyframes load {
+  to{
+    width: 100%;
+  }
+}

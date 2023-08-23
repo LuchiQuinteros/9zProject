@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'UK';
+    src: url('./fonts/UNITED\ KINGDOM\ DEMO_0.OTF');
+}
+
+@font-face {
+    font-family: 'Blender Pro';
+    src: local('Blender Pro Medium'), local('BlenderPro-Medium'),
+        url('./fonts/BlenderPro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Blender Pro';
+    src: local('Blender Pro Heavy'), local('BlenderPro-Heavy'),
+        url('./fonts/BlenderPro-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Blender Pro';
+    src: local('Blender Pro Book Italic'), local('BlenderPro-BookItalic'),
+        url('./fonts/BlenderPro-BookItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Blender Pro';
+    src: local('Blender Pro Book'), local('BlenderPro-Book'),
+        url('./fonts/BlenderPro-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Blender Pro';
+    src: local('Blender Pro Bold'), local('BlenderPro-Bold'),
+        url('./fonts/BlenderPro-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Blender Pro';
+    src: local('Blender Pro Thin'), local('BlenderPro-Thin'),
+        url('./fonts/BlenderPro-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Blender Pro';
+    src: local('Blender Pro Medium Italic'), local('BlenderPro-MediumItalic'),
+        url('./fonts/BlenderPro-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Blender Pro';
+    src: local('Blender Pro Bold Italic'), local('BlenderPro-BoldItalic'),
+        url('./fonts/BlenderPro-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+

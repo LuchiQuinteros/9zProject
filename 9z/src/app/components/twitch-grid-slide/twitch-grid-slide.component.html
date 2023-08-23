@@ -1,0 +1,110 @@
+<section class="twitch__title pd">
+  <div class="title_tw">
+    <h2>Live streams</h2>
+    <div
+      slot="container-end"
+      class="swiper-pagination pagination-scroll notMobile"
+    ></div>
+  </div>
+</section>
+
+<section class="pd twitch">
+  <swiper id="#swiper" [config]="config" class="twitch__main">
+    <ng-template swiperSlide *ngFor="let stream of streamers">
+      <a
+        [href]="'https://www.twitch.tv/' + stream.username"
+        target="_blank"
+      >
+        <div
+          class="twitch-slider"
+          [ngClass]="{'active': stream.isLive === 'live'}"
+          [style.background-image]="'url(' + stream.offlineImage+ ')'"
+          id="sliderBox"
+        >
+          <img
+            [src]="stream.offlineImage"
+            class="stream_img bg1"
+            [alt]="stream.username + ' user image'"
+            (load)="setHeight()"
+          >
+          <img
+            [src]="stream.offlineImage"
+            class="stream_img bg2 "
+            [alt]="stream.username + ' user image'"
+          >
+          <div class="online" [ngClass]="{active : stream.isLive === 'live'}">
+            <span class="status__icon"></span>
+            <p>{{stream.isLive === 'live' ? 'Online' : 'Offline'}}</p>
+          </div>
+          <div class="stream_stat">
+            <div class="left">
+              <div class="rounded">
+                <img [src]="stream.user_image" [alt]="stream.username + 'profile image'" class="profile" [title]="stream.user_name">
+              </div>
+              <div class="stream__title">
+                <p class="streamer bold">{{stream.username}}</p>
+                <p class="status">{{stream.isLive === 'live' ? 'Online now' : 'Offline'}}</p>
+              </div>
+            </div>
+            <div class="right">
+              <button>
+                <img src="../../../assets/svg/arrow-right.svg" alt="">
+              </button>
+            </div>
+          </div>
+        </div>
+      </a>
+    </ng-template>
+  </swiper>
+  <div slot="container-end" class="button-wrapper first notMobile">
+    <button class="button-arrow swiper-button-prev-twitch" [ngStyle]="{'height': height}">
+      <img src="../../../assets/svg/arrow-right-big.svg" alt="">
+    </button>
+  </div>
+  <div slot="container-end" class="button-wrapper notMobile">
+    <button class="button-arrow swiper-button-next-twitch" [ngStyle]="{'height': height}">
+      <img src="../../../assets/svg/arrow-right-big.svg" alt="">
+    </button>
+  </div>
+    <!-- <div class="notMobile swiper-container">
+      <button class="btn-arrow swiper-button-prev-twitch" aria-label="Deslizar hacia atras">
+        <svg wdth="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.5615 4.32755C14.7567 4.13229 14.7567 3.81571 14.5615 3.62045L11.3795 0.438466C11.1842 0.243204 10.8676 0.243204 10.6724 0.438466C10.4771 0.633728 10.4771 0.950311 10.6724 1.14557L13.5008 3.974L10.6724 6.80243C10.4771 6.99769 10.4771 7.31427 10.6724 7.50953C10.8676 7.7048 11.1842 7.7048 11.3795 7.50953L14.5615 4.32755ZM0.701416 4.474L14.2079 4.474L14.2079 3.474L0.701416 3.474L0.701416 4.474Z" fill="#DCDCDC"/>
+        </svg>
+      </button>
+      <swiper [config]="thumbsConfig" (swiper)="setThumbsSwiper($event)">
+        <ng-template swiperSlide *ngFor="let stream of twitchStreamList">
+          <div class="twitch-slider active">
+            <img [src]="stream.thumbnail_url.length > 0 ? stream.thumbnail_url : '../../../assets/media/stream_bg.webp'" class="stream_img" [alt]="stream.user_name + 'user image'">
+            <div class="online">
+              <span [class]="stream.isLive === 'live' ? 'online__rounded' : 'offline__rounded'"></span>
+              <p [class]="stream.type === 'live' ? 'online__text' : 'offline__text'">{{stream.type === 'live' ? 'Online' : 'Offline'}}</p>
+            </div>
+            <div class="stream_stat">
+              <div class="rounded">
+                <img [src]="stream.user_image" [alt]="stream.user_name + 'profile image'" class="profile" [title]="stream.user_name">
+              </div>
+              <div class="stream__tittle">
+                <p class="streamer bold">{{stream.user_name}}</p>
+                <p *ngIf="stream.type === 'live'" class="category">{{stream.game_name}}</p>
+              </div>
+            </div>
+            <div class="stream__info">
+              <div class="stream__data">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <title>Contador de espectadores</title>
+                  <path d="M11.7272 5.01986C10.5539 2.51112 8.34669 0.954529 5.96523 0.954529C3.58378 0.954529 1.37658 2.51112 0.203277 5.01986C0.171294 5.08735 0.154785 5.16019 0.154785 5.23382C0.154785 5.30746 0.171294 5.3803 0.203277 5.44779C1.37658 7.95652 3.58378 9.51312 5.96523 9.51312C8.34669 9.51312 10.5539 7.95652 11.7272 5.44779C11.7592 5.3803 11.7757 5.30746 11.7757 5.23382C11.7757 5.16019 11.7592 5.08735 11.7272 5.01986ZM5.96523 8.44329C4.12396 8.44329 2.38144 7.21835 1.37658 5.23382C2.38144 3.2493 4.12396 2.02435 5.96523 2.02435C7.8065 2.02435 9.54903 3.2493 10.5539 5.23382C9.54903 7.21835 7.8065 8.44329 5.96523 8.44329ZM5.96523 3.09418C5.50571 3.09418 5.05652 3.21966 4.67444 3.45477C4.29236 3.68988 3.99457 4.02405 3.81872 4.41502C3.64287 4.80598 3.59686 5.2362 3.68651 5.65125C3.77615 6.0663 3.99743 6.44755 4.32236 6.74678C4.64729 7.04602 5.06128 7.2498 5.51197 7.33236C5.96266 7.41492 6.42981 7.37254 6.85435 7.2106C7.27889 7.04865 7.64175 6.77441 7.89705 6.42255C8.15234 6.07068 8.2886 5.657 8.2886 5.23382C8.2886 4.66635 8.04382 4.12213 7.60811 3.72086C7.17239 3.3196 6.58143 3.09418 5.96523 3.09418ZM5.96523 6.30365C5.73547 6.30365 5.51087 6.2409 5.31984 6.12335C5.1288 6.00579 4.9799 5.83871 4.89198 5.64323C4.80405 5.44774 4.78105 5.23264 4.82587 5.02511C4.87069 4.81759 4.98133 4.62696 5.1438 4.47734C5.30626 4.32773 5.51326 4.22583 5.7386 4.18456C5.96395 4.14328 6.19752 4.16446 6.40979 4.24543C6.62206 4.32641 6.80349 4.46353 6.93114 4.63946C7.05879 4.81539 7.12692 5.02223 7.12692 5.23382C7.12692 5.51756 7.00453 5.78967 6.78667 5.9903C6.56881 6.19093 6.27333 6.30365 5.96523 6.30365Z" fill="#929292"/>
+                </svg>
+                <p class="data">{{stream.type === 'live' ? (stream.viewer_count | number) : stream.view_count | number}}</p>
+              </div>
+            </div>
+         </div>
+        </ng-template>
+      </swiper>
+    <button class="btn-arrow swiper-button-next-twitch" aria-label="Deslizar hacia adelante">
+      <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.5615 4.32755C14.7567 4.13229 14.7567 3.81571 14.5615 3.62045L11.3795 0.438466C11.1842 0.243204 10.8676 0.243204 10.6724 0.438466C10.4771 0.633728 10.4771 0.950311 10.6724 1.14557L13.5008 3.974L10.6724 6.80243C10.4771 6.99769 10.4771 7.31427 10.6724 7.50953C10.8676 7.7048 11.1842 7.7048 11.3795 7.50953L14.5615 4.32755ZM0.701416 4.474L14.2079 4.474L14.2079 3.474L0.701416 3.474L0.701416 4.474Z" fill="#DCDCDC"/>
+      </svg>
+    </button>
+  </div> -->
+</section>

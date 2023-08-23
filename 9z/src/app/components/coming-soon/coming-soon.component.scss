@@ -1,0 +1,130 @@
+.page {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.hero {
+    margin-inline: 0;
+    max-width: unset;
+    position: relative;
+    height: 100%;
+    margin-block: auto;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: rgba(126, 45, 249, 0.1);
+        filter: blur(990px);
+        bottom: 0;
+     }
+
+     .container {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        margin-inline: auto;
+        height: 100%;
+    }
+
+    .btn-arrow {
+        width: 30rem;
+        height: 30rem;
+        border: 1px solid rgba(220, 220, 220, 0.1);
+        display: flex;
+        place-items: center;
+        place-content: center;
+        cursor:initial;
+
+        @media (max-width: 1023px) {
+            width: 25rem;
+            height: 25rem;
+
+
+        }
+
+        h1 {
+            font-size: 5rem;
+            color: var(--9z-font);
+            white-space: nowrap;
+            line-height: 7rem;
+
+            @media (max-width: 1023px) {
+                font-size: 3rem;
+                line-height: 5rem;
+            }
+
+        }
+
+        &::after {
+            --size: -10rem;
+        }
+
+        &::before {
+            content: '';
+            --size: -14.5rem;
+            position: absolute;
+            border: 1px solid rgba(220, 220, 220, 0.1);
+            border-radius: 50%;
+            inset: var(--size);
+            transition: inset 350ms ease-in-out, opacity 350ms ease-in-out;
+            animation: pulsing 2.2s infinite;
+        }
+    }
+    img {
+        margin-top: 1rem;
+    }
+}
+.sponsors {
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    place-items: center;
+    margin-top: auto;
+    max-width: min(90%, 45rem);
+    margin-inline: auto;
+    gap: 2.5rem;
+    justify-content: center;
+    padding-bottom: 3rem;
+
+@media (max-width: 1023px) {
+    max-width: 100%;
+}
+
+    @media (max-width: 767px) {
+        max-width: 75%;
+        flex-wrap: wrap;
+
+        img {
+            max-width: 5rem;
+            object-fit: contain;
+
+            &.small {
+                max-width: 6rem;
+            }
+        }
+    }
+
+    img {
+        width: clamp(8rem, 30vw, 11rem);
+        max-width: 5.5rem;
+        max-height: 4rem;
+        object-fit: contain;
+
+        @media (max-width: 1023px) {
+            max-width: 4rem;
+            max-height: 4rem;
+        }
+
+
+        &.small {
+            max-width: 8rem;
+            max-height: 6rem;
+
+
+        }
+    }
+
+}

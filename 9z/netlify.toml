@@ -1,0 +1,18 @@
+[build]
+  publish = "dist/static"
+  command = "npm run build:prod"
+  functions = "./functions"
+
+[functions]
+
+[[redirects]]
+  from = '/api/*'
+  to = '/.netlify/functions/:splat'
+  status = 200
+
+[[headers]]
+# Define which paths this specific [[headers]] block will cover.
+for = "/*"
+  [headers.values]
+  Access-Control-Allow-Origin = "*"
+  Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS, HEAD"

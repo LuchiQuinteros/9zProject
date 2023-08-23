@@ -1,0 +1,76 @@
+<section *ngIf="!standalone" class="title-row pd">
+  <h2 class="title">logros</h2>
+  <a [routerLink]="['/logros']" [queryParams]="{team: team}">Ver más</a>
+</section>
+<section [ngClass]="{'active': expanded}" class="achievements-table big" *ngIf="standalone">
+  <div class="table __head">
+    <div class="position">
+      <p class="bold">Posición</p>
+    </div>
+    <div class="team">
+      <p class="bold">Equipo</p>
+    </div>
+    <div class="tournament">
+      <p class="bold">Torneo</p>
+    </div>
+    <div class="date">
+      <p class="bold">Fecha</p>
+    </div>
+	</div>
+	<div class="table __body" *ngFor="let achievement of achievementsListFiltered">
+		<div class="position __body">
+			<img src="../../assets/achievements/trophie.svg" alt="trophie">
+			<p class="place bold">{{achievement.position}}</p>
+		</div>
+		<div class="team __body">
+			<img [src]="achievement.game.logo" [alt]="achievement.game.name" [title]="achievement.game.name">
+		</div>
+		<div class="tournament __body">
+			<p>{{achievement.tournament}}</p>
+		</div>
+		<div class="date __body">
+			<p>{{achievement.date}}</p>
+		</div>
+	</div>
+</section>
+<section class="achievements-table" *ngIf="!standalone">
+  <div class="table __head">
+    <div class="position">
+      <p class="bold">Posición</p>
+    </div>
+    <div class="team">
+      <p class="bold">Equipo</p>
+    </div>
+    <div class="tournament">
+      <p class="bold">Torneo</p>
+    </div>
+    <div class="date">
+      <p class="bold">Fecha</p>
+    </div>
+  </div>
+	<div class="table __body" *ngFor="let achievement of achievementsListFiltered">
+		<div class="position __body">
+			<img src="../../assets/achievements/trophie.svg" alt="trophie">
+			<p class="place bold">{{achievement.position}}</p>
+		</div>
+		<div class="team __body">
+			<img [src]="achievement.game.logo" [alt]="achievement.game.name" [title]="achievement.game.name">
+		</div>
+		<div class="tournament __body">
+			<p>{{achievement.tournament}}</p>
+		</div>
+		<div class="date __body">
+			<p>{{achievement.date}}</p>
+		</div>
+	</div>
+
+
+</section>
+<div *ngIf="standalone" (click)="expand(true)" class="container">
+	<div class="more-btn" [ngClass]="{active: expanded}">
+		<title>Expandir</title>
+		<svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M1 1L8 8L15 1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+		</svg>
+	</div>
+</div>

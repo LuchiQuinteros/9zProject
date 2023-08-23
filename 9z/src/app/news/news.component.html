@@ -1,0 +1,148 @@
+<div class="page">
+  <section
+    class="hero"
+    [style.background-image]="'url(' + heroImage + ')'"
+  >
+    <div class="swiper-wrapper">
+      <swiper [config]="configHero">
+        <ng-template swiperSlide *ngFor="let new of heroNewsList">
+          <h1 class="bold">{{new.title}}</h1>
+          <p>{{new.subtitle}}</p>
+          <div class="cta">
+            <button class="btn-arrow"
+              [routerLink]="[
+                '../noticia/' + new.slug
+              ]"
+            >
+              <svg
+                width="15"
+                height="8"
+                viewBox="0 0 15 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.5615 4.32755C14.7567 4.13229 14.7567 3.81571 14.5615 3.62045L11.3795 0.438466C11.1842 0.243204 10.8676 0.243204 10.6724 0.438466C10.4771 0.633728 10.4771 0.950311 10.6724 1.14557L13.5008 3.974L10.6724 6.80243C10.4771 6.99769 10.4771 7.31427 10.6724 7.50953C10.8676 7.7048 11.1842 7.7048 11.3795 7.50953L14.5615 4.32755ZM0.701416 4.474L14.2079 4.474L14.2079 3.474L0.701416 3.474L0.701416 4.474Z"
+                  fill="#DCDCDC"
+                />
+              </svg>
+            </button>
+            <p>Ver más</p>
+          </div>
+        </ng-template>
+        <div
+          slot="container-end"
+          class="swiper-pagination pagination-scroll"
+        ></div>
+      </swiper>
+    </div>
+
+    <div *ngIf="bannerNew !== null" class="banner">
+      <div class="banner__wrapper">
+        <div class="banner__main">
+          <p
+            class="banner__title bold"
+            [routerLink]="[
+              '../noticia/' + bannerNew.slug
+            ]"
+          >
+            {{ bannerNew.title }}
+          </p>
+          <button
+            class="banner__cta isMobile"
+            aria-label="Continuar la noticia"
+            [routerLink]="[
+              '../noticia/' + bannerNew.slug
+            ]"
+          >
+            View More
+            <svg
+              width="15"
+              height="8"
+              viewBox="0 0 15 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.5615 4.32755C14.7567 4.13229 14.7567 3.81571 14.5615 3.62045L11.3795 0.438466C11.1842 0.243204 10.8676 0.243204 10.6724 0.438466C10.4771 0.633728 10.4771 0.950311 10.6724 1.14557L13.5008 3.974L10.6724 6.80243C10.4771 6.99769 10.4771 7.31427 10.6724 7.50953C10.8676 7.7048 11.1842 7.7048 11.3795 7.50953L14.5615 4.32755ZM0.701416 4.474L14.2079 4.474L14.2079 3.474L0.701416 3.474L0.701416 4.474Z"
+                fill="#DCDCDC"
+              />
+            </svg>
+          </button>
+          <p
+            class="notMobile"
+            [innerHTML]="bannerNew.newResume"
+          ></p>
+          <div class="notMobile cta-arrow">
+            <button
+              class="btn-arrow"
+              aria-label="Continuar la noticia"
+              [routerLink]="[
+                '../noticia/' + bannerNew.slug
+              ]"
+            >
+              <svg
+                width="13"
+                height="9"
+                viewBox="0 0 13 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.1268 4.52661C12.3405 4.3129 12.3405 3.9664 12.1268 3.75269L8.64416 0.270062C8.43045 0.05635 8.08395 0.05635 7.87024 0.270061C7.65653 0.483773 7.65653 0.830267 7.87024 1.04398L10.9659 4.13965L7.87024 7.23532C7.65653 7.44903 7.65653 7.79553 7.87024 8.00924C8.08395 8.22295 8.43045 8.22295 8.64416 8.00924L12.1268 4.52661ZM0.794983 4.68689L11.7398 4.68689L11.7398 3.59241L0.794983 3.59241L0.794983 4.68689Z"
+                  fill="#DCDCDC"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="banner__img__wrapper">
+          <div
+            class="banner__img"
+            [style.background-image]="'url(' + bannerNew.coverImageUrl + ')'"
+
+            [routerLink]="[
+              '../noticia/' + bannerNew.slug
+            ]"
+          >
+            <!-- <img
+              [src]="bannerNew.coverImageUrl"
+              alt="Portada de la noticia"
+            /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-gaming
+    *ngIf="newsList1.length > 0"
+    [title]="category1"
+    [newsList]="newsList1"
+  ></app-gaming>
+
+  <app-club
+    *ngIf="featuredNewsList.length > 0"
+    [popularNews]="featuredNewsList"
+  ></app-club>
+
+  <app-twitter-feed></app-twitter-feed>
+
+  <app-column-slider
+    *ngIf="newsList2.length > 0"
+    [title]="category2"
+    [newsList]="newsList2"
+  ></app-column-slider>
+
+  <app-column-slider
+    *ngIf="newsList3.length > 0"
+    [title]="category3"
+    [newsList]="newsList3"
+  ></app-column-slider>
+
+  <app-latest-match
+    [matchesToShow]="3"
+    [upcomingMatchesList]="upcomingMatchList"
+    [pastMatchesList]="pastMatchList"
+  ></app-latest-match>
+</div>

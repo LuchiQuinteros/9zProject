@@ -1,0 +1,28 @@
+.page {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 4vw;
+  place-items: flex-start;
+  flex-direction: row;
+  padding-block: 15rem;
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    flex: 1;
+
+    h1 {
+      font-size: 3.2rem;
+      font-family: 'UK';
+      font-weight: 400;
+      color: #fff;
+
+      @media (max-width: 768px) {
+        font-size: 1.6rem;
+      }
+    }
+
+  }
+}

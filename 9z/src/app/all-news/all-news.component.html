@@ -1,0 +1,34 @@
+<div class="page">
+  <section class="hero pd">
+    <h1 class="title">{{ category }}</h1>
+  </section>
+  <app-column-slider
+    *ngIf="newsList.length > 0"
+    [newsList]="newsList"
+    [allNews]="true"
+  ></app-column-slider>
+  <section class="newsletter pd">
+    <div class="newsletter__container">
+      <div class="newsletter__info">
+        <p class="title">volvete miembro</p>
+        <p class="txt">
+          Vamos a construir la mejor comunidad de e-sports y queremos que formes
+          parte de ella.
+        </p>
+        <a [routerLink]="['/miembros']">
+          <button class="primary-btn ripple-btn"><p>Suscribite ahora</p></button>
+        </a>
+      </div>
+      <div class="newsletter__img">
+        <img
+          class="headless notMobile"
+          src="../../assets/home/headless-members.webp"
+          alt=""
+        />
+        <span class="logo-bh notMobile">
+          <img src="../../assets/home/logo-bh.png" alt=""/>
+       </span>
+      </div>
+    </div>
+  </section>
+</div>

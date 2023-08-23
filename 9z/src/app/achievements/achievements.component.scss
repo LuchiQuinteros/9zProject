@@ -1,0 +1,53 @@
+section.hero {
+    @media (min-width: 1023px) {
+        background-image: url('../../assets/achievements/hero-ac.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    margin-inline: 0;
+    width: 100%;
+    height: 100vh;
+    max-width: none;
+    
+    .hero__content {
+        display: flex;
+        flex-flow: column;
+        max-width: 1440px;
+        height: 100%;
+        margin-inline: auto;
+        padding-inline: 8%;
+        padding-top: 10rem;
+        justify-content: space-around;
+    }
+   
+    h1 {
+        font-size: 3rem;
+        line-height: 5.5rem;
+        text-align: center;
+        margin-top: auto;
+       
+        @media (min-width: 1023px) {
+            font-size: 5rem;
+            line-height: 6.9rem;
+        }
+    }
+   
+    .sub-hero {
+        text-align: center;
+        margin-bottom: auto;
+       
+        @media (min-width: 1023px) {
+            font-size: 2rem;
+        }
+    }
+}
+
+button.btn-arrow {
+    width: 6rem;
+    height: 6rem;
+    align-self: center;
+    place-self: center;
+    margin-bottom: auto;
+}
+

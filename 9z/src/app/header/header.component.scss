@@ -1,0 +1,156 @@
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  right: 0;
+  // margin-top: 3.3rem;
+  z-index: 10;
+  // background: rgba(32, 13, 55, 0.5);
+  // backdrop-filter: blur(50px);
+  // border-radius: 10px;
+  background: rgba(31, 12, 59, 0.05);
+  transition: background 400ms ease-in-out;
+
+
+  &.hide {
+    opacity: 0;
+  }
+
+  >div {
+    width: 100%;
+
+    &:last-of-type {
+      border-block: 1px solid #7E2DF978;
+      padding-block: 1.7rem;
+
+    }
+
+    &:first-of-type >div{
+      justify-content: flex-end;
+      place-items: center;
+
+    }
+
+    >div {
+      max-width: 1600px;
+      margin-inline: auto;
+      width: 100%;
+      display: flex;
+
+
+      padding-inline: clamp(2vw, 10rem, 5vw);
+    }
+  }
+
+
+
+  svg {
+    cursor: pointer;
+  }
+
+  // &.transparent {
+  //   background: linear-gradient(0deg, rgba(31, 12, 59, 0.05), rgba(31, 12, 59, 0.05)),
+  //               linear-gradient(0deg, rgba(126, 45, 249, 0.47), rgba(126, 45, 249, 0.47));
+  // }
+
+  &.scroll-down {
+    background: rgba(25, 9, 49, 0.8);
+
+  }
+
+  &.scroll-up {
+    background: rgba(25, 9, 49, 0.8);
+
+    // background: linear-gradient(180deg, rgb(21 1 52) 0.51%, rgba(0, 0, 0, 0.2) 100%);
+
+  }
+}
+
+
+.header-wrapper {
+  justify-content: space-between;
+  place-items: center;
+  display: flex;
+
+  >div {
+    padding-inline: clamp(2vw, 10rem, 5vw);
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: flex-end;
+  place-items: center;
+  padding-block: 0.7rem;
+  gap: 2.8rem;
+
+  a{
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+    svg {
+      cursor: pointer;
+      fill: #BEB3CF;
+      width: 1.6rem;
+      height: 1.6rem;
+      transition: filter 150ms ease-in-out, fill 150ms ease-in-out;
+
+    &:hover {
+      fill: var(--9z-primary);
+      filter: drop-shadow( 0px 0px 5px rgba(126, 45, 249, 1));
+    }
+  }
+
+
+  p {
+    margin-right: 2rem;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #BEB3CF;
+  }
+}
+
+nav {
+  display: flex;
+  gap: 6.4rem;
+
+  a {
+    transition: color 350ms ease, text-shadow 350ms ease;
+    text-transform: uppercase;
+
+    &:hover,
+    &.active {
+      position: relative;
+      color: var(--9z-primary);
+      text-shadow: 0px 0px 20px #a03cfc;
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        bottom: -0.8rem;
+        left: 0;
+        background: var(--9z-primary);
+      }
+    }
+  }
+}
+
+.account {
+  display: flex;
+  gap: 1.6rem;
+  place-items: center;
+
+  svg {
+    stroke: #efe5fe;
+  }
+}
+
+.logo-container img {
+  cursor: pointer;
+}

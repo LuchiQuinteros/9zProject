@@ -1,0 +1,56 @@
+<section class="youtube pd">
+  <div class="title-row">
+    <h2 class="title">{{title}}</h2>
+    <a *ngIf="!standalone" [routerLink]="['/videos']" [queryParams]="{category: title}">Ver mas</a>
+  </div>
+  <swiper [config]="config">
+    <ng-template swiperSlide *ngFor="let video of videosList">
+      <a *ngIf="video.id" href="https://www.youtube.com/watch?v={{video.id}}" target="_blank">
+        <div class="youtube-container">
+          <img (load)="setHeight()" [src]="video.snippet.thumbnails.medium.url" id="videoImage" alt="Miniatura del video">
+          <button class="btn-arrow" aria-label="Abrir video">
+            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 1.83167C0 1.0405 0.875246 0.562658 1.54076 0.990487L12.6915 8.15882C13.3038 8.55246 13.3038 9.44754 12.6915 9.84118L1.54076 17.0095C0.875246 17.4373 0 16.9595 0 16.1683V1.83167Z" fill="#D9D9D9"/>
+            </svg>
+          </button>
+          <div class="video__duration">
+            <p>{{video.duration}}</p>
+          </div>
+        </div>
+
+        <div class="youtube__info" [ngClass]="{'margin': allVideos}">
+          <p class="youtube__title bold">{{video.snippet.localized.title}}</p>
+          <!-- <p class="yt__txt">{{video.statistics.viewCount | number}} vistas</p> -->
+          <!-- <span class="rounded"></span> -->
+          <p class="yt__txt">hace {{video.created > 24? ((video.createdDays | number: '1.0-0') + ' días') : ((video.created | number: '1.0-0') + ' horas')}}</p>
+        </div>
+      </a>
+      <a *ngIf="video.id === undefined" [href]="video.link" target="_blank">
+        <div class="youtube-container">
+          <img [src]="video.image" alt="Miniatura del video">
+          <button class="btn-arrow" aria-label="Abrir video">
+            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 1.83167C0 1.0405 0.875246 0.562658 1.54076 0.990487L12.6915 8.15882C13.3038 8.55246 13.3038 9.44754 12.6915 9.84118L1.54076 17.0095C0.875246 17.4373 0 16.9595 0 16.1683V1.83167Z" fill="#D9D9D9"/>
+            </svg>
+          </button>
+        </div>
+        <p class="youtube__title bold">{{video.title}}</p>
+        <div [ngClass]="{'margin': allVideos}">
+          <p class="yt__txt"></p>
+          <p class="yt__txt"></p>
+        </div>
+      </a>
+    </ng-template>
+    <div slot="container-end" class="button-wrapper first notMobile">
+      <button class="button-arrow swiper-button-prev-twitch" [ngStyle]="{'height': height}" id="buttonSwiper">
+        <img src="../../../assets/svg/arrow-right-big.svg" alt="">
+      </button>
+    </div>
+    <div slot="container-end" class="button-wrapper notMobile">
+      <button class="button-arrow swiper-button-next-twitch" [ngStyle]="{'height': height}" id="secondButton">
+        <img src="../../../assets/svg/arrow-right-big.svg" alt="">
+      </button>
+    </div>
+  </swiper>
+
+</section>

@@ -1,0 +1,60 @@
+@import 'src/assets/mixins';
+
+swiper {
+    overflow: visible;
+}
+
+.video__container {
+    display: grid;
+    border: 1px solid #6701E1;
+    border-radius: 12px;
+    box-shadow: 15px 15px 50px #190A2B;
+    position: relative;
+    background: #00000099;
+
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: linear-gradient(0deg, rgba(25, 10, 43, 0.6) 0%, rgba(0, 0, 0, 0) 49.83%), linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        border-radius: 12px;
+    }
+    
+    img {
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+    }
+    
+    .btn-arrow {
+        width: 4rem;
+        height: 4rem;
+        position: absolute;
+        align-self: center;
+        place-self: center;
+        z-index: 2;
+    }
+}
+    .video__info {
+        padding: 0rem 0.5rem 1rem;
+        margin-top: 1.5rem;       
+        
+        p {
+            font-size: 2rem;
+            line-height: 2.4rem;
+            cursor: pointer;
+            padding: 0rem 0.5rem 1rem;
+            max-height: 4.5rem;
+            margin-top: 2rem;
+            @include txt(2);
+    
+            @media (min-width: 1023px) {
+                font-size: 2.4rem;
+    
+            }
+        }
+    }

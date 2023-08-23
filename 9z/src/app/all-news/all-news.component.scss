@@ -1,0 +1,15 @@
+.hero {
+    box-shadow: 15px 15px 50px 0px #170927;
+    background: #6701E10D;
+    display: flex;
+    justify-content: center;
+    margin-top: 15rem;
+    width: 90%;
+    border-radius: 12px;
+
+    h1 {
+        font-size: 3.6rem;
+        color: var(--9z-font-color);
+        line-height: 5rem;
+    }
+}

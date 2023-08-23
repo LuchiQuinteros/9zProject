@@ -1,0 +1,221 @@
+.hero-swiper {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+section.hero {
+  position: relative;
+  margin-inline: 0;
+  width: 100%;
+  height: 115vh;
+  max-width: none;
+  margin-bottom: 2rem;
+
+  &::before {
+    background: #22004ACC;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin-bottom: 2rem;
+    inset: 0;
+    z-index: 1;
+  }
+
+  @media (max-width: 1023px) {
+    background-position: unset;
+  }
+
+  swiper {
+    position: absolute;
+    inset: 0;
+    // z-index: -1;
+  }
+
+  .hero__content {
+    display: flex;
+    flex-flow: column;
+    // max-width: 1440px;
+    height: 100%;
+    margin-inline: auto;
+    padding-inline: 8%;
+    padding-top: 10rem;
+    justify-content: space-around;
+    padding-bottom: 3rem;
+
+    @media (min-width: 1023px) {
+      place-items: center;
+
+      h1 {
+        max-width: 15ch;
+      }
+    }
+  }
+
+  .title {
+    margin-block: auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    place-items: center;
+
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+
+        @media (min-width: 1023px) {
+        font-size: 5rem;
+      }
+    }
+
+    div.primary {
+      background-color: transparent;
+      border: 1px solid #7E2DF9;
+      padding: 1.2rem 3rem;
+      border-radius: 6px;
+      --y: 0;
+      --x: 0;
+      position: relative;
+      overflow: hidden;
+      transition:border-color var(--transition);
+      display: flex;
+      justify-content: center;
+      place-items: center;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        position: absolute !important;
+        top: var(--y);
+        left: var(--x);
+        width: 0;
+        height: 0;
+        background-color: #7E2DF9;
+        opacity: 0.4;
+        transition: width var(--transition), height var(--transition), opacity var(--transition);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        display: block;
+        z-index: 98;
+      }
+
+      p {
+        font-weight: 400;
+        color: #fff;
+        font-size: 2rem;
+        z-index: 99;
+        text-transform: initial;
+      }
+
+      &:hover {
+        border-color: transparent;
+
+        &::before {
+          width: 300%;
+          height: 300%;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .content-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 7rem;
+
+    @media (max-width: 767px) {
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    div {
+      display: flex;
+      place-items: center;
+      gap: min(5vw, 4rem);
+      margin-inline: auto;
+      z-index: 2;
+
+    }
+
+    .sponsors {
+      max-width: 100%;
+
+      img {
+        width: 100%;
+        max-width: 8rem;
+        max-height: 3.5rem;
+
+        @media (max-width: 767px) {
+          max-width: 6rem;
+          max-height: 3rem;
+        }
+
+        &.small {
+          max-width: 5rem;
+
+          @media (max-width: 767px) {
+            max-width: 4rem;
+          }
+        }
+      }
+    }
+
+    svg {
+      cursor: pointer;
+      fill: var(--9z-font);
+      transition: filter 150ms ease-in-out, fill 150ms ease-in-out;
+
+      &:hover {
+        fill: var(--9z-primary);
+        filter: drop-shadow( 0px 0px 5px rgba(126, 45, 249, 1));
+      }
+    }
+  }
+
+  @media (min-width: 1023px) {
+    .content-icons {
+      flex-flow: row;
+
+      div {
+        margin-inline: 0;
+      }
+    }
+  }
+}
+
+
+.socialSection {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  gap: 3rem;
+  padding-top: 3rem;
+
+  a{
+    width:2rem;
+    height:2rem;
+  }
+
+    svg {
+      cursor: pointer;
+      fill: #92929280;
+      width:2rem;
+      height:2rem;
+      transition: filter 150ms ease-in-out, fill 150ms ease-in-out;
+
+    &:hover {
+      fill: var(--9z-primary);
+      filter: drop-shadow( 0px 0px 5px rgba(126, 45, 249, 1));
+    }
+  }
+}

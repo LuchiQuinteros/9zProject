@@ -1,0 +1,14 @@
+<div class="page">
+  <section class="hero">
+    <div class="container">
+      <button class="btn-arrow">
+        <h1 class="title">coming soon</h1>
+      </button>
+     </div>
+  </section>
+  <div class="sponsors">
+    <ng-container *ngFor="let sponsor of sponsors">
+      <img [src]="sponsor.logo" [alt]="sponsor.name">
+    </ng-container>
+  </div>
+</div>

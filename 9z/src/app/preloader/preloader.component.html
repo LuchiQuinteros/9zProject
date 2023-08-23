@@ -1,0 +1,12 @@
+ <div class="preloader" *ngIf="progress !== 100" [@fadeOut]>
+    <div class="wrapper">
+        <img class="logo" src="../../assets/preloader/logo-pre.png" alt="9z logo">
+        <span class="progress" [attr.style]="sanitizer.bypassSecurityTrustStyle('--loaded: ' + progress + '%')"></span>
+        <p class="title">{{progress}} <span>%</span></p>
+    </div>
+    <div class="sponsors pd">
+      <ng-container *ngFor="let sponsor of sponsors">
+        <img [ngClass]="{'small': sponsor.name === 'intel'}" [src]="sponsor.logo" [alt]="sponsor.name">
+      </ng-container>
+    </div>
+</div>

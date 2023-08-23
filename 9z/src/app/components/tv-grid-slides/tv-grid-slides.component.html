@@ -1,0 +1,23 @@
+<section class="pd">
+  <div class="title-row">
+    <h2 class="title">9z tv</h2>
+    <a>Ver todo</a>
+  </div>
+
+  <swiper [config]="config" >
+    <ng-template swiperSlide *ngFor="let slide of slides">
+      <div class="video__container">
+        <img src="../../../assets/home/video-placeholder.png" alt="Video thumbnail">
+        <button class="btn-arrow">
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <title>Reproducir video</title>
+            <path d="M1.19536 0.795911C1.39711 0.706011 1.6236 0.666017 1.84992 0.680329C2.07624 0.694641 2.29361 0.762705 2.47811 0.87703L11.112 6.21378C11.2719 6.31252 11.4022 6.44287 11.4921 6.59399C11.582 6.74511 11.6289 6.91263 11.6289 7.08261C11.6289 7.25259 11.582 7.4201 11.4921 7.57123C11.4022 7.72235 11.2719 7.8527 11.112 7.95143L2.47811 13.2882C2.29367 13.4024 2.07641 13.4704 1.85021 13.4847C1.62401 13.4991 1.39762 13.4591 1.19595 13.3693C0.994273 13.2795 0.825115 13.1433 0.707072 12.9757C0.589029 12.8081 0.526672 12.6156 0.526856 12.4194V1.74585C0.526619 1.54964 0.588889 1.35716 0.706825 1.18957C0.824762 1.02199 0.993799 0.885778 1.19536 0.795911Z" fill="#DCDCDC"/>
+          </svg>
+        </button>
+      </div>
+      <div class="video__info">
+        <p class="bold">9z wins big at the esports awards 2021</p>
+      </div>
+    </ng-template>
+  </swiper>
+</section>

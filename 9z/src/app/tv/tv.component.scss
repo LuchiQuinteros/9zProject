@@ -1,0 +1,65 @@
+
+section.hero {
+    background: transparent;
+    width: 100%;
+    height: 85vh;
+    max-width: none;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    margin-top: 8rem;
+
+    .hero__content {
+        display: flex;
+        flex-flow: column;
+        max-width: 1440px;
+        height: 100%;
+        margin-inline: auto;
+        padding-top: 15rem;
+        gap: 7rem;
+        place-content: center;
+        border: 1px solid #7E2DF9;
+        width: 100%;
+        background-color: #160A27;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 4rem;
+        line-height: 5.5rem;
+        text-align: center;
+    }
+}
+
+.cta {
+    display: flex;
+    margin-inline: auto;
+
+    .btn-arrow {
+        width: 4rem;
+        height: 4rem;
+
+        &::after {
+            --size: -2rem;
+        }
+
+        &::before {
+            content: '';
+            --size: -4.5rem;
+            position: absolute;
+            border: 1px solid rgba(220, 220, 220, 0.1);
+            border-radius: 50%;
+            inset: var(--size);
+            transition: inset 350ms ease-in-out, opacity 350ms ease-in-out;
+            animation: pulsing 2.2s infinite;
+        }
+    }
+}
+
+img {
+    width: 100%;
+    // aspect-ratio: 1;
+    // object-fit: cover;
+}
+
+

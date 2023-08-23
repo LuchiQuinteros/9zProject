@@ -1,0 +1,53 @@
+<section class="club__wrapper pd" *ngIf="mostPopularNew !== null">
+  <div class="title">
+    <h2>Noticias destacadas</h2>
+    <button routerLink="../noticias">
+      Ver más
+    </button>
+  </div>
+  <div class="club">
+    <div class="left">
+      <div class="post" [routerLink]="['../noticia/' + mostPopularNew.slug]">
+        <img class="post__image" [src]="mostPopularNew?.coverImageUrl" alt="">
+        <div class="bottom">
+          <h4>{{mostPopularNew.title}}</h4>
+          <div class="resume" [innerHtml]="mostPopularNew.newResume"></div>
+          <div class="post__info">
+            <div class="icon-wrapper">
+              <img src="../../../assets/svg/new-calendar.svg" alt="">
+              <p>{{mostPopularNew.date}}</p>
+            </div>
+            <div class="icon-wrapper">
+              <img src="../../../assets/svg/clock.svg" alt="">
+              <p>{{mostPopularNew.readingTime}} min.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="post-row" [routerLink]="['../noticia/' + post.slug]" *ngFor="let post of popularNews | slice:1:3">
+        <div class="post__left">
+          <img [src]="post.coverImageUrl" alt="">
+        </div>
+        <div class="post__right">
+          <h4>{{post.title}}</h4>
+          <div  class="resume" [innerHtml]="post.newResume"></div>
+          <a [routerLink]="['../noticia/' + post.slug]">
+            Seguir leyendo
+          </a>
+          <div class="icons">
+            <div class="icon-wrapper">
+              <img src="../../../assets/svg/new-calendar.svg" alt="">
+              <p>{{post.date}}</p>
+            </div>
+            <div class="icon-wrapper">
+              <img src="../../../assets/svg/clock.svg" alt="">
+              <p>{{post.readingTime}} min.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

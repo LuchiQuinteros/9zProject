@@ -1,0 +1,191 @@
+<section class="gaming pd">
+  <div class="title-row">
+    <h2 class="title">{{ title }}</h2>
+    <button
+      [routerLink]="['/all-news']"
+      [queryParams]="{ category: title }"
+    >
+      Ver más
+    </button>
+  </div>
+
+  <swiper [config]="config" class="isMobile">
+    <ng-template swiperSlide *ngFor="let slide of newsList; let i = index">
+      <div class="news__card">
+        <img [src]="slide.coverImageUrl" alt="Portada de la noticia" />
+        <span *ngIf="slide.category?.length > 0">{{ slide.category }}</span>
+        <div class="news__info">
+          <p class="info__title">{{ slide.title }}</p>
+          <div [innerHTML]="slide.newSubheader" class="subheader-new"></div>
+          <a
+            [routerLink]="['../noticia/' + slide.slug]"
+            aria-label="Seguir leyendo la noticia"
+          >
+            Leer más
+            <svg
+              width="32"
+              height="8"
+              viewBox="0 0 32 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
+                fill="#7E2DF9"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </ng-template>
+  </swiper>
+  <div class="news notMobile">
+    <div class="news__card news__main">
+      <img
+        [src]="newsList[index - 1].coverImageUrl"
+        alt="Portada de la noticia"
+      />
+      <span>{{ newsList[index - 1].category }}</span>
+      <div class="news__info">
+        <p class="info__title">{{ newsList[index - 1].title }}</p>
+        <div
+          [innerHTML]="newsList[index - 1].newSubheader"
+          class="news__subheader"
+        ></div>
+        <a
+          [routerLink]="['../noticia/' + newsList[index - 1].slug]"
+          aria-label="Seguir leyendo la noticia"
+        >
+          Leer más
+          <svg
+            width="32"
+            height="8"
+            viewBox="0 0 32 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
+              fill="#7E2DF9"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="news__card news__related">
+      <img
+        [src]="newsList[index - 2].coverImageUrl"
+        alt="Portada de la noticia"
+      />
+      <span>{{ newsList[index - 2].category }}</span>
+      <div class="news__info">
+        <p class="info__title">{{ newsList[index - 2].title }}</p>
+        <div
+          [innerHTML]="newsList[index - 2].newSubheader"
+          class="news__subheader"
+        ></div>
+        <a
+          [routerLink]="['../noticia/' + newsList[index - 2].slug]"
+          aria-label="Ir a la noticia"
+        >
+          Leer más
+          <svg
+            width="32"
+            height="8"
+            viewBox="0 0 32 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
+              fill="#7E2DF9"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="news__card news__related">
+      <img
+        [src]="newsList[index - 3].coverImageUrl"
+        alt="Portada de la noticia"
+      />
+      <span>{{ newsList[index - 3].category }}</span>
+      <div class="news__info">
+        <p class="info__title">{{ newsList[index - 3].title }}</p>
+        <div
+          [innerHTML]="newsList[index - 3].newSubheader"
+          class="news__subheader"
+        ></div>
+        <a
+          [routerLink]="['../noticia/' + newsList[index - 3].slug]"
+          aria-label="Seguir leyendo la noticia"
+        >
+          Leer más
+          <svg
+            width="32"
+            height="8"
+            viewBox="0 0 32 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
+              fill="#7E2DF9"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="gaming__news">
+        <div class="gaming__main">
+            <img src="{{newsList[index - 1].coverImageUrl}}" alt="Foto">
+            <div class="main__info">
+                <p class="label bold">{{title}}</p>
+                <h3 class="bold">{{newsList[index - 1].title}}</h3>
+                <div class="main__text">
+                    <div [innerHTML]="newsList[index - 1].newSubheader">
+                    </div>
+                    <button class="btn-arrow" routerLink="/new/{{newsList[index - 1].newTitle}}">
+                        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.5615 4.32755C14.7567 4.13229 14.7567 3.81571 14.5615 3.62045L11.3795 0.438466C11.1842 0.243204 10.8676 0.243204 10.6724 0.438466C10.4771 0.633728 10.4771 0.950311 10.6724 1.14557L13.5008 3.974L10.6724 6.80243C10.4771 6.99769 10.4771 7.31427 10.6724 7.50953C10.8676 7.7048 11.1842 7.7048 11.3795 7.50953L14.5615 4.32755ZM0.701416 4.474L14.2079 4.474L14.2079 3.474L0.701416 3.474L0.701416 4.474Z" fill="#DCDCDC"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="(index - 2) >= 0" class="gaming__related">
+            <img src="{{newsList[index - 2].coverImageUrl}}" alt="">
+            <div>
+                <h3 class="bold">{{newsList[index - 2].title}}</h3>
+                <p [innerHTML]="newsList[index - 2].newSubheader"></p>
+                <a routerLink="/new/{{newsList[index - 2].newTitle}}">
+                    Read more
+                    <svg width="32" height="8" viewBox="0 0 32 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z" fill="#7E2DF9"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div *ngIf="(index - 3) >= 0" class="gaming__related">
+            <img src="{{newsList[index - 3].coverImageUrl}}" alt="">
+            <div>
+                <h3 class="bold">{{newsList[index - 3].title}}</h3>
+                <p [innerHTML]="newsList[index - 3].newSubheader"></p>
+                <a routerLink="/new/{{newsList[index - 3].newTitle}}">
+                    Read more
+                    <svg width="32" height="8" viewBox="0 0 32 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z" fill="#7E2DF9"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+
+    </div> -->
+</section>

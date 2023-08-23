@@ -1,0 +1,16 @@
+html {
+    --9z-font: #ffffff;
+    --9z-font-light: #5E627E;
+    --9z-primary: #7e2df9;
+    --9z-primary-transparent: rgba(126, 45, 249,0.3);
+    --9z-primary-2: #A03CFC;
+    --9z-subtitle: #929292;
+    // --9z-bg-gradient: rgba(126, 45, 249, 0.8);
+    --9z-bg-gradient: radial-gradient(circle, rgba(13,13,13,1) 0%, rgba(126,45,249,0.3) 0%, rgba(13,13,13,1) 85%);
+    --9z-bg-gradient-white: rgba(250, 204, 165, 0.1);
+    --transition: cubic-bezier(.38,.33,.97,1) 350ms;
+    --xl-screen: 1440px;
+    --x-screen: 1023px;
+    --md-screen: 765px;
+    --sm-screen: 360px;
+}

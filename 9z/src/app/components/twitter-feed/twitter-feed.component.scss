@@ -1,0 +1,83 @@
+@import 'src/assets/mixins';
+
+section.twitter {
+    overflow: hidden;
+
+    .twitter__title {
+        display: flex;
+        gap: 2rem;
+        place-items: center;
+
+        h2 {
+            font-size: 2.4rem;
+        }
+
+        svg {
+            stroke: #EDE4F9;
+            fill: #EDE4F9;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+    }
+
+    swiper {
+        overflow: visible;
+        padding-block: 3rem;
+        padding-inline: 1rem;
+
+        @media (min-width: 1023px) {
+            overflow-x: hidden;
+        }
+    }
+
+    .twitter__tweet {
+        min-height: 18rem;
+        max-height: 18rem;
+        background: linear-gradient(180deg, #221239 3.93%, rgba(35, 19, 58, 0) 76.52%), linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.06));
+         border-radius: 4px;
+         padding: 2.5rem;
+    }
+
+    .tweet__profile {
+        display: flex;
+        place-items: center;
+        gap: 1.3rem;
+        background-color: transparent;
+        margin-bottom: 2rem;
+
+        div {
+            overflow: hidden;
+        }
+
+        img {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+        }
+
+        .tweet__name {
+            font-size: 1.6rem;
+        }
+
+        .tweet__name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    
+    .tweet__text {
+        max-width: none;
+        font-size: 1.4rem;
+        @include txt(4);
+
+    }
+
+    p.tweet__timestamp {
+        font-size: 1.4rem;
+        max-width: 30ch;
+        @include txt(4);
+    }
+}
