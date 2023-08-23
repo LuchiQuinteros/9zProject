@@ -1,0 +1,11 @@
+identifier: leh3q4p111j6qcp3
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: web9z
+homeFolder: C:\Users\sebA\Desktop\projects\9z
+distFolder: dist/web9z
+outDir: C:\Users\sebA\Desktop\projects\9z\dist\static
+handle404: ''
+allowErrorCollect: false
