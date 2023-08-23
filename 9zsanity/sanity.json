@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "api": {
+    "projectId": "31xtqrng",
+    "dataset": "production"
+  },
+  "project": {
+    "name": "9z"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "barcode-input"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}
