@@ -1,11 +1,23 @@
 <section class="club__wrapper pd" *ngIf="mostPopularNew !== null">
-  <div class="title">
-    <h2>Noticias destacadas</h2>
+  <div class="title-row">
+    <h2 class="title">Noticias destacadas</h2>
     <button routerLink="../noticias">
       Ver más
     </button>
   </div>
-  <div class="club">
+  <swiper [config]="config" class="isMobile">
+    <ng-template swiperSlide *ngFor="let slide of popularNews; let i = index">
+      <div class="news__card" (click)="redirectToNoticia(slide.slug)">
+        <img [src]="slide.coverImageUrl" alt="Portada de la noticia" />
+        <span *ngIf="slide.category?.length > 0">{{ slide.category }}</span>
+        <div class="news__info">
+          <p class="info__title">{{ slide.title }}</p>
+          <div [innerHTML]="slide.newSubheader" class="subheader-new"></div>
+        </div>
+      </div>
+    </ng-template>
+  </swiper>
+  <div class="club notMobile">
     <div class="left">
       <div class="post" [routerLink]="['../noticia/' + mostPopularNew.slug]">
         <img class="post__image" [src]="mostPopularNew?.coverImageUrl" alt="">

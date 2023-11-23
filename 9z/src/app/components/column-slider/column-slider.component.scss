@@ -1,5 +1,24 @@
 @import 'src/assets/mixins';
 
+button{
+    border: 1px solid #7E2DF9;
+    background: transparent;
+    transition: background var(--transition);
+    border-radius: 4px;
+    padding: 0.9rem 3.6rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #fff;
+  
+    @media (max-width: 1023px) {
+      font-size: 1.6rem;
+    }
+  
+    &:hover {
+      background: #7E2DF9;
+    }
+  }
+
 .new {
     display: flex;
     flex-flow: column;

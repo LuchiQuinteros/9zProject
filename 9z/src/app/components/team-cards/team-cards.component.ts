@@ -23,14 +23,15 @@ import { ActivatedRoute } from '@angular/router';
     breakpoints: {
       410: {
         slidesPerView: 1.25,
-        centeredSlides: false,
+        centeredSlides: true,
       },
       765: {
+        centeredSlides: true,
         initialSlide: 1,
         slidesPerView: 2,
       },
       1024: {
-        centeredSlides: false,
+        centeredSlides: true,
         slidesPerView: 3,
         grabCursor: true,
         navigation: {

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import SwiperCore, {
   SwiperOptions,
 } from "swiper";
@@ -28,10 +29,15 @@ export class GamingComponent implements OnInit {
   };
 
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  redirectToNoticia(slug: String) {
+    // Redirige a la URL deseada al hacer clic en la tarjeta
+    this.router.navigate(['../noticia/' + slug]);
+  }
 
   ngOnInit(): void {
-    this.index = this.newsList.length;
-    console.log(this.newsList)
+    this.index = this.newsList.length - 1;
+    this.newsList = this.newsList.reverse();
   }
 }

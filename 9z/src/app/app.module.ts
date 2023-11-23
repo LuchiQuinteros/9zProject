@@ -42,6 +42,18 @@ import { VideosComponent } from './videos/videos.component';
 import { AllNewsComponent } from './all-news/all-news.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { SponsorFooterComponent } from './sponsor-footer/sponsor-footer.component';
+import { HomeMatchComponent } from './home-match/home-match.component';
+import { ModalFilterComponent } from './modal-filter/modal-filter.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { TeamDisciplineComponent } from './team-discipline/team-discipline.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +89,10 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
     AllNewsComponent,
     ComingSoonComponent,
     TermsAndConditionsComponent,
+    SponsorFooterComponent,
+    HomeMatchComponent,
+    ModalFilterComponent,
+    TeamDisciplineComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +104,14 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
     ShareIconsModule,
     ScullyLibModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatTableModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
   providers: [
     Configuration,

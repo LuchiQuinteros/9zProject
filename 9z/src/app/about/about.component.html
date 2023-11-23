@@ -5,152 +5,7 @@
     </div>
   </section>
 
-  <section class="sponsors">
-    <div class="sponsor-list pd">
-      <ng-container *ngFor="let sponsor of sponsors">
-        <img [ngClass]="{'small': sponsor.name === 'intel'}" [src]="sponsor.logo" [alt]="sponsor.name">
-      </ng-container>
-    </div>
-  </section>
-
-  <section class="about pd">
-    <div class="about__head">
-      <h2 class="title">LA FAMILIA VIOLETA</h2>
-      <p>
-        Nuestro objetivo es dar apoyo para que nuestros jugadores, streamers y
-        miembros crezcan de manera personal y profesional otorgando todas las
-        herramientas que nuestro equipo pueda proporcionar.
-      </p>
-    </div>
-    <div class="about__container">
-      <div class="swiper-container">
-        <button
-          class="btn-arrow swiper-button-prev-about notMobile"
-          aria-label="Deslizar hacia atras"
-        >
-          <svg
-            width="15"
-            height="8"
-            viewBox="0 0 15 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14.5615 4.32755C14.7567 4.13229 14.7567 3.81571 14.5615 3.62045L11.3795 0.438466C11.1842 0.243204 10.8676 0.243204 10.6724 0.438466C10.4771 0.633728 10.4771 0.950311 10.6724 1.14557L13.5008 3.974L10.6724 6.80243C10.4771 6.99769 10.4771 7.31427 10.6724 7.50953C10.8676 7.7048 11.1842 7.7048 11.3795 7.50953L14.5615 4.32755ZM0.701416 4.474L14.2079 4.474L14.2079 3.474L0.701416 3.474L0.701416 4.474Z"
-              fill="#DCDCDC"
-            />
-          </svg>
-        </button>
-        <swiper [config]="aboutSlide">
-          <!-- <ng-template swiperSlide>
-            <div class="about__box">
-              <div class="about__icon">
-                <svg
-                  width="40"
-                  height="38"
-                  viewBox="0 0 40 38"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g filter="url(#filter0_d_2601_1778)">
-                    <path
-                      d="M37.7186 14.7141C37.6065 14.3955 37.4025 14.1156 37.1315 13.9084C36.8605 13.7012 36.5341 13.5756 36.1918 13.5469L26.09 12.1009L21.5628 3.09408C21.4174 2.79954 21.1904 2.55113 20.9078 2.37732C20.6252 2.20351 20.2985 2.11133 19.965 2.11133C19.6314 2.11133 19.3047 2.20351 19.0221 2.37732C18.7395 2.55113 18.5125 2.79954 18.3671 3.09408L13.84 12.0835L3.73816 13.5469C3.40958 13.5927 3.10067 13.728 2.84648 13.9374C2.5923 14.1468 2.40301 14.4219 2.30011 14.7315C2.20592 15.0341 2.19747 15.3561 2.27566 15.663C2.35386 15.97 2.51575 16.2502 2.74396 16.4737L10.0762 23.4422L8.30084 33.3375C8.22916 33.6658 8.25566 34.0074 8.37715 34.3212C8.49864 34.635 8.70995 34.9077 8.98565 35.1065C9.26135 35.3052 9.5897 35.4216 9.9312 35.4416C10.2727 35.4615 10.6128 35.3843 10.9106 35.219L19.965 30.5675L29.0193 35.219C29.2685 35.357 29.5499 35.429 29.836 35.4281C30.212 35.4294 30.5788 35.3135 30.8834 35.0971C31.1589 34.9035 31.3721 34.6365 31.4979 34.3278C31.6238 34.0191 31.657 33.6816 31.5936 33.3549L29.8182 23.4596L37.1505 16.4911C37.4068 16.278 37.5962 15.9979 37.6968 15.6833C37.7974 15.3688 37.8049 15.0327 37.7186 14.7141ZM26.8001 21.6827C26.5946 21.8785 26.4405 22.1202 26.3508 22.3871C26.2612 22.6541 26.2387 22.9384 26.2852 23.2157L27.5635 30.5327L20.8881 27.0484C20.6287 26.9225 20.3432 26.857 20.0537 26.857C19.7643 26.857 19.4787 26.9225 19.2193 27.0484L12.544 30.5327L13.8222 23.2157C13.8688 22.9384 13.8463 22.6541 13.7566 22.3871C13.667 22.1202 13.5128 21.8785 13.3074 21.6827L7.98127 16.4562L15.4555 15.3935C15.7431 15.3543 16.0166 15.2464 16.2518 15.0794C16.487 14.9123 16.6769 14.6912 16.8048 14.4354L19.965 7.79784L23.3026 14.4528C23.4305 14.7086 23.6204 14.9297 23.8557 15.0968C24.0909 15.2638 24.3643 15.3717 24.6519 15.411L32.1262 16.4737L26.8001 21.6827Z"
-                      fill="#7E2DF9"
-                    />
-                    <path
-                      d="M37.7186 14.7141C37.6065 14.3955 37.4025 14.1156 37.1315 13.9084C36.8605 13.7012 36.5341 13.5756 36.1918 13.5469L26.09 12.1009L21.5628 3.09408C21.4174 2.79954 21.1904 2.55113 20.9078 2.37732C20.6252 2.20351 20.2985 2.11133 19.965 2.11133C19.6314 2.11133 19.3047 2.20351 19.0221 2.37732C18.7395 2.55113 18.5125 2.79954 18.3671 3.09408L13.84 12.0835L3.73816 13.5469C3.40958 13.5927 3.10067 13.728 2.84648 13.9374C2.5923 14.1468 2.40301 14.4219 2.30011 14.7315C2.20592 15.0341 2.19747 15.3561 2.27566 15.663C2.35386 15.97 2.51575 16.2502 2.74396 16.4737L10.0762 23.4422L8.30084 33.3375C8.22916 33.6658 8.25566 34.0074 8.37715 34.3212C8.49864 34.635 8.70995 34.9077 8.98565 35.1065C9.26135 35.3052 9.5897 35.4216 9.9312 35.4416C10.2727 35.4615 10.6128 35.3843 10.9106 35.219L19.965 30.5675L29.0193 35.219C29.2685 35.357 29.5499 35.429 29.836 35.4281C30.212 35.4294 30.5788 35.3135 30.8834 35.0971C31.1589 34.9035 31.3721 34.6365 31.4979 34.3278C31.6238 34.0191 31.657 33.6816 31.5936 33.3549L29.8182 23.4596L37.1505 16.4911C37.4068 16.278 37.5962 15.9979 37.6968 15.6833C37.7974 15.3688 37.8049 15.0327 37.7186 14.7141ZM26.8001 21.6827C26.5946 21.8785 26.4405 22.1202 26.3508 22.3871C26.2612 22.6541 26.2387 22.9384 26.2852 23.2157L27.5635 30.5327L20.8881 27.0484C20.6287 26.9225 20.3432 26.857 20.0537 26.857C19.7643 26.857 19.4787 26.9225 19.2193 27.0484L12.544 30.5327L13.8222 23.2157C13.8688 22.9384 13.8463 22.6541 13.7566 22.3871C13.667 22.1202 13.5128 21.8785 13.3074 21.6827L7.98127 16.4562L15.4555 15.3935C15.7431 15.3543 16.0166 15.2464 16.2518 15.0794C16.487 14.9123 16.6769 14.6912 16.8048 14.4354L19.965 7.79784L23.3026 14.4528C23.4305 14.7086 23.6204 14.9297 23.8557 15.0968C24.0909 15.2638 24.3643 15.3717 24.6519 15.411L32.1262 16.4737L26.8001 21.6827Z"
-                      fill="url(#paint0_linear_2601_1778)"
-                      fill-opacity="0.2"
-                    />
-                  </g>
-                  <defs>
-                    <filter
-                      id="filter0_d_2601_1778"
-                      x="0.161996"
-                      y="0.050668"
-                      width="39.677"
-                      height="37.4548"
-                      filterUnits="userSpaceOnUse"
-                      color-interpolation-filters="sRGB"
-                    >
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                      />
-                      <feOffset />
-                      <feGaussianBlur stdDeviation="1.03033" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0.403922 0 0 0 0 0.00392157 0 0 0 0 0.882353 0 0 0 1 0"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in2="BackgroundImageFix"
-                        result="effect1_dropShadow_2601_1778"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in="SourceGraphic"
-                        in2="effect1_dropShadow_2601_1778"
-                        result="shape"
-                      />
-                    </filter>
-                    <linearGradient
-                      id="paint0_linear_2601_1778"
-                      x1="20.0004"
-                      y1="7.01329"
-                      x2="20.0004"
-                      y2="35.4447"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stop-color="white" />
-                      <stop offset="1" stop-opacity="0" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div class="about__text">
-                <p class="bold">mantra</p>
-                <p class="second_text">
-                  Nuestra audiencia es el corazón de todo lo que somos y hacemos
-                </p>
-              </div>
-            </div>
-          </ng-template> -->
-          <ng-template swiperSlide *ngFor="let box of aboutImages">
-            <div
-              [style.background-image]="'url(' + box + ')'"
-              class="about__box promesa"
-            >
-            </div>
-          </ng-template>
-        </swiper>
-        <button
-          class="btn-arrow swiper-button-next-about notMobile"
-          aria-label="Deslizar hacia adelante"
-        >
-          <svg
-            width="15"
-            height="8"
-            viewBox="0 0 15 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14.5615 4.32755C14.7567 4.13229 14.7567 3.81571 14.5615 3.62045L11.3795 0.438466C11.1842 0.243204 10.8676 0.243204 10.6724 0.438466C10.4771 0.633728 10.4771 0.950311 10.6724 1.14557L13.5008 3.974L10.6724 6.80243C10.4771 6.99769 10.4771 7.31427 10.6724 7.50953C10.8676 7.7048 11.1842 7.7048 11.3795 7.50953L14.5615 4.32755ZM0.701416 4.474L14.2079 4.474L14.2079 3.474L0.701416 3.474L0.701416 4.474Z"
-              fill="#DCDCDC"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section class="full_img pd">
+  <section class="full_img_right pd">
     <div></div>
     <div class="right__info pd">
       <div class="line_head">
@@ -163,36 +18,89 @@
         >
           <path d="M99.5 1H0" stroke="#767378" />
         </svg>
-        <p class="bold">Francisco postiglione</p>
       </div>
-      <p class="community__head bold">Fundada en 2018</p>
+      <p class="community__head bold">¿Quienes somos?</p>
       <p class="community__txt">
-        El club fue fundado por uno de los streamers e influencers más
-        importantes de la región, Francisco ''Frankkaster'' Postiglione. Con
-        años de trayectoria y una gran comunidad, 9z Team se establece como uno
-        de los equipos de deportes electrónicos más importante de Argentina y
-        Latinoamérica.
+        Somos una organización de esports argentina con relevancia en la escena mundial, constituida por amantes de los videojuegos motivados por la pasión latinoamericana que genera competir en los deportes electrónicos.
       </p>
     </div>
   </section>
-
-  <section class="social-networks pd">
-    <p class="social_head title">Comunidad</p>
-    <p class="community__txt">
-      A partir de nuestro desarrollo deportivo y nuestro enfoque en la
-      generación de contenido a través de streamers y eventos, hemos generado
-      una comunidad fiel que nos permite seguir creciendo y nos ayuda a
-      convertirnos en un referente de la región. La #FamiliaVioleta es la
-      comunidad de esports más grande de Argentina y Latinoamérica, y se
-      encuentra en constante crecimiento mes a mes.
-    </p>
-    <div class="social__container">
-      <div class="social-box__container" *ngFor="let network of social">
-        <div class="social__box">
-          <img [src]="network.icon" alt="">
-        </div>
-        <p class="bold">{{network.followers}}</p>
+  <section class="full_img_left pd">
+    <div class="left__info pd">
+      <div class="line_head">
+        <svg
+          width="100"
+          height="2"
+          viewBox="0 0 100 2"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M99.5 1H0" stroke="#767378" />
+        </svg>
       </div>
+        <p class="community__head bold">¿De donde venimos?</p>
+      <p class="community__txt">
+        Frankkaster fundó 9z Team el 8 de agosto de 2018, después de haberse  dedicado 		durante 3 años a la creación de contenido digital.
+
+        Su pasión por los esports, el conocimiento de la audiencia y un equipo de trabajo con 		experiencia en la industria; permitieron que 9z se convierta rápidamente en una 		organización modelo para el desarrollo de jugadores profesionales y creadores de 		contenido.
+    
+        En 2021 se asoció con Dale Play Group para seguir mejorando las capacidades de la 		empresa y llevar el club al siguiente nivel.
+    
+        Gracias a los logros deportivos y la calidad del contenido, logramos desarrollar en 5 		años una comunidad de fanáticos que diferencian a 9z del resto de los equipos de la 		región.    
+      </p>
     </div>
+    <div></div>
+  </section>
+  <section class="full_img_right-2 pd">
+    <div></div>
+    <div class="right__info pd">
+      <div class="line_head">
+        <svg
+          width="100"
+          height="2"
+          viewBox="0 0 100 2"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M99.5 1H0" stroke="#767378" />
+        </svg>
+      </div>
+      <p class="community__head bold">¿Donde estamos?</p>
+      <p class="community__txt">
+        Luego de años de ardua competencia, 9z se establece como uno de los equipos de esports más importante de Argentina y Latinoamerica, gracias a hitos históricos para nuestra región como:
+
+Primer equipo de esports en clasificar y ganar en un Mayor(Antwerp 2022, Rio 2022 csgo)
+Primer equipo de esports en clasificar y llegar a playoffs de Pro League 2023 (csgo)
+Top 5 (King) en mundial de Fortnite de 2018
+Campeón LVP de League of Legends de 2018
+Clasificación a mundial de Fifa del 2018 en Londres (Yago Fawaz)
+Primera win internacional en Blast Premier 2020 (csgo) vs Vitality(Top 8 del mundo)
+Top 20 del mundo en Octubre 2023 y manteniendo (cs2)
+Clasificación a dos ESL Challenger: Katowice 2023 y ESL 2022 (csgo)
+Clasificación a dos IEM: Rio 2023 y Dallas 2023 donde llegamos a playoffs (csgo)
+
+      </p>
+    </div>
+  </section>
+  <section class="full_img_left-2 pd">
+    <div class="left__info pd">
+      <div class="line_head">
+        <svg
+          width="100"
+          height="2"
+          viewBox="0 0 100 2"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M99.5 1H0" stroke="#767378" />
+        </svg>
+      </div>
+      <p class="community__head bold">¿A donde vamos?</p>
+      <p class="community__txt">
+        Trabajamos día a día para lograr nuestra visión de convertirnos en el equipo de esports 		número 1 de habla hispana junto a la comunidad de fanáticos más grande de América 		Latina. Nuestra próxima meta es internacionalizar la marca en Europa, donde somos 		considerados un equipo muy sorpresivo a nivel competitivo.
+
+      </p>
+    </div>
+    <div></div>
   </section>
 </div>

@@ -33,7 +33,7 @@ export class AppComponent {
       if (val instanceof NavigationStart) {
         this.onActivate(val)
         setTimeout(() => {
-          this.scrollbar.scrollTo(0, 100, 600)
+          this.scrollbar.scrollTo(0, 0, 600)
          }, 500);
       }
     })
@@ -41,7 +41,7 @@ export class AppComponent {
 
   async ngOnInit() {
     const style = 'background-color: #1C1C1C; color: #FFAAAA; padding: 4px 8px; font-size: 12px; border-radius: 4px; border: 1px solid #FFAAAA;';
-    console.log("%cMade by Puna · puna.studio", style)
+    console.log("%cMade by Tomas Winicki", style)
     const main = document.getElementById('main');
     Scrollbar.use(ScrollbarCustomPlugin)
     const options = {

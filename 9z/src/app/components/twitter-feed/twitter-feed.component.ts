@@ -41,7 +41,7 @@ export class TwitterFeedComponent implements OnInit {
   constructor(private socialServices: SocialService) {}
 
   async ngOnInit() {
-    await this.getTweets();
+    
   }
 
   async getTweets() {

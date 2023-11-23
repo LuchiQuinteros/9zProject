@@ -15,6 +15,8 @@ export class OurMatchesComponent implements OnInit {
   tabActive: string = 'upcoming';
   upcomingMatchList: Array<any> = [];
   pastMatchList: Array<any> = [];
+  originalLastMatches: Array<any> = [];
+  originalNextMatches: Array<any> = [];
 
   constructor() { }
 
@@ -29,8 +31,10 @@ export class OurMatchesComponent implements OnInit {
         }
       } else if (match.result1 === '0' && match.result2 === '0'){
         this.upcomingMatchList.push(match)
+        this.originalNextMatches.push(match)
       } else {
         this.pastMatchList.push(match)
+        this.originalLastMatches.push(match)
       }
     });
 

@@ -11,36 +11,33 @@
 
   <swiper [config]="config" class="isMobile">
     <ng-template swiperSlide *ngFor="let slide of newsList; let i = index">
-      <div class="news__card">
+      <div class="news__card" (click)="redirectToNoticia(slide.slug)">
         <img [src]="slide.coverImageUrl" alt="Portada de la noticia" />
         <span *ngIf="slide.category?.length > 0">{{ slide.category }}</span>
         <div class="news__info">
           <p class="info__title">{{ slide.title }}</p>
           <div [innerHTML]="slide.newSubheader" class="subheader-new"></div>
-          <a
-            [routerLink]="['../noticia/' + slide.slug]"
-            aria-label="Seguir leyendo la noticia"
-          >
-            Leer más
-            <svg
-              width="32"
-              height="8"
-              viewBox="0 0 32 8"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
-                fill="#7E2DF9"
-              />
-            </svg>
-          </a>
         </div>
       </div>
     </ng-template>
   </swiper>
   <div class="news notMobile">
-    <div class="news__card news__main">
+    <div class="news__card news__main" (click)="redirectToNoticia(newsList[index].slug)">
+      <img
+        [src]="newsList[index].coverImageUrl"
+        alt="Portada de la noticia"
+      />
+      <span>{{ newsList[index].category }}</span>
+      <div class="news__info">
+        <p class="info__title">{{ newsList[index].title }}</p>
+        <div
+          [innerHTML]="newsList[index].newSubheader"
+          class="news__subheader"
+        ></div>
+      </div>
+    </div>
+
+    <div class="news__card news__related" (click)="redirectToNoticia(newsList[index - 1].slug)">
       <img
         [src]="newsList[index - 1].coverImageUrl"
         alt="Portada de la noticia"
@@ -52,28 +49,10 @@
           [innerHTML]="newsList[index - 1].newSubheader"
           class="news__subheader"
         ></div>
-        <a
-          [routerLink]="['../noticia/' + newsList[index - 1].slug]"
-          aria-label="Seguir leyendo la noticia"
-        >
-          Leer más
-          <svg
-            width="32"
-            height="8"
-            viewBox="0 0 32 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
-              fill="#7E2DF9"
-            />
-          </svg>
-        </a>
       </div>
     </div>
 
-    <div class="news__card news__related">
+    <div class="news__card news__related" (click)="redirectToNoticia(newsList[index - 2].slug)">
       <img
         [src]="newsList[index - 2].coverImageUrl"
         alt="Portada de la noticia"
@@ -85,28 +64,9 @@
           [innerHTML]="newsList[index - 2].newSubheader"
           class="news__subheader"
         ></div>
-        <a
-          [routerLink]="['../noticia/' + newsList[index - 2].slug]"
-          aria-label="Ir a la noticia"
-        >
-          Leer más
-          <svg
-            width="32"
-            height="8"
-            viewBox="0 0 32 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
-              fill="#7E2DF9"
-            />
-          </svg>
-        </a>
       </div>
     </div>
-
-    <div class="news__card news__related">
+    <div class="news__card news__related" (click)="redirectToNoticia(newsList[index - 3].slug)">
       <img
         [src]="newsList[index - 3].coverImageUrl"
         alt="Portada de la noticia"
@@ -118,24 +78,34 @@
           [innerHTML]="newsList[index - 3].newSubheader"
           class="news__subheader"
         ></div>
-        <a
-          [routerLink]="['../noticia/' + newsList[index - 3].slug]"
-          aria-label="Seguir leyendo la noticia"
-        >
-          Leer más
-          <svg
-            width="32"
-            height="8"
-            viewBox="0 0 32 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
-              fill="#7E2DF9"
-            />
-          </svg>
-        </a>
+      </div>
+    </div>
+    <div class="news__card news__related_first_bottom" (click)="redirectToNoticia(newsList[index - 4].slug)">
+      <img
+        [src]="newsList[index - 4].coverImageUrl"
+        alt="Portada de la noticia"
+      />
+      <span>{{ newsList[index - 4].category }}</span>
+      <div class="news__info">
+        <p class="info__title">{{ newsList[index - 4].title }}</p>
+        <div
+          [innerHTML]="newsList[index - 4].newSubheader"
+          class="news__subheader"
+        ></div>
+      </div>
+    </div>
+    <div class="news__card news__related_second_bottom" (click)="redirectToNoticia(newsList[index - 5].slug)">
+      <img
+        [src]="newsList[index - 5].coverImageUrl"
+        alt="Portada de la noticia"
+      />
+      <span>{{ newsList[index - 5].category }}</span>
+      <div class="news__info">
+        <p class="info__title">{{ newsList[index - 5].title }}</p>
+        <div
+          [innerHTML]="newsList[index - 5].newSubheader"
+          class="news__subheader"
+        ></div>
       </div>
     </div>
   </div>

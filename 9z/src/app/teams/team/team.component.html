@@ -1,13 +1,5 @@
 <div class="page">
   <section class="hero team" [ngStyle]="{background: background}">
-    <div class="team__name">
-      <button class="btn-arrow">
-        <h1 class="title">
-          {{ game }} <br />
-          <span class="title">{{ team }}</span>
-        </h1>
-      </button>
-    </div>
   </section>
 
   <section class="tabs-wrapper pd">
@@ -18,6 +10,7 @@
         id="player"
         [ngClass]="{ active: tabActive === 'player' }"
         [disabled]="players.length === 0"
+        [hidden]="!players.length"
       >
         Jugadores
       </button>
@@ -27,6 +20,7 @@
         id="coach"
         [ngClass]="{ active: tabActive === 'coach' }"
         [disabled]="!coachs.length"
+        [hidden]="!coachs.length"
       >
         Coach
       </button>
@@ -36,17 +30,19 @@
         id="manager"
         [ngClass]="{ active: tabActive === 'manager' }"
         [disabled]="!managers.length"
+        [hidden]="!managers.length"
       >
         Manager
       </button>
       <button
-        aria-label="Ver embajadores"
+        aria-label="Ver streamers"
         (click)="changeTab($event.target)"
-        id="ambassador"
-        [ngClass]="{ active: tabActive === 'ambassador' }"
+        id="streamers"
+        [ngClass]="{ active: tabActive === 'streamers' }"
         [disabled]="!ambassadors.length"
+        [hidden]="!ambassadors.length"
       >
-        Embajador
+        Streamers
       </button>
       <hr [ngStyle]="{ 'width.px': hr.width, 'margin-left.px': hr.margin }" />
     </div>
@@ -62,7 +58,7 @@
         />
         <span class="bg__img"></span>
         <div class="player__bottom">
-          <p class="title">{{ card.slug }}</p>
+          <p class="title bold">{{ card.slug }}</p>
           <a routerLink="/jugador/{{ card.slug }}">
             <button class="btn-arrow" aria-label="Ver jugador en detalle">
               <svg
@@ -128,13 +124,6 @@
     [pastMatchesList]="pastMatchList"
     [team]="game"
   ></app-latest-match>
-  <app-achievements-table
-    *ngIf="achievementsList.length > 0"
-    [quantity]="5"
-    [standalone]="false"
-    [team]="game"
-    [achievementsList]="achievementsList"
-  ></app-achievements-table>
 <!--
   <app-youtube-feed
     *ngIf="youtubeVideosList.length > 0"

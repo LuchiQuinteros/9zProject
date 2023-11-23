@@ -77,7 +77,14 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     this.player = this.players.result.find((player: any) => player.slug === this.data)
     this.listPlayers = [];
     this.players.result.forEach((player: any) => {
-      if (player.game?.name === this.player.game?.name) {
+      console.log(player);
+      if(player.role === "ambassador") {
+        player.role = "STREAMER";
+        if(player.slug === "Frankkaster") {
+          player.role = "STREAMER & CEO";
+        }
+      }
+      if (player.game?.name === this.player.game?.name && player.team === this.player.team) {
         player.redirect = `/jugador/${player.slug}`
         player.image = player.imageUrl
         if (player.name !== this.player.name) {

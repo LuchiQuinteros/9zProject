@@ -1,0 +1,50 @@
+.select {
+    width: 100%;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+  }
+
+  .mat-dialog-container {
+    background-color: #7E2DF9;
+    background: #7E2DF9;
+  }
+  
+  .select {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .mat-option {
+    padding: 0.7rem 0.9rem;
+  }
+  
+  .selected {
+    background-color: #7E2DF9;
+    color: #ffffff;
+  }
+
+  .mat-checkbox-checked-custom {
+
+    mat-pseudo-checkbox {
+        color: #7E2DF9;
+    } 
+    
+    mat-option-pseudo-checkbox {
+        color: #7E2DF9;
+    }
+    
+    mat-pseudo-checkbox-checked {
+        color: #7E2DF9;
+    }
+  }
+
+  .mat-option.mat-selected .mat-pseudo-checkbox::before {
+    border-color: #007bff; /* Cambia el color del borde a tu preferencia */
+    background-color: #007bff; /* Cambia el color de fondo a tu preferencia */
+  }
+
+  .mat-pseudo-checkbox-checked .mat-pseudo-checkbox-checked::before {
+    border-color: #007bff; /* Cambia el color del borde a tu preferencia */
+    background-color: #007bff; /* Cambia el color de fondo a tu preferencia */
+  }

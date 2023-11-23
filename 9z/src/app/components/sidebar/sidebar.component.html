@@ -3,7 +3,7 @@
     <a routerLink="">
       <img
         (click)="triggerMenu()"
-        src="../../../assets/header/logo-sidebar.svg"
+        src="../../../assets/header/logo.png"
         alt="Logo 9z"
       />
     </a>
@@ -114,40 +114,17 @@
           </li>
         </ul>
       </li> -->
-      <li (click)="expand('tv')" [ngClass]="{ active: expanded === 'tv' }">
-        <a routerLinkActive="active">
+      <li>
+        <a
+          routerLink="./calendario"
+          (click)="triggerMenu()"
+          routerLinkActive="active"
+          aria-label="ir a Nosotros"
+        >
           <span>
-            <p class="title">9z tv</p>
-            <svg
-              width="7"
-              height="12"
-              viewBox="0 0 7 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Expandir</title>
-              <path
-                d="M2 10L6 6L2 2"
-                stroke="#C4C4C4"
-                stroke-width="2"
-                stroke-linecap="square"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <p class="title">Calendario</p>
           </span>
         </a>
-
-        <ul class="body">
-          <li>
-            <a routerLink="./tv" (click)="triggerMenu()" aria-label="Ir a Tv"
-              >all</a
-            >
-          </li>
-          <li (click)="triggerMenu()"><a routerLink="./tv">Twitch</a></li>
-          <li (click)="triggerMenu()">
-            <a routerLink="./videos" aria-label="Ir a Youtube">Youtube</a>
-          </li>
-        </ul>
       </li>
       <li>
         <a
@@ -163,13 +140,13 @@
       </li>
       <li>
         <a
-          routerLink="./miembros"
+          routerLink="./contacto"
           routerLinkActive="active"
           (click)="triggerMenu()"
           aria-label="Ir a Familia 9z"
         >
           <span>
-            <p class="title">Familia 9z</p>
+            <p class="title">Contacto</p>
           </span>
         </a>
       </li>

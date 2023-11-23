@@ -7,6 +7,7 @@ import { Configuration } from '../configuration';
 import youtubeVideoStorage from '../../assets/credentials/youtubeVideoStorage.json';
 import { AppComponent } from '../app.component';
 import { SanityService } from '../services/sanity.services';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-tv',
@@ -21,11 +22,14 @@ export class TVComponent implements OnInit {
   claroVideosList: Array<any> = [];
   videosIds: Array<any>= [];
   videoGalleries: any[] = [];
+  upcomingMatchList: Array<any> = [];
+  pastMatchList: Array<any> = [];
 
   constructor(
     private socialServices: SocialService,
     private config: Configuration,
     private appComponent: AppComponent,
+    private commonServices: CommonService,
     private sanityServices: SanityService,
   ) {
     this.config.loadData().then(newData => {
@@ -37,17 +41,26 @@ export class TVComponent implements OnInit {
     this.socialServices.getPlaylist();
     await this.getVideoGalleries();
     this.streamersList = JSON.parse(localStorage.getItem('streamers') || 'null');
+    const jsonMatches = JSON.parse(localStorage.getItem('matches')!);
     const claroVideos = JSON.parse(localStorage.getItem('claroVideos') || 'null');
     this.twitchStreamList = [];
     this.youtubeVideosList = [];
     this.videosIds = [];
     // this.claroVideosList = [];
 
-    if  (!this.streamersList) {
+    if  (!jsonMatches || !this.streamersList) {
       const streamers: any = await this.sanityServices.getStreamers()
       .catch(error => {
         console.log(error);
       });
+
+      await this.sanityServices.getMatches();
+      setTimeout(async () => {
+        const jsonMatches = JSON.parse(
+          localStorage.getItem('matches')!
+        );
+        this.getMatchesLists(jsonMatches);
+      }, 1000);
 
       if (streamers) {
         this.streamersList = streamers;
@@ -69,6 +82,7 @@ export class TVComponent implements OnInit {
       }, 1000);
     } else {
       await this.getStreams(this.streamersList);
+      this.getMatchesLists(jsonMatches);
 
       if (claroVideos?.result) {
         this.claroVideosList = claroVideos.result.slice(0, 3);
@@ -141,6 +155,29 @@ export class TVComponent implements OnInit {
       this.twitchStreamList = twitchStreams.data;
 
     }
+  }
+
+  getMatchesLists(jsonMatches: any) {
+    jsonMatches.result.forEach((match: any) => {
+      if (match.game.name.toLowerCase() === 'fortnite') {
+        if (!match.position && !match.teamMember) {
+          this.upcomingMatchList.push(match)
+        } else {
+          this.pastMatchList.push(match)
+        }
+      } else if (match.result1 === '0' && match.result2 === '0'){
+        this.upcomingMatchList.push(match)
+      } else {
+        this.pastMatchList.push(match)
+      }
+    })
+
+    const data = {
+      upcomingMatchList: this.upcomingMatchList,
+      pastMatchList: this.pastMatchList,
+      matchesToShow: 3,
+    };
+    this.commonServices.sendInfoMatchesUpdate(data);
   }
 
   async getStreamsByUserId(userId: string) {

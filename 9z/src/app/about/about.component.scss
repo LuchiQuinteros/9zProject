@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 85vh;
+    height: 55vh;
 
     @media (max-width: 1023px) {
         background-position: center;
@@ -357,17 +357,17 @@
     }
 }
 
-.full_img {
+.full_img_right-2 {
     display: flex;
     gap: 2rem;
-    background: linear-gradient(270.01deg, #1E053A 17.65%, rgba(30, 5, 58, 0) 96.97%), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../assets/about/7.webp);
+    background: linear-gradient(270.01deg, #1E053A 1.65%, rgba(30, 5, 58, 0) 96.97%), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../assets/about/Donde-estamos.png);
     background-position-x: 30%;
     background-size: cover;
     background-repeat: no-repeat;
-    flex-flow: column;
+    flex-flow: column-reverse;
 
     @media (min-width: 1023px) {
-       flex-flow: row;
+       flex-flow: row-reverse;
        max-width: unset;
        margin-inline: 0;
        padding-block: 20rem;
@@ -391,7 +391,6 @@
         .community__txt {
             position: relative;
             padding-right: 4rem;
-            text-align: justify;
 
             &::after {
                 content: "";
@@ -416,9 +415,197 @@
     }
 }
 
+.full_img_right {
+    display: flex;
+    gap: 2rem;
+    background: linear-gradient(270.01deg, #1E053A 1.65%, rgba(30, 5, 58, 0) 96.97%), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../assets/about/Quienes-somos.jpg);
+    background-position-x: 30%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-flow: column-reverse;
+
+    @media (min-width: 1023px) {
+       flex-flow: row-reverse;
+       max-width: unset;
+       margin-inline: 0;
+       padding-block: 20rem;
+    }
+
+    > div {
+        width: 100%;
+            min-height: 22rem;
+    }
+
+    img {
+        width: 180%;
+    }
+
+    .right__info {
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+
+
+        .community__txt {
+            position: relative;
+            padding-right: 4rem;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 2rem;
+                top: 0.8rem;
+                height: 1rem;
+                border-top: 4px solid var(--9z-primary);
+                right: 0;
+            }
+
+            @media (min-width: 1023px) {
+                padding-right: 0;
+                max-width: 55ch;
+
+                &::after {
+                    display: none;
+                }
+
+            }
+        }
+    }
+}
+
+.full_img_left {
+    display: flex;
+    gap: 2rem;
+    background: linear-gradient(270.01deg, #1E053A 1.65%, rgba(30, 5, 58, 0) 90.97%), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../assets/about/De-donde-venimos.jpeg);
+    background-position-x: 10%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-flow: column;
+    
+
+    @media (min-width: 1023px) {
+       flex-flow: row;
+       max-width: unset;
+       margin-inline: 0;
+       padding-block: 20rem;
+    }
+
+    > div {
+        width: 100%;
+        min-height: 22rem;
+    }
+
+    img {
+        width: 180%;
+    }
+
+    .left__info { /* Cambiar el nombre de la clase para que sea "left__info" */
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+        text-align: left; /* Alinear el texto a la izquierda */
+
+        .community__txt {
+            position: relative;
+            padding-right: 4rem; /* Cambiar el padding-left para mover el texto a la izquierda */
+
+            &::before { /* Cambiar "::after" a "::before" para invertir la posición del pseudo-elemento */
+                content: "";
+                position: absolute;
+                width: 2rem;
+                top: 0.8rem;
+                height: 1rem;
+                border-top: 4px solid var(--9z-primary);
+                right: 0; /* Cambiar "right" a "left" */
+            }
+
+            @media (min-width: 1023px) {
+                padding-right: 0; /* Cambiar padding-left a 0 para eliminar el padding izquierdo */
+                max-width: 55ch;
+
+                &::before { /* Cambiar "::after" a "::before" */
+                    display: none;
+                }
+
+            }
+        }
+    }
+}
+
+.full_img_left {
+    transform: scaleX(-1);
+}
+
+.full_img_left-2 {
+    display: flex;
+    gap: 2rem;
+    background: linear-gradient(270.01deg, #1E053A 1.65%, rgba(30, 5, 58, 0) 96.97%), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../assets/about/A-donde-vamos.jpeg);
+    background-position-x: 30%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-flow: column;
+    
+
+    @media (min-width: 1023px) {
+       flex-flow: row;
+       max-width: unset;
+       margin-inline: 0;
+       padding-block: 20rem;
+    }
+
+    > div {
+        width: 100%;
+        min-height: 22rem;
+    }
+
+    img {
+        width: 180%;
+    }
+
+    .left__info { /* Cambiar el nombre de la clase para que sea "left__info" */
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+        text-align: left; /* Alinear el texto a la izquierda */
+
+        .community__txt {
+            position: relative;
+            padding-left: 4rem; /* Cambiar el padding-left para mover el texto a la izquierda */
+
+            &::before { /* Cambiar "::after" a "::before" para invertir la posición del pseudo-elemento */
+                content: "";
+                position: absolute;
+                width: 2rem;
+                top: 0.8rem;
+                height: 1rem;
+                border-top: 4px solid var(--9z-primary);
+                left: 0; /* Cambiar "right" a "left" */
+            }
+
+            @media (min-width: 1023px) {
+                padding-left: 0; /* Cambiar padding-left a 0 para eliminar el padding izquierdo */
+                max-width: 55ch;
+
+                &::before { /* Cambiar "::after" a "::before" */
+                    display: none;
+                }
+
+            }
+        }
+    }
+}
+
+.full_img_left-2 {
+    transform: scaleX(-1);
+}
+
+/* Revierte la escala horizontal de los textos en .left__info */
+.left__info {
+    transform: scaleX(-1);
+}
+
 .achievements {
     margin-top: 5rem;
-
 }
 
 .achievements__container {

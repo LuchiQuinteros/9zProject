@@ -1,0 +1,138 @@
+header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 10px;
+    // margin-top: 3.3rem;
+    z-index: 10;
+    background: rgba(32, 13, 55, 0.5);
+    backdrop-filter: blur(50px);
+    transition: background 400ms ease-in-out;
+
+    &.hide {
+        opacity: 0;
+      }
+    
+      >div {
+        width: 100%;
+    
+        &:last-of-type {
+          border-block: 1px solid #7E2DF978;
+          padding-block: 1.7rem;
+        }
+    
+        &:first-of-type >div{
+          justify-content: center;
+          place-items: center;
+    
+        }
+    
+        >div {
+          margin-inline: auto;
+          width: 100%;
+          display: flex;
+    
+        }
+      }
+    
+    
+    
+      svg {
+        cursor: pointer;
+      }
+    
+      // &.transparent {
+      //   background: linear-gradient(0deg, rgba(31, 12, 59, 0.05), rgba(31, 12, 59, 0.05)),
+      //               linear-gradient(0deg, rgba(126, 45, 249, 0.47), rgba(126, 45, 249, 0.47));
+      // }
+    
+      &.scroll-down {
+        background: rgba(25, 9, 49, 0.8);
+    
+      }
+    
+      &.scroll-up {
+        background: rgba(25, 9, 49, 0.8);
+    
+        // background: linear-gradient(180deg, rgb(21 1 52) 0.51%, rgba(0, 0, 0, 0.2) 100%);
+    
+    }
+}
+
+.footer-sponsor {  
+    background: rgba(31, 12, 59, 0.05);
+    width: 100%;
+
+    .content-icons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 7rem;
+  
+      @media (max-width: 767px) {
+        gap: 3rem;
+        flex-wrap: wrap;
+      }
+  
+      div {
+        display: flex;
+        place-items: center;
+        gap: min(5vw, 4rem);
+        margin-inline: auto;
+        z-index: 2;
+  
+      }
+  
+      .sponsors {
+        max-width: 100%;
+  
+        img {
+          max-width: 8rem;
+          max-height: 5rem;
+  
+          @media (max-width: 767px) {
+            max-width: 6rem;
+            max-height: 3rem;
+          }
+  
+          &.small {
+            max-width: 12rem;
+            width: 12rem;
+            height: 5.2rem;
+            max-height: 5.2rem;
+  
+            @media (max-width: 767px) {
+              max-width: 10rem;
+              width: 10rem;
+              height: 4.2rem;
+              max-height: 4.2rem;
+            }
+          }
+        }
+      }
+  
+      svg {
+        cursor: pointer;
+        fill: var(--9z-font);
+        transition: filter 150ms ease-in-out, fill 150ms ease-in-out;
+  
+        &:hover {
+          fill: var(--9z-primary);
+          filter: drop-shadow( 0px 0px 5px rgba(126, 45, 249, 1));
+        }
+      }
+    }
+  
+    @media (min-width: 1023px) {
+      .content-icons {
+        flex-flow: row;
+  
+        div {
+          margin-inline: 0;
+        }
+      }
+    }
+  }

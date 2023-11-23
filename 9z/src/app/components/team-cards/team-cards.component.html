@@ -1,13 +1,18 @@
 <section class="team-cards pd">
   <div class="title-row">
     <h2 class="title">{{ title }}</h2>
-    <a class="bold" routerLink="/equipos">Ver más</a>
+    <button
+    [routerLink]="['/equipos']"
+  >
+    Ver más
+  </button>
   </div>
 
   <div class="swiper-container">
     <swiper [config]="config" class="swipper__pd__bottom" *ngIf="ready">
       <ng-template swiperSlide *ngFor="let slide of players;">
         <div class="team__card"  [routerLink]="slide.url">
+          <a [routerLink]="slide.redirect">
           <img
             [src]="slide.image ? slide.image : '../../assets/player/1.png'"
             [alt]="slide.name"
@@ -16,7 +21,7 @@
             <span>
               <p class="card__name title">{{ slide.slug ? slide.slug : slide.name }}</p>
             </span>
-            <a [routerLink]="slide.redirect">
+            
               <button class="btn-arrow" aria-label="Visitar pagina del equipo">
                 <svg
                   width="15"
@@ -31,8 +36,8 @@
                   />
                 </svg>
               </button>
-            </a>
           </div>
+        </a>
         </div>
       </ng-template>
     </swiper>

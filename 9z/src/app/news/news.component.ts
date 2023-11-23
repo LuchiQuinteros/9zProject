@@ -23,16 +23,17 @@ export class NewsComponent implements OnInit {
       draggable: true,
     },
     autoplay: {
-      delay: 5000,
+      delay: 4000,
     },
     watchSlidesProgress: true,
     breakpoints: {
       1024: {
         pagination: {
+          type: 'bullets',
           clickable: true,
           el: '.swiper-pagination.pagination-scroll',
         },
-        scrollbar: false,
+        scrollbar: true,
         watchSlidesProgress: false,
       },
     },

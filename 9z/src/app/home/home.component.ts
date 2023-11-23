@@ -6,6 +6,8 @@ import { CommonService } from '../services/common.service';
 import { Link } from '../footer/footer.component';
 import { Router } from '@angular/router';
 SwiperCore.use([Scrollbar, EffectFade]);
+declare var particlesJS: any;
+
 
 @Component({
   selector: 'app-home',
@@ -37,7 +39,11 @@ export class HomeComponent implements OnInit {
   };
 
   sponsors: any[] = [];
-
+  category1: string = '';
+  category2: string = '';
+  category3: string = '';
+  heroImage: string = '';
+  
   heroSlide: string = '';
   tweetList: Array<any> = [];
   twitchStreamList: Array<any> = [];
@@ -90,7 +96,7 @@ export class HomeComponent implements OnInit {
     await this.getSponsors();
     await this.getPageNews();
     await this.getVideoGalleries();
-    this.listenForRipple();
+    
     this.socialServices.updateMetaTags('Home');
 
     let json = JSON.parse(localStorage.getItem('matches')!);
@@ -99,21 +105,29 @@ export class HomeComponent implements OnInit {
       await this.sanityServices.getTeams();
       await this.sanityServices.getTeamMembers();
       await this.sanityServices.getMatches();
+      await this.sanityServices.getShownCategories();
       setTimeout(async () => {
-        json = JSON.parse(localStorage.getItem('matches')!);
+        console.log(json);
         this.getMatches(json);
         const data = {
           upcomingMatchList: this.upcomingMatchList,
           pastMatchList: this.pastMatchList,
           matchesToShow: 2,
         };
+
+        const jsonShownCategories = JSON.parse(
+          localStorage.getItem('shownCategories')!
+        );
+
         this.commonServices.sendInfoMatchesUpdate(data);
+        this.getShownCategories(jsonShownCategories);
       }, 850);
     } else {
+      console.log(json);
       this.getMatches(json);
     }
 
-    await this.getTweets();
+    
     let result = JSON.parse(localStorage.getItem('streamers')!);
     if (result === 'null' || result === null) {
       setTimeout(async () => {
@@ -143,33 +157,10 @@ export class HomeComponent implements OnInit {
 
   }
 
-  listenForRipple() {
-    let btn = document.querySelector(".ripple-btn")!;
-
-    btn.addEventListener("mouseenter", (e: any) => {
-      let ripple = document.createElement("div");
-      const left = e.clientX - e.target.getBoundingClientRect().left;
-      const top = e.clientY - e.target.getBoundingClientRect().top;
-
-      ripple.classList.add("ripple");
-      ripple.style.left = `${left}px`;
-      ripple.style.top = `${top}px`;
-      btn.prepend(ripple);
-    });
-
-    btn.addEventListener("mouseleave", (e: any) => {
-      let ripple = document.querySelector<HTMLElement>('.ripple')!;
-      const left = e.clientX - e.target.getBoundingClientRect().left;
-      const top = e.clientY - e.target.getBoundingClientRect().top;
-      ripple.style.left = `${left}px`;
-      ripple.style.top = `${top}px`;
-
-      ripple.style.animation = "rippleAnimLeave 0.2s forwards";
-      setTimeout(function() {
-          btn.removeChild(ripple);
-      }, 350);
-
-    });
+  getShownCategories(jsonShownCategories: any) {
+    this.category1 = jsonShownCategories.result[0].category1;
+    this.category2 = jsonShownCategories.result[0].category2;
+    this.category3 = jsonShownCategories.result[0].category3;
   }
 
   async getMatches(matches: any) {
@@ -231,31 +222,6 @@ export class HomeComponent implements OnInit {
       '--x': `${x}px`,
       '--y': `${y}px`
     };
-  }
-
-  async getTweets() {
-    const tweets = await this.socialServices.getTweets().catch((err) => {
-      console.log('Se ha producido un error al intentar obtener los tweets.');
-    });
-    if (tweets?.data !== null && tweets?.data !== undefined) {
-      if (
-        tweets.includes !== undefined &&
-        tweets.includes !== null &&
-        tweets.includes.users !== undefined
-      ) {
-        let list: any[] = [];
-        tweets.data.forEach((pretweet: any) => {
-          const tweet = {
-            name: tweets.includes.users[0].name,
-            picture: tweets.includes.users[0].profile_image_url,
-            text: pretweet.text,
-            timestamp: pretweet.created_at,
-          };
-          list.push(tweet);
-        })
-        this.tweetList = list;
-      }
-    }
   }
 
   async getSponsors() {

@@ -9,6 +9,28 @@ img {
     max-width: 5rem;
 }
 
+
+.title-row {
+    button{
+        border: 1px solid #7E2DF9;
+        background: transparent;
+        transition: background var(--transition);
+        border-radius: 4px;
+        padding: 0.9rem 3.6rem;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: #fff;
+      
+        @media (max-width: 1023px) {
+          font-size: 1.6rem;
+        }
+      
+        &:hover {
+          background: #7E2DF9;
+        }
+      }
+}
+
 .matches {
     width: 100%;
 
@@ -34,6 +56,12 @@ img {
                 pointer-events: none;
                 color: var(--9z-font-light);
             }
+        }
+
+        p {
+            font-size: 2rem;
+            font-weight: 500;
+            font-family: 'Blender Pro';
         }
 
         hr {
@@ -69,7 +97,7 @@ img {
             border-image: linear-gradient(90deg, rgba(250, 204, 165, 0.7) 0%, rgba(126, 45, 249, 0.7)) 1 / 1 / 0 stretch;
 
             p {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
             }
         }
 
@@ -82,6 +110,26 @@ img {
             .game__logo {
               margin-right: auto;
             }
+
+            button{
+                border: 1px solid #7E2DF9;
+                background: transparent;
+                transition: background var(--transition);
+                border-radius: 4px;
+                padding: 0.9rem 3.6rem;
+                font-weight: 700;
+                font-size: 1.8rem;
+                color: #fff;
+              
+                @media (max-width: 1023px) {
+                  font-size: 1.6rem;
+                }
+              
+                &:hover {
+                  background: #7E2DF9;
+                }
+              }
+            
         }
 
         .match__teams {
@@ -99,13 +147,13 @@ img {
             }
 
             span.title {
-                background: rgba(126, 45, 249, 0.06);
                 border-radius: 4px;
                 padding: 1rem;
                 justify-content: center;
                 place-items: center;
                 flex: 1;
                 max-width: 35rem;
+                font-family: 'Blender Pro';
 
                 @media (min-width: 767px) and (max-width: 1023px) {
                   max-width: 35%;

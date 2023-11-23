@@ -33,16 +33,12 @@
           <div>
             <p class="label">SOCIAL</p>
             <span class="social-row">
-              <a *ngIf="player.twitch" target="_blank" [href]="player.twitch"  ><img src="../../assets/player/twitch.png" alt="twitch"></a>
-              <a *ngIf="player.instagram" target="_blank" [href]="player.instagram"  ><img src="../../assets/player/ig.png" alt="instagram"></a>
-              <a *ngIf="player.twitter"  target="_blank" [href]="player.twitter"  ><img src="../../assets/player/twitter.png" alt="twitter"></a>
+              <a *ngIf="player.twitch" target="_blank" [href]="player.twitch"  ><img src="../../assets/player/Twitch.png" width="27px" height="27px" alt="twitch"></a>
+              <a *ngIf="player.instagram" target="_blank" [href]="player.instagram"  ><img src="../../assets/player/Instagram.png" width="27px" height="27px" alt="instagram"></a>
+              <a *ngIf="player.twitter"  target="_blank" [href]="player.twitter"  ><img src="../../assets/player/X.png" width="27px" height="27px" alt="twitter"></a>
             </span>
           </div>
         </div>
-      </div>
-      <div>
-        <p class="label">BIO</p>
-        <p class="data" [innerHTML]="player.newDescription"></p>
       </div>
     </div>
   </section>
@@ -50,14 +46,14 @@
     <section class="profile" >
       <div class="profile__title">
         <p class="profile__name" >{{player.name | uppercase}}</p>
-        <p id="playerNick" [ngStyle]="{'max-width': player.slug === 'Frankkaster' ? '11ch' : '10ch'}" class="profile__nick title">{{player.slug | uppercase}}</p>
+        <p id="playerNick" [ngStyle]="{'max-width': player.slug === 'Frankkaster' ? '14ch' : '12ch'}" class="profile__nick title">{{player.slug | uppercase}}</p>
       </div>
       <div class="profile__bio">
         <div class="columns">
           <div>
             <div>
-              <p class="label">EDAD</p>
-              <p *ngIf="player?.age" class="data">{{player.age}} AÑOS</p>
+              <p class="label">AÑOS</p>
+              <p *ngIf="player?.age" class="data">{{player.age}}</p>
             </div>
             <div *ngIf="player.role">
               <p class="label">ROL</p>
@@ -76,16 +72,12 @@
             <div>
               <p class="label">SOCIAL</p>
               <span class="social-row">
-                <a *ngIf="player.twitch" (click)="openLink(player.twitch)" ><img src="../../assets/player/twitch.png" alt="twitch"></a>
-                <a *ngIf="player.instagram" (click)="openLink(player.instagram)"><img src="../../assets/player/ig.png" alt="instagram"></a>
-                <a *ngIf="player.twitter" (click)="openLink(player.twitter)"><img src="../../assets/player/twitter.png" alt="twitter"></a>
+                <a *ngIf="player.twitch" (click)="openLink(player.twitch)" ><img src="../../assets/player/Twitch.png" width="27px" height="27px" alt="twitch"></a>
+                <a *ngIf="player.instagram" (click)="openLink(player.instagram)"><img src="../../assets/player/Instagram.png" width="27px" height="27px" alt="instagram"></a>
+                <a *ngIf="player.twitter" (click)="openLink(player.twitter)"><img src="../../assets/player/X.png" width="27px" height="27px" alt="twitter"></a>
               </span>
             </div>
           </div>
-        </div>
-        <div style="padding-bottom: min(6rem, 5vw);">
-          <p *ngIf="player.description" class="label">BIO</p>
-          <p class="data" style="text-transform: none;" [innerHTML]="player.newDescription"></p>
         </div>
       </div>
       <div class="profile__img" >
@@ -93,8 +85,5 @@
       </div>
     </section>
   </div>
-  <app-achievements-table *ngIf="achievementsList.length > 0" [quantity]="5" [standalone]="false" [achievementsList]="achievementsList" [team]="team"></app-achievements-table>
-  <app-latest-match *ngIf="upcomingMatchList.length > 0 || pastMatchList.length > 0" [matchesToShow]="2" [upcomingMatchesList]="upcomingMatchList" [pastMatchesList]="pastMatchList" [team]="team"></app-latest-match>
-  <app-column-slider *ngIf="newsList.length > 0" [title]="'latest news'" [player]="true" [newsList]="newsList"></app-column-slider>
   <app-team-cards *ngIf="listPlayers.length > 0" [title]="'Equipo'" [slides]="listPlayers" [player]="player"></app-team-cards>
 </div>

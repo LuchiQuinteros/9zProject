@@ -23,24 +23,12 @@
           <div class="new__info">
             <p class="new__title bold">{{ new.title }}</p>
             <div class="new__text" [innerHTML]="new.newSubheader"></div>
-            <a
-              [routerLink]="[player ? '../../noticia/' + new.slug : '../noticia/' + new.slug]"
-              aria-label="Ir a la noticia"
+            <button
+            aria-label="Ir a la noticia"
+            [routerLink]="[player ? '../../noticia/' + new.slug : '../noticia/' + new.slug]"
             >
-              Leer más
-              <svg
-                width="32"
-                height="8"
-                viewBox="0 0 32 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M31.3536 4.34574C31.5488 4.15048 31.5488 3.8339 31.3536 3.63863L28.1716 0.456654C27.9763 0.261391 27.6597 0.261391 27.4645 0.456654C27.2692 0.651916 27.2692 0.968498 27.4645 1.16376L30.2929 3.99219L27.4645 6.82061C27.2692 7.01588 27.2692 7.33246 27.4645 7.52772C27.6597 7.72298 27.9763 7.72298 28.1716 7.52772L31.3536 4.34574ZM0 4.49219H31V3.49219H0V4.49219Z"
-                  fill="#7E2DF9"
-                />
-              </svg>
-            </a>
+              Leer mas
+            </button>
           </div>
         </div>
       </ng-template>

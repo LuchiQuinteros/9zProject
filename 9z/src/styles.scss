@@ -1,3 +1,38 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$web9z-primary: mat.define-palette(mat.$indigo-palette);
+$web9z-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$web9z-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$web9z-theme: mat.define-light-theme((
+  color: (
+    primary: $web9z-primary,
+    accent: $web9z-accent,
+    warn: $web9z-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($web9z-theme);
+
 @import 'assets/variables.scss';
 @import 'assets/fonts.scss';
 @import 'assets/swiper.scss';
@@ -60,6 +95,78 @@ html {
 
 }
 
+.filter {
+ .mat-dialog-container {
+    border: 1px solid #7E2DF9;
+    background: #160A27;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #fff;
+
+    .select {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      
+      .mat-option {
+        padding: 0.7rem 0.9rem;
+      }
+      
+      .selected {
+        background-color: #7E2DF9;
+        color: #ffffff;
+      }
+    
+      .mat-checkbox-checked-custom {
+    
+        mat-pseudo-checkbox {
+            color: #7E2DF9;
+        } 
+        
+        mat-option-pseudo-checkbox {
+            color: #7E2DF9;
+        }
+        
+        mat-pseudo-checkbox-checked {
+            color: #7E2DF9;
+        }
+      }
+    
+      .mat-option.mat-selected .mat-pseudo-checkbox::before {
+        border-color: #007bff; /* Cambia el color del borde a tu preferencia */
+        background-color: #007bff; /* Cambia el color de fondo a tu preferencia */
+      }
+    
+      .mat-pseudo-checkbox-checked .mat-pseudo-checkbox-checked::before {
+        border-color: #007bff; /* Cambia el color del borde a tu preferencia */
+        background-color: #007bff; /* Cambia el color de fondo a tu preferencia */
+      }
+  }
+
+  .mat-dialog-actions {
+    padding: 1.9rem 1.6rem;
+    .mat-button {
+            border: 1px solid #7E2DF9;
+            background: transparent;
+            transition: background var(--transition);
+            border-radius: 4px;
+            padding: 0.9rem 1.6rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+          
+            @media (max-width: 1023px) {
+              font-size: 1.5rem;
+            }
+          
+            &:hover {
+              background: #7E2DF9;
+            }
+          }
+    }
+
+}
 .scrollbar-track-y {
   width: 0.5rem !important;
 
@@ -137,13 +244,14 @@ a {
 }
 
 .bold {
-    // font-family: 'Blender Pro';
+    font-family: 'Blender Pro';
     font-weight: 700;
 }
 
 .title {
-    font-family: 'UK';
+    font-family: 'Blender Pro';
     text-transform: uppercase;
+    font-size: 1.8rem;
 }
 
 /* LAYOUT */
@@ -152,13 +260,17 @@ a {
     display: flex;
     justify-content: space-between;
     place-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 
     .title {
         font-size: 1.8rem;
+        font-family: 'Blender Pro';
+        text-transform: uppercase;
 
         @media (min-width: 1023px) {
-            font-size: 2.6rem;
+            font-size: 3.6rem;
+            font-family: 'Blender Pro';
+            text-transform: uppercase;
         }
     }
 }
@@ -173,7 +285,7 @@ a {
 }
 
 section {
-    max-width: 1600px;
+    max-width: none;
     margin-inline: auto;
     width: 100%;
 }
@@ -225,6 +337,8 @@ section {
         .title {
             font-size: 2.4rem;
             line-height: 3.3rem;
+            font-family: 'Blender Pro';
+            text-transform: uppercase;
             color: var(--9z-font);
 
             @media (max-width: 1023px) {
@@ -494,3 +608,6 @@ button.sb-wrapper {
     height: 0;
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Blender Pro', "Helvetica Neue", sans-serif; }

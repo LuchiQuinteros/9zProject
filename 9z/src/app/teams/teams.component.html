@@ -2,19 +2,21 @@
   <section class="hero pd">
     <h1 class="title">Todos los equipos</h1>
   </section>
-  <section class="teams-container pd" *ngFor="let team of teams">
-    <a [routerLink]="team.redirect">
-      <div class="team">
-        <img [src]="team.image" alt="portada de {{team.name}}">
-        <div class="team__info">
-          <h1 class="title">{{team.name}}</h1>
-          <button class="btn-arrow">
-           <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.1272 4.58619C15.3086 4.40483 15.3086 4.11079 15.1272 3.92944L12.1718 0.974049C11.9904 0.792692 11.6964 0.792692 11.5151 0.974049C11.3337 1.15541 11.3337 1.44944 11.5151 1.6308L14.1421 4.25781L11.5151 6.88482C11.3337 7.06618 11.3337 7.36022 11.5151 7.54158C11.6964 7.72293 11.9904 7.72294 12.1718 7.54158L15.1272 4.58619ZM0.625 4.72221L14.7988 4.72221L14.7988 3.79342L0.625 3.79342L0.625 4.72221Z" fill="#DCDCDC"/>
-           </svg>
-          </button>
+  <section class="teams-container pd" >
+    <div class="" *ngFor="let team of teams">
+      <a [routerLink]="team.redirect">
+        <div class="team">
+          <img [src]="team.image" alt="portada de {{team.name}}">
+          <div class="team__info">
+            <h1 class="title">{{team.name}}</h1>
+            <button class="btn-arrow">
+              <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.1272 4.58619C15.3086 4.40483 15.3086 4.11079 15.1272 3.92944L12.1718 0.974049C11.9904 0.792692 11.6964 0.792692 11.5151 0.974049C11.3337 1.15541 11.3337 1.44944 11.5151 1.6308L14.1421 4.25781L11.5151 6.88482C11.3337 7.06618 11.3337 7.36022 11.5151 7.54158C11.6964 7.72293 11.9904 7.72294 12.1718 7.54158L15.1272 4.58619ZM0.625 4.72221L14.7988 4.72221L14.7988 3.79342L0.625 3.79342L0.625 4.72221Z" fill="#DCDCDC"/>
+              </svg>
+            </button>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   </section>
 </div>

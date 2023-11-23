@@ -7,7 +7,6 @@ import { NewComponent } from './news/new/new.component';
 import { NewsComponent } from './news/news.component';
 import { OurMatchesComponent } from './our-matches/our-matches.component';
 import { PlayerComponent } from './player/player.component';
-import { TVComponent } from './tv/tv.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamComponent } from './teams/team/team.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
@@ -16,6 +15,7 @@ import { VideosComponent } from './videos/videos.component';
 import { AllNewsComponent } from './all-news/all-news.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { TeamDisciplineComponent } from './team-discipline/team-discipline.component';
 
 const routes: Routes = [
   {
@@ -49,10 +49,10 @@ const routes: Routes = [
     data: { animation: 'new' },
   },
   {
-    path: 'tv',
-    component: TVComponent,
+    path: 'calendario',
+    component: OurMatchesComponent,
     pathMatch: 'full',
-    data: { animation: 'tv' },
+    data: { animation: 'matches' },
   },
   {
     path: 'partidos',
@@ -73,13 +73,19 @@ const routes: Routes = [
     data: { animation: 'achievements' },
   },
   {
+    path: 'disciplina/:game',
+    component: TeamDisciplineComponent,
+    pathMatch: 'full',
+    data: { animation: 'team/:game' },
+  },
+  {
     path: 'equipo/:game',
     component: TeamComponent,
     pathMatch: 'full',
     data: { animation: 'team/:game' },
   },
   {
-    path: 'miembros',
+    path: 'contacto',
     component: NewsletterComponent,
     pathMatch: 'full',
     data: { animation: 'members' },
@@ -132,7 +138,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabled',
-      scrollPositionRestoration: 'top',
+      scrollPositionRestoration: 'disabled',
       onSameUrlNavigation: 'reload',
       //  scrollOffset: [0,0]
     }),

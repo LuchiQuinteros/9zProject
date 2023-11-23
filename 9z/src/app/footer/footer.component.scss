@@ -112,7 +112,7 @@ footer {
 
     .menu__container {
       @media(min-width: 1023px) {
-        flex: 0.3;
+        flex: 0.6;
       }
 
       @media (max-width: 449px) {
@@ -195,4 +195,8 @@ footer {
       font-weight: 700;
     }
   }
+}
+
+img {
+  width: 50px;
 }

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SanityService } from 'src/app/services/sanity.services';
 import { Meta, Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { SocialService } from 'src/app/services/social.service';
 
 interface Form {
   name: string | boolean,
   birthdate: string | boolean
   email: string | boolean,
-  nationality: string | boolean
+  message: string | boolean
 }
 
 @Component({
@@ -24,14 +23,14 @@ export class NewsletterComponent implements OnInit {
     name: '',
     birthdate: '',
     email: '',
-    nationality: ''
+    message: '',
   }
 
   formValid: Form = {
     name: true,
     birthdate: true,
     email: true,
-    nationality: true
+    message: true,
   }
 
   constructor(
@@ -52,7 +51,7 @@ export class NewsletterComponent implements OnInit {
       name: '',
       birthdate: '',
       email: '',
-      nationality: ''
+      message: '',
     }
     this.termsRead = false;
   }
@@ -62,7 +61,7 @@ export class NewsletterComponent implements OnInit {
       name: true,
       birthdate: true,
       email: true,
-      nationality: true
+      message: true,
     }
     Object.keys(form).forEach((key: string) => {
       this.formValid[key as keyof Form] = form[key] !== ''

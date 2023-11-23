@@ -1,0 +1,199 @@
+.matches-wrapper {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  gap: 6rem;
+}
+
+img {
+  max-width: 5rem;
+}
+
+
+.title-row {
+  button{
+      border: 1px solid #7E2DF9;
+      background: transparent;
+      transition: background var(--transition);
+      border-radius: 4px;
+      padding: 0.9rem 3.6rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #fff;
+    
+      @media (max-width: 1023px) {
+        font-size: 1.6rem;
+      }
+    
+      &:hover {
+        background: #7E2DF9;
+      }
+    }
+}
+
+.matches {
+  width: 100%;
+
+  .tabs-wrapper {
+      border-bottom: 1px solid rgb(126, 45, 249, 0.5);
+      margin-bottom: 6rem;
+  }
+
+  .tabs {
+      position: relative;
+      display: flex;
+
+      button {
+          width: 100%;
+          padding-block: 0.8rem;
+          text-align: center;
+          cursor: pointer;
+          background: transparent;
+          color: var(--9z-font);
+          font-family: 'Blender Pro';
+
+          &:disabled {
+              pointer-events: none;
+              color: var(--9z-font-light);
+          }
+      }
+
+      p {
+          font-size: 2rem;
+          font-weight: 500;
+          font-family: 'Blender Pro';
+      }
+
+      hr {
+          position: absolute;
+          width: 50%;
+          left: 0;
+          bottom: 0;
+          height: 0.3rem;
+          transform: translateY(50%);
+          background-color: var(--9z-primary);
+          box-shadow: 0px 0px 4px rgba(160, 60, 252, 0.8);
+          transition: margin 350ms ease-out;
+
+          &.active {
+              margin-left: 50%;
+          }
+      }
+  }
+
+  .match {
+      position: relative;
+      background: #7E2DF90D;
+      border: 1px solid;
+      border-image: linear-gradient(90deg, rgba(250, 204, 165, 0.7) 0%, rgba(126, 45, 249, 0.7)) 1 / 1 / 0 stretch;
+      box-shadow: 0px 0px 20px rgba(209, 209, 209, 0.1);
+
+      .match__date {
+          display: flex;
+          justify-content: space-between;
+          gap: 1.5rem;
+          padding: 1.6rem 5%;
+          border: 1px solid;
+          border-image: linear-gradient(90deg, rgba(250, 204, 165, 0.7) 0%, rgba(126, 45, 249, 0.7)) 1 / 1 / 0 stretch;
+
+          p {
+              font-size: 1.8rem;
+          }
+      }
+
+      .match__info {
+          display: flex;
+          justify-content: center;
+          place-items: center;
+          padding: 1.6rem 5%;
+
+          .game__logo {
+            margin-right: auto;
+          }
+
+          button{
+              border: 1px solid #7E2DF9;
+              background: transparent;
+              transition: background var(--transition);
+              border-radius: 4px;
+              padding: 0.9rem 3.6rem;
+              font-weight: 700;
+              font-size: 1.8rem;
+              color: #fff;
+            
+              @media (max-width: 1023px) {
+                font-size: 1.6rem;
+              }
+            
+              &:hover {
+                background: #7E2DF9;
+              }
+            }
+          
+      }
+
+      .match__teams {
+          display: flex;
+          flex-flow: column;
+          justify-content: space-between;
+          place-items: center;
+          justify-content: center;
+          gap: 3.2rem;
+          margin-right: auto;
+          flex: 1;
+
+          @media (min-width: 767px) {
+              flex-flow: row;
+          }
+
+          span.title {
+              border-radius: 4px;
+              padding: 1rem;
+              justify-content: center;
+              place-items: center;
+              flex: 1;
+              max-width: 35rem;
+              font-family: 'Blender Pro';
+
+              @media (min-width: 767px) and (max-width: 1023px) {
+                max-width: 35%;
+              }
+
+              @media (max-width: 767px) {
+                width: 50%;
+                &:last-of-type {
+                  flex-direction: row-reverse;
+                }
+              }
+
+              img {
+                max-height: 4.2rem;
+              }
+          }
+
+          span {
+              display: flex;
+              place-items: center;
+              gap: 2.5rem;
+              font-size: 2.2rem;
+              color: var(--9z-font);
+
+          }
+      }
+
+      button {
+          background-color: transparent;
+          border: none;
+      }
+
+      a {
+          color: var(--9z-primary);
+          text-decoration: underline;
+
+          svg {
+              margin-left: 1rem;
+              stroke: var(--9z-primary);
+          }
+      }
+  }
+}

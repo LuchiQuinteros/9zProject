@@ -10,32 +10,35 @@ import { SocialService } from '../services/social.service';
 export class TeamsComponent implements OnInit {
   teams: Array<any> = [
     {
-      name: 'cs main',
-      image: '../../assets/teams/CS-MAIN.jpg',
-      redirect: '/equipo/csgo-main',
+      name: '',
+      image: '../../assets/teams/CS2.png',
+      redirect: '/disciplina/cs2',
     },
     {
-      name: 'cs academy',
-      image: '../../assets/teams/CS-AC.jpg',
-      redirect: '/equipo/csgo-academy',
+      name: '',
+      image: '../../assets/teams/VALO.png',
+      redirect: '/disciplina/valorant',
     },
-
+    //{
+    //  name: 'cs academy',
+    //  image: '../../assets/teams/CS-AC.jpg',
+    //  redirect: '/equipo/csgo-academy',
+    //},
     {
-      name: 'sim racing',
-      image: '../../assets/teams/Sim-Racing.jpg',
-      redirect: '/equipo/sim-racing',
-    },
-
-    {
-      name: 'valorant',
-      image: '../../assets/teams/Valorant.jpg',
-      redirect: '/equipo/valorant',
+      name: '',
+      image: '../../assets/teams/SIM-RACING.png',
+      redirect: '/equipo/SIM-RACING',
     },
     {
-      name: 'valorant femenino',
-      image: '../../assets/teams/Valorant-FEM.jpg',
-      redirect: '/equipo/valorant-fem',
+      name: '',
+      image: '../../assets/teams/CC.png',
+      redirect: '/equipo/STREAMERS',
     },
+    //{
+    //  name: 'valorant femenino',
+    //  image: '../../assets/teams/Valorant-FEM.jpg',
+    //  redirect: '/equipo/valorant-fem',
+    //},
   ];
 
   constructor(private socialServices: SocialService, private router: Router) {}

@@ -5,6 +5,7 @@
 <div class="left-layer left-layer--4"></div>
 <app-sidebar class="isMobile" [activeMenu]="activeMenu" (openCloseMenu)="activeMenu = $event; disableScrollbar($event)"></app-sidebar>
 <app-preloader *ngIf="loading" (hidePreloader)="loading = $event"></app-preloader>
+<app-sponsor-footer *ngIf="!loading" (activeMenu)="activeMenu = $event; disableScrollbar($event)" ></app-sponsor-footer>
 
 <main id="main">
   <ul>

@@ -29,31 +29,36 @@ export class TeamComponent implements OnInit {
   achievementsList: Array<any> = [];
   teams: Array<any> = [
     {
-      name: 'csgo-main',
-      image: '../../../assets/teams/CS-MAIN.jpg',
-      imageMb: '../../../assets/teams/mb-cs-main.jpg'
+      name: 'CS2-MAIN',
+      image: '../../../assets/teams/CS2-MAIN.png',
+      imageMb: '../../../assets/teams/CS2-MAIN.png',
     },
     {
-      name: 'csgo-academy',
-      image: '../../../assets/teams/CS-AC.jpg',
-      imageMb: '../../../assets/teams/mb-cs-ac.jpg'
-    },
-
-    {
-      name: 'sim-racing',
-      image: '../../../assets/teams/Sim-Racing.jpg',
-      imageMb: '../../../assets/teams/mb-sim-racing.jpg'
+      name: 'CS2-ACADEMY',
+      image: '../../../assets/teams/CS2-AC.png',
+      imageMb: '../../../assets/teams/CS2-AC.png',
     },
 
     {
-      name: 'valorant',
-      image: '../../../assets/teams/Valorant.jpg',
-      imageMb: '../../../assets/teams/mb-valorant.jpg'
+      name: 'SIM-RACING',
+      image: '../../../assets/teams/SIM-RACING.png',
+      imageMb: '../../../assets/teams/SIM-RACING.png',
+    },
+
+    {
+      name: 'VALORANT-MASC',
+      image: '../../../assets/teams/VALO-MASC.png',
+      imageMb: '../../../assets/teams/VALO-MASC.png',
     },
     {
-      name: 'valorant-fem',
-      image: '../../../assets/teams/Valorant-FEM.jpg',
-      imageMb: '../../../assets/teams/mb-valorant-fem.jpg'
+      name: 'VALORANT-FEM',
+      image: '../../../assets/teams/VALO-FEM.png',
+      imageMb: '../../../assets/teams/VALO-FEM.png',
+    },
+    {
+      name: 'STREAMERS',
+      image: '../../assets/teams/CC.png',
+      redirect: '/equipo/STREAMERS',
     },
   ];
 
@@ -128,6 +133,9 @@ export class TeamComponent implements OnInit {
             this.changeTab(document.getElementById('player'));
           }
 
+          if(this.game === 'streamers') {
+            this.changeTab(document.getElementById('streamers'));
+          }
         }, 850);
 
       } else {
@@ -142,6 +150,10 @@ export class TeamComponent implements OnInit {
           this.changeTab(document.getElementById('coach'));
           this.changeTab(document.getElementById('player'));
         }
+
+        if(this.game === 'streamers') {
+          this.changeTab(document.getElementById('streamers'));
+        }
       }
 
     });
@@ -149,6 +161,9 @@ export class TeamComponent implements OnInit {
     this.hr.width = document.getElementById('player')?.clientWidth;
     this.changeTab(document.getElementById('player'));
 
+    if(this.game === 'streamers') {
+      this.changeTab(document.getElementById('streamers'));
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -160,12 +175,23 @@ export class TeamComponent implements OnInit {
   getGame(data: string) {
     this.team = 'main';
     if (data !== undefined) {
-      if (data === 'csgo-main') {
-        this.game = 'cs go';
+      if (data === 'CS2-MAIN') {
+        this.game = 'cs2';
         this.team = 'main';
-      } else if (data === 'csgo-academy') {
-        this.game = 'cs go';
+      } else if (data === 'CS2-ACADEMY') {
+        this.game = 'csgo';
         this.team = 'academy';
+      } else if (data === 'VALORANT-MASC') {
+        this.game = 'valorant';
+        this.team = 'main';
+      } else if (data === 'VALORANT-FEM') {
+        this.game = 'valorant-fem';
+        this.team = 'main';
+      } else if (data === 'STREAMERS') {
+        this.game = 'streamers';
+      } else if (data === 'SIM-RACING') {
+        this.game = 'sim-racing';
+        this.team = 'main';
       } else {
         this.game = data.replace('-', ' ');
       }
@@ -203,12 +229,21 @@ export class TeamComponent implements OnInit {
     }
   }
   getDataCards(data: any) {
+    console.log(data);
     this.players = [];
     this.coachs = [];
     this.managers = [];
     this.ambassadors = [];
-    this.ambassadors = data.result.filter((card: any) => card.role === 'ambassador')
+    this.ambassadors = data.result.filter((card: any) => card.game.name === 'streamers' && this.game === 'streamers');
+    this.ambassadors = this.ambassadors.map((card: any) => {
+      if (card.slug === 'Frankkaster') {
+        return { ...card, role: 'Streamer & CEO' }; // Crea un nuevo objeto con el valor modificado
+      } else {
+        return { ...card, role: 'Streamer' }; // Cr
+      }
+    });
     this.players = data.result.filter((player: any) => {
+      console.log(this.game);
       if (player.game && player.game?.name.toLowerCase() === this.game.toLowerCase()) {
         if (player.role === 'player' || player.role === 'runner') {
           if (this.team === 'main' && player.team === 'main' || this.team === 'academy' && player.team === 'academy') {
@@ -311,10 +346,10 @@ export class TeamComponent implements OnInit {
   getAchievements(achievements: any) {
     this.achievementsList = [];
     achievements.result.forEach((match: any) => {
-      if (match.game && this.game === 'csgo') {
-        if (this.team === 'main' && match.game.name.toLowerCase() === 'cs go') {
+      if (match.game && this.game === 'cs2') {
+        if (this.team === 'main' && match.game.name.toLowerCase() === 'cs2') {
           this.achievementsList.push(match)
-        } else if (match.game.name === 'csgo academy') {
+        } else if (match.game.name === 'cs2-academy') {
           this.achievementsList.push(match)
         }
       } else if (match.game && match.game.name.toLowerCase() === this.game.toLowerCase()) {
@@ -355,6 +390,7 @@ export class TeamComponent implements OnInit {
   }
 
   changeTab(target : any) {
+    console.log(target.id);
     let tab = target.id;
     this.hr.width = target.clientWidth;
     this.hr.margin = target.offsetLeft;
@@ -380,7 +416,7 @@ export class TeamComponent implements OnInit {
           break;
         }
 
-        case 'ambassador': {
+        case 'streamers': {
           this.sliderCards = this.ambassadors;
           break;
         }

@@ -38,7 +38,7 @@ export class FooterComponent implements OnInit {
   footerLinks: Link[] = [
     {
       name: "Contacto",
-      url: './miembros'
+      url: './contacto'
     },
     {
       name: "Términos y condiciones",
@@ -47,10 +47,6 @@ export class FooterComponent implements OnInit {
     {
       name: "Políticas de privacidad",
       url: '../terms/privacyPolicy'
-    },
-    {
-      name: "Políticas de Fan content",
-      url: '../terms/fanContentPolicy',
     }
   ]
   constructor(

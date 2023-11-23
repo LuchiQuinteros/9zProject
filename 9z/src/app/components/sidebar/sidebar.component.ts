@@ -21,24 +21,20 @@ export class SidebarComponent implements OnInit {
       url: "/equipos"
     },
     {
-      name: "CS:GO Main",
-      url: "./equipo/csgo-main"
-    },
-    {
-      name: "CS:GO Academy",
-      url: "./equipo/csgo-academy"
-    },
-    {
-      name: "Sim Racing",
-      url: "./equipo/sim-racing"
+      name: "CS:GO",
+      url: "./equipo/csgo"
     },
     {
       name: "Valorant",
       url: "./equipo/valorant"
     },
     {
-      name: "Valorant Fem",
-      url: "./equipo/valorant-fem"
+      name: "Sim Racing",
+      url: "./equipo/sim-racing"
+    },
+    {
+      name: "Streamers",
+      url: "./equipo/streamers"
     }
   ];
   constructor() { }
