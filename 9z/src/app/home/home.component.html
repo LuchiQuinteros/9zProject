@@ -1,6 +1,8 @@
 <div class="page">
   <section class="hero home">
-    <img id="vid" src="/assets/home/Header.png">
+    <video oncanplay="this.play()" onloadedmetadata="this.muted = true" playsinline autoplay muted loop poster="" id="vid" *ngIf="true">
+      <source src="/assets/home/header.mp4" type="video/mp4">
+   </video>
   </section>
   <section class="socialSection isMobile">
     <a
