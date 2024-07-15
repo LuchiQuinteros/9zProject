@@ -4,3 +4,9 @@ NOTICE:
   You can ignore the warning (TLS) or run scully with --no-warning
 ****************************************************************************************
 No configuration for route "/disciplina/:game" found. Skipping
+NOTICE:
+****************************************************************************************
+  This is a development tool for Scully applications.
+  You can ignore the warning (TLS) or run scully with --no-warning
+****************************************************************************************
+No configuration for route "/disciplina/:game" found. Skipping

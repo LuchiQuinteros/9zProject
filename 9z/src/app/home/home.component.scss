@@ -9,7 +9,7 @@
   height: auto !important;
 }
 
-video {
+img {
   width: 100%;
   height: auto !important;
   object-fit: cover;
@@ -74,27 +74,27 @@ section.hero {
     justify-content: center;
     place-items: center;
 
-      h1 {
-        font-size: 3rem;
-        text-align: center;
-        position: relative;
-        z-index: 2;
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
 
-        @media (min-width: 1023px) {
+      @media (min-width: 1023px) {
         font-size: 5rem;
       }
     }
 
     div.primary {
       background-color: transparent;
-      border: 1px solid #7E2DF9;
+      border: 1px solid #7e2df9;
       padding: 1.2rem 3rem;
       border-radius: 6px;
       --y: 0;
       --x: 0;
       position: relative;
       overflow: hidden;
-      transition:border-color var(--transition);
+      transition: border-color var(--transition);
       display: flex;
       justify-content: center;
       place-items: center;
@@ -107,9 +107,10 @@ section.hero {
         left: var(--x);
         width: 0;
         height: 0;
-        background-color: #7E2DF9;
+        background-color: #7e2df9;
         opacity: 0.4;
-        transition: width var(--transition), height var(--transition), opacity var(--transition);
+        transition: width var(--transition), height var(--transition),
+          opacity var(--transition);
         transform: translate(-50%, -50%);
         border-radius: 50%;
         display: block;
@@ -152,7 +153,6 @@ section.hero {
       gap: min(5vw, 4rem);
       margin-inline: auto;
       z-index: 2;
-
     }
 
     .sponsors {
@@ -185,7 +185,7 @@ section.hero {
 
       &:hover {
         fill: var(--9z-primary);
-        filter: drop-shadow( 0px 0px 5px rgba(126, 45, 249, 1));
+        filter: drop-shadow(0px 0px 5px rgba(126, 45, 249, 1));
       }
     }
   }
@@ -201,7 +201,6 @@ section.hero {
   }
 }
 
-
 .socialSection {
   display: flex;
   justify-content: center;
@@ -209,21 +208,21 @@ section.hero {
   gap: 3rem;
   padding-top: 3rem;
 
-  a{
-    width:2rem;
-    height:2rem;
+  a {
+    width: 2rem;
+    height: 2rem;
   }
 
-    svg {
-      cursor: pointer;
-      fill: #92929280;
-      width:2rem;
-      height:2rem;
-      transition: filter 150ms ease-in-out, fill 150ms ease-in-out;
+  svg {
+    cursor: pointer;
+    fill: #92929280;
+    width: 2rem;
+    height: 2rem;
+    transition: filter 150ms ease-in-out, fill 150ms ease-in-out;
 
     &:hover {
       fill: var(--9z-primary);
-      filter: drop-shadow( 0px 0px 5px rgba(126, 45, 249, 1));
+      filter: drop-shadow(0px 0px 5px rgba(126, 45, 249, 1));
     }
   }
 }
