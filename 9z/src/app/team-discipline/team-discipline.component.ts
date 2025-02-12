@@ -12,12 +12,12 @@ export class TeamDisciplineComponent implements OnInit {
   teamsCsgo: Array<any> = [
     {
       name: 'CS 2 MAIN',
-      image: '../../assets/teams/CS2-MAIN.png',
+      image: '../../assets/teams/cs2-main.png',
       redirect: '/equipo/CS2-MAIN',
     },
     {
       name: 'CS 2 ACADEMY',
-      image: '../../assets/teams/CS2-AC.png',
+      image: '../../assets/teams/cs2-ac.png',
       redirect: '/equipo/CS2-ACADEMY',
     },
   ];
@@ -25,14 +25,14 @@ export class TeamDisciplineComponent implements OnInit {
   teamsValorant: Array<any> = [
     {
       name: 'Valorant Masculino',
-      image: '../../assets/teams/VALO-MASC.png',
+      image: '../../assets/teams/valo-main.png',
       redirect: '/equipo/VALORANT-MASC',
     },
-    {
-      name: 'Valorant femenino',
-      image: '../../assets/teams/VALO-FEM.png',
-      redirect: '/equipo/VALORANT-FEM',
-    },
+    // {
+    //   name: 'Valorant femenino',
+    //   image: '../../assets/teams/VALO-FEM.png',
+    //   redirect: '/equipo/VALORANT-FEM',
+    // },
   ];
 
   teamStreamers: Array<any> = [
