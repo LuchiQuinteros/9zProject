@@ -34,11 +34,11 @@ export class TeamsComponent implements OnInit {
       image: '../../assets/teams/CC.png',
       redirect: '/equipo/STREAMERS',
     },
-    //{
-    //  name: 'valorant femenino',
-    //  image: '../../assets/teams/Valorant-FEM.jpg',
-    //  redirect: '/equipo/valorant-fem',
-    //},
+    {
+     name: '',
+     image: '../../assets/teams/PUBGM.png',
+     redirect: '/equipo/PUBG-Mobile',
+    },
   ];
 
   constructor(private socialServices: SocialService, private router: Router) {}

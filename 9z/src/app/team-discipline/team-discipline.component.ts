@@ -29,9 +29,9 @@ export class TeamDisciplineComponent implements OnInit {
       redirect: '/equipo/VALORANT-MASC',
     },
     // {
-    //   name: 'Valorant femenino',
+    //   name: 'PUBG Mobile',
     //   image: '../../assets/teams/VALO-FEM.png',
-    //   redirect: '/equipo/VALORANT-FEM',
+    //   redirect: '/equipo/PUBG-Mobile',
     // },
   ];
 
@@ -48,6 +48,14 @@ export class TeamDisciplineComponent implements OnInit {
       name: 'Sim Racing',
       image: '../../assets/teams/SIM-RACING.png',
       redirect: '/equipo/SIM-RACING',
+    },
+  ];
+
+  teamPUBGMobile: Array<any> = [
+    {
+      name: 'PUBG Mobile',
+      image: '../../assets/teams/PUBGM.png',
+      redirect: '/equipo/PUBG-Mobile',
     },
   ];
 
@@ -69,6 +77,9 @@ export class TeamDisciplineComponent implements OnInit {
       this.teams = this.teamStreamers;
     }
     
+    if(pathFragment == '/disciplina/streamers') {
+      this.teams = this.teamPUBGMobile;
+    }
 
   }
 

@@ -30,13 +30,13 @@ export class TeamComponent implements OnInit {
   teams: Array<any> = [
     {
       name: 'CS2-MAIN',
-      image: '../../../assets/teams/CS2-MAIN.png',
-      imageMb: '../../../assets/teams/CS2-MAIN.png',
+      image: '../../../assets/teams/cs2-main.png',
+      imageMb: '../../../assets/teams/cs2-main.png',
     },
     {
       name: 'CS2-ACADEMY',
-      image: '../../../assets/teams/CS2-AC.png',
-      imageMb: '../../../assets/teams/CS2-AC.png',
+      image: '../../../assets/teams/cs2-ac.png',
+      imageMb: '../../../assets/teams/cs2-ac.png',
     },
 
     {
@@ -47,8 +47,8 @@ export class TeamComponent implements OnInit {
 
     {
       name: 'VALORANT-MASC',
-      image: '../../../assets/teams/VALO-MASC.png',
-      imageMb: '../../../assets/teams/VALO-MASC.png',
+      image: '../../../assets/teams/valo-main.png',
+      imageMb: '../../../assets/teams/valo-main.png',
     },
     {
       name: 'VALORANT-FEM',
@@ -59,6 +59,11 @@ export class TeamComponent implements OnInit {
       name: 'STREAMERS',
       image: '../../assets/teams/CC.png',
       redirect: '/equipo/STREAMERS',
+    },
+    {
+      name: 'PUBG-Mobile',
+      image: '../../../assets/teams/PUBGM.png',
+      imageMb: '../../../assets/teams/PUBGM.png',
     },
   ];
 
