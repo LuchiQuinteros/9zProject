@@ -184,7 +184,7 @@ export class TeamComponent implements OnInit {
         this.game = 'cs2';
         this.team = 'main';
       } else if (data === 'CS2-ACADEMY') {
-        this.game = 'csgo';
+        this.game = 'cs2';
         this.team = 'academy';
       } else if (data === 'VALORANT-MASC') {
         this.game = 'valorant';
