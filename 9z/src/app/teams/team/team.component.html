@@ -117,19 +117,4 @@
       </ng-template>
     </swiper>
   </section>
-  <app-latest-match
-    *ngIf="upcomingMatchList.length > 0 || pastMatchList.length > 0"
-    [matchesToShow]="3"
-    [upcomingMatchesList]="upcomingMatchList"
-    [pastMatchesList]="pastMatchList"
-    [team]="game"
-  ></app-latest-match>
-<!--
-  <app-youtube-feed
-    *ngIf="youtubeVideosList.length > 0"
-    [standalone]="false"
-    [title]="'highlights'"
-    [videosList]="youtubeVideosList"
-  >
-  </app-youtube-feed> -->
 </div>
