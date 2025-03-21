@@ -5,7 +5,6 @@ import { AchievementsComponent } from './achievements/achievements.component';
 import { HomeComponent } from './home/home.component';
 import { NewComponent } from './news/new/new.component';
 import { NewsComponent } from './news/news.component';
-import { OurMatchesComponent } from './our-matches/our-matches.component';
 import { PlayerComponent } from './player/player.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamComponent } from './teams/team/team.component';
@@ -47,18 +46,6 @@ const routes: Routes = [
     component: NewComponent,
     pathMatch: 'full',
     data: { animation: 'new' },
-  },
-  {
-    path: 'calendario',
-    component: OurMatchesComponent,
-    pathMatch: 'full',
-    data: { animation: 'matches' },
-  },
-  {
-    path: 'partidos',
-    component: OurMatchesComponent,
-    pathMatch: 'full',
-    data: { animation: 'matches' },
   },
   {
     path: 'equipos',

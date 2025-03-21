@@ -20,7 +20,6 @@ import { ColumnSliderComponent } from './components/column-slider/column-slider.
 import { NewComponent } from './news/new/new.component';
 import { TVComponent } from './tv/tv.component';
 import { GamingComponent } from './components/gaming/gaming.component';
-import { OurMatchesComponent } from './our-matches/our-matches.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { Configuration } from './configuration';
 import { GridSlidesComponent } from './components/grid-slides/grid-slides.component';
@@ -43,7 +42,6 @@ import { AllNewsComponent } from './all-news/all-news.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { SponsorFooterComponent } from './sponsor-footer/sponsor-footer.component';
-import { HomeMatchComponent } from './home-match/home-match.component';
 import { ModalFilterComponent } from './modal-filter/modal-filter.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -70,7 +68,6 @@ import { TeamDisciplineComponent } from './team-discipline/team-discipline.compo
     NewComponent,
     TVComponent,
     GamingComponent,
-    OurMatchesComponent,
     AchievementsComponent,
     GridSlidesComponent,
     TwitchGridSlideComponent,
@@ -90,7 +87,6 @@ import { TeamDisciplineComponent } from './team-discipline/team-discipline.compo
     ComingSoonComponent,
     TermsAndConditionsComponent,
     SponsorFooterComponent,
-    HomeMatchComponent,
     ModalFilterComponent,
     TeamDisciplineComponent,
   ],
