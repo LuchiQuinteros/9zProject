@@ -102,7 +102,7 @@ export class TeamDisciplineComponent implements OnInit {
     }
 
     if(pathFragment == '/disciplina/mobile-legends') {
-      this.teams = this.teamHonor;
+      this.teams = this.teamMobileLegends;
     }
   }
 

@@ -19,11 +19,6 @@ export class TeamsComponent implements OnInit {
       image: '../../assets/teams/VALO.png',
       redirect: '/disciplina/valorant',
     },
-    // {
-    //  name: '',
-    //  image: '../../assets/teams/CS-AC.jpg',
-    //  redirect: '/equipo/csgo-academy',
-    // },
     {
       name: '',
       image: '../../assets/teams/SIM-RACING.png',
