@@ -197,6 +197,9 @@ export class TeamComponent implements OnInit {
       } else if (data === 'SIM-RACING') {
         this.game = 'sim-racing';
         this.team = 'main';
+      } else if (data === 'HONOR-OF-KINGS') {
+        this.game = 'honor-of-kings';
+        this.team = 'main';
       } else {
         this.game = data.replace('-', ' ');
       }
