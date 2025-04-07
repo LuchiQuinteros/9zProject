@@ -63,7 +63,7 @@ export class TeamDisciplineComponent implements OnInit {
     {
       name: 'HONOR OF KINGS',
       image: '../../assets/teams/HoK.png',
-      redirect: '/equipo/HONOR-OF-KINGS',
+      redirect: '/equipo/honor-of-kings',
     },
   ];
 

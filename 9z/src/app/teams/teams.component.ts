@@ -42,7 +42,7 @@ export class TeamsComponent implements OnInit {
     {
       name: '',
       image: '../../assets/teams/HoK.png',
-      redirect: '/equipo/HONOR-OF-KINGS',
+      redirect: '/equipo/honor-of-kings',
      },
   ];
 
