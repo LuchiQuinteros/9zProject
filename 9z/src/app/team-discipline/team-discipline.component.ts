@@ -66,13 +66,6 @@ export class TeamDisciplineComponent implements OnInit {
       redirect: '/equipo/HONOR-OF-KINGS',
     },
   ];
-  teamMobileLegends: Array<any> = [
-    {
-      name: 'MOBILE LEGENDS',
-      image: '../../assets/teams/ML.png',
-      redirect: '/equipo/MOBILE-LEGENDS',
-    },
-  ];
 
 
   constructor(private socialServices: SocialService, private router: Router) {
@@ -99,10 +92,6 @@ export class TeamDisciplineComponent implements OnInit {
 
     if(pathFragment == '/disciplina/honor-of-kings') {
       this.teams = this.teamHonor;
-    }
-
-    if(pathFragment == '/disciplina/mobile-legends') {
-      this.teams = this.teamMobileLegends;
     }
   }
 
