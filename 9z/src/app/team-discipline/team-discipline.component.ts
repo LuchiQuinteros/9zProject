@@ -58,12 +58,18 @@ export class TeamDisciplineComponent implements OnInit {
       redirect: '/equipo/PUBG-Mobile',
     },
   ];
-
   teamHonor: Array<any> = [
     {
       name: 'HONOR OF KINGS',
       image: '../../assets/teams/HoK.png',
       redirect: '/equipo/HONOR-OF-KINGS',
+    },
+  ];
+  teamMobileLegends: Array<any> = [
+    {
+      name: 'HONOR OF KINGS',
+      image: '../../assets/teams/HoK.png',
+      redirect: '/equipo/MOBILE-LEGENDS',
     },
   ];
 
@@ -92,6 +98,10 @@ export class TeamDisciplineComponent implements OnInit {
 
     if(pathFragment == '/disciplina/honor-of-kings') {
       this.teams = this.teamHonor;
+    }
+
+    if(pathFragment == '/disciplina/mobile-legends') {
+      this.teams = this.teamMobileLegends;
     }
   }
 

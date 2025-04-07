@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, HostListener  } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { listAnimation } from 'src/app/animations';
 import { SanityService } from 'src/app/services/sanity.services';
 import { SocialService } from 'src/app/services/social.service';
@@ -104,7 +104,7 @@ export class TeamComponent implements OnInit {
     private sanityServices: SanityService,
     private socialServices: SocialService,
     private activeRoute: ActivatedRoute,
-    private router: Router
+    // Removed unused router
   ) { }
 
   async ngOnInit() {
@@ -251,7 +251,7 @@ export class TeamComponent implements OnInit {
     this.coachs = [];
     this.managers = [];
     this.ambassadors = [];
-    this.ambassadors = data.result.filter((card: any) => card.game.name === 'streamers' && this.game === 'streamers');
+    this.ambassadors = data.result.filter((card: any) => card.game?.name === 'streamers' && this.game === 'streamers');
     this.ambassadors = this.ambassadors.map((card: any) => {
       if (card.slug === 'Frankkaster') {
         return { ...card, role: 'Streamer & CEO' }; // Crea un nuevo objeto con el valor modificado
@@ -261,7 +261,7 @@ export class TeamComponent implements OnInit {
     });
     this.players = data.result.filter((player: any) => {
       console.log(this.game);
-      if (player.game && player.game?.name.toLowerCase() === this.game.toLowerCase()) {
+      if (player.game?.name && player.game.name.toLowerCase() === this.game.toLowerCase()) {
         if (player.role === 'player' || player.role === 'runner') {
           if (this.team === 'main' && player.team === 'main' || this.team === 'academy' && player.team === 'academy') {
             return player
@@ -270,7 +270,7 @@ export class TeamComponent implements OnInit {
       }
     })
     this.coachs = data.result.filter((coach: any) => {
-      if (coach.game && coach.game?.name.toLowerCase() === this.game.toLowerCase()) {
+      if (coach.game?.name && coach.game.name.toLowerCase() === this.game.toLowerCase()) {
         if (coach.role === 'coach' || coach.role === 'headCoach' || coach.role === 'analyst') {
           if ((this.team === 'main' && coach.team === 'main') || (this.team === 'academy' && coach.team === 'academy')) {
             return coach
