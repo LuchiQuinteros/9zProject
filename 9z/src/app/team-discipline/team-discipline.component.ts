@@ -69,7 +69,7 @@ export class TeamDisciplineComponent implements OnInit {
   teamMobileLegends: Array<any> = [
     {
       name: 'MOBILE LEGENDS',
-      image: '../../assets/teams/HoK.png',
+      image: '../../assets/teams/ML.png',
       redirect: '/equipo/MOBILE-LEGENDS',
     },
   ];
