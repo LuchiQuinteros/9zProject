@@ -39,6 +39,11 @@ export class TeamsComponent implements OnInit {
      image: '../../assets/teams/PUBGM.png',
      redirect: '/equipo/PUBG-Mobile',
     },
+    {
+      name: '',
+      image: '../../assets/teams/PUBGM.png',
+      redirect: '/equipo/HONOR-OF-KINGS',
+     },
   ];
 
   constructor(private socialServices: SocialService, private router: Router) {}
