@@ -59,6 +59,14 @@ export class TeamDisciplineComponent implements OnInit {
     },
   ];
 
+  teamHonor: Array<any> = [
+    {
+      name: 'PUBG Mobile',
+      image: '../../assets/teams/PUBGM.png',
+      redirect: '/equipo/PUBG-Mobile',
+    },
+  ];
+
   constructor(private socialServices: SocialService, private router: Router) {
     const pathFragment = this.router.url
     if(pathFragment == '/disciplina/cs2') {
@@ -79,6 +87,10 @@ export class TeamDisciplineComponent implements OnInit {
     
     if(pathFragment == '/disciplina/streamers') {
       this.teams = this.teamPUBGMobile;
+    }
+
+    if(pathFragment == '/disciplina/honor-of-kings') {
+      this.teams = this.teamHonor;
     }
 
   }
