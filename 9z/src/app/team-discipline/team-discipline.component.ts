@@ -71,7 +71,7 @@ export class TeamDisciplineComponent implements OnInit {
     {
       name: 'HONOR OF KINGS',
       image: '../../assets/teams/ML.png',
-      redirect: '/equipo/Mobile-Legends',
+      redirect: '/equipo/MOBILE-LEGENDS',
     },
   ];
 

@@ -210,7 +210,7 @@ export class TeamComponent implements OnInit {
       } else if (data === 'HONOR-OF-KINGS') {
         this.game = 'honor-of-kings';
         this.team = 'main';
-      } else if (data === 'Mobile-Legends') {
+      } else if (data === 'MOBILE-LEGENDS') {
         this.game = 'mobile-legends';
         this.team = 'main';
       }
