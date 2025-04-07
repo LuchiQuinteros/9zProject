@@ -67,8 +67,8 @@ export class TeamComponent implements OnInit {
     },
     {
       name: 'HONOR-OF-KINGS',
-      image: '../../../assets/teams/PUBGM.png',
-      imageMb: '../../../assets/teams/PUBGM.png',
+      image: '../../../assets/teams/HoK.png',
+      imageMb: '../../../assets/teams/HoK.png',
     },
   ];
 
