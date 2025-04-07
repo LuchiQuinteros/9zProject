@@ -61,8 +61,8 @@ export class TeamDisciplineComponent implements OnInit {
 
   teamHonor: Array<any> = [
     {
-      name: 'PUBG Mobile',
-      image: '../../assets/teams/PUBGM.png',
+      name: 'HONOR OF KINGS',
+      image: '../../assets/teams/HoK.png',
       redirect: '/equipo/PUBG-Mobile',
     },
   ];
