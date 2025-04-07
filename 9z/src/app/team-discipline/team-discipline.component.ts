@@ -63,7 +63,15 @@ export class TeamDisciplineComponent implements OnInit {
     {
       name: 'HONOR OF KINGS',
       image: '../../assets/teams/HoK.png',
-      redirect: '/equipo/honor-of-kings',
+      redirect: '/equipo/HONOR-OF-KINGS',
+    },
+  ];
+
+  teamMobileLegends: Array<any> = [
+    {
+      name: 'HONOR OF KINGS',
+      image: '../../assets/teams/ML.png',
+      redirect: '/equipo/Mobile-Legends',
     },
   ];
 
@@ -93,6 +101,9 @@ export class TeamDisciplineComponent implements OnInit {
       this.teams = this.teamHonor;
     }
 
+    if(pathFragment == '/disciplina/mobile-legends') {
+      this.teams = this.teamHonor;
+    }
   }
 
   ngOnInit(): void {
