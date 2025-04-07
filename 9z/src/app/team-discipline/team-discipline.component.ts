@@ -66,14 +66,14 @@ export class TeamDisciplineComponent implements OnInit {
       redirect: '/equipo/HONOR-OF-KINGS',
     },
   ];
-
   teamMobileLegends: Array<any> = [
     {
       name: 'MOBILE LEGENDS',
-      image: '../../assets/teams/ML.png',
+      image: '../../assets/teams/HoK.png',
       redirect: '/equipo/MOBILE-LEGENDS',
     },
   ];
+
 
   constructor(private socialServices: SocialService, private router: Router) {
     const pathFragment = this.router.url

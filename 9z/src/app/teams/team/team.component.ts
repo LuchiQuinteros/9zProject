@@ -213,7 +213,7 @@ export class TeamComponent implements OnInit {
       } else if (data === 'MOBILE-LEGENDS') {
         this.game = 'mobile-legends';
         this.team = 'main';
-      }
+      } 
       else {
         this.game = data.replace('-', ' ');
       }
