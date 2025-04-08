@@ -45,5 +45,14 @@
     "EMAIL_CONTACT": "Você também pode entrar em contato por e-mail",
     "FIND_SOCIAL": "Você também pode nos encontrar nessas redes",
     "SUBMIT": "Enviar"
+  },
+  "SIDEBAR" : {
+    "ALL_TEAMS": "TODOS",
+    "TEAMS": "EQUIPES",
+    "ABOUT_US": "SOBRE NÓS",
+    "NEWS": "NOTÍCIAS",
+    "CONTACT": "CONTATO",
+    "STORE": "LOJA",
+    "EXPAND_SIDEBAR": "EXPANDIR"
   }
 }

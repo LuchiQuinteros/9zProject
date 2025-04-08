@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { fadeAnimation } from 'src/app/animations';
 import { Link } from 'src/app/footer/footer.component';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -49,9 +50,13 @@ export class SidebarComponent implements OnInit {
       url: "./equipo/MOBILE-LEGENDS"
     }
   ];
-  constructor() { }
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang('es');
+  }
 
   ngOnInit(): void {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
   }
 
   triggerMenu() {

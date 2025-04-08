@@ -1,52 +1,24 @@
 <menu [ngClass]="{ active: activeMenu }">
   <div class="nav__title">
     <a routerLink="">
-      <img
-        (click)="triggerMenu()"
-        src="../../../assets/header/logo.png"
-        alt="Logo 9z"
-      />
+      <img (click)="triggerMenu()" src="../../../assets/header/logo.png" alt="Logo 9z" />
     </a>
-    <svg
-      (click)="triggerMenu()"
-      width="13"
-      height="13"
-      viewBox="0 0 13 13"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg (click)="triggerMenu()" width="13" height="13" viewBox="0 0 13 13" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <title>Cerrar sidebar</title>
       <path
         d="M12.2929 1.30929L7.45573 6.14645C7.36196 6.24021 7.30929 6.36739 7.30929 6.5C7.30929 6.63261 7.36196 6.75979 7.45573 6.85355L12.2929 11.6907L11.6907 12.2929L6.85355 7.45573C6.75979 7.36196 6.63261 7.30929 6.5 7.30929C6.36739 7.30929 6.24021 7.36196 6.14645 7.45573L1.30929 12.2929L0.707107 11.6907L5.54427 6.85355C5.63804 6.75979 5.69071 6.63261 5.69071 6.5C5.69071 6.36739 5.63804 6.24021 5.54427 6.14645L0.707107 1.30929L1.30929 0.707107L6.14645 5.54427C6.24021 5.63804 6.36739 5.69071 6.5 5.69071C6.63261 5.69071 6.75979 5.63804 6.85355 5.54427L11.6907 0.707107L12.2929 1.30929Z"
-        fill="#C4C4C4"
-        stroke="#929292"
-        stroke-linejoin="round"
-      />
+        fill="#C4C4C4" stroke="#929292" stroke-linejoin="round" />
     </svg>
   </div>
   <nav>
-  <ul>
-    <li
-      (click)="expand('teams')"
-      [ngClass]="{ active: expanded === 'teams' }"
-      >
+    <ul>
+      <li (click)="expand('teams')" [ngClass]="{ active: expanded === 'teams' }">
         <span>
-          <p class="title">Equipos</p>
-          <svg
-            width="7"
-            height="12"
-            viewBox="0 0 7 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Expandir</title>
-            <path
-              d="M2 10L6 6L2 2"
-              stroke="#C4C4C4"
-              stroke-width="2"
-              stroke-linecap="square"
-              stroke-linejoin="round"
-            />
+          <p class="title">{{ 'SIDEBAR.TEAMS' | translate}}</p>
+          <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <title>{{ 'SIDEBAR.EXPAND_SIDEBAR' | translate }}</title>
+            <path d="M2 10L6 6L2 2" stroke="#C4C4C4" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
           </svg>
         </span>
         <ul class="body">
@@ -56,26 +28,16 @@
         </ul>
       </li>
       <li>
-        <a
-          routerLink="./nosotros"
-          (click)="triggerMenu()"
-          routerLinkActive="active"
-          aria-label="ir a Nosotros"
-        >
+        <a routerLink="./nosotros" (click)="triggerMenu()" routerLinkActive="active" aria-label="ir a Nosotros">
           <span>
-            <p class="title">Nosotros</p>
+            <p class="title">{{ 'SIDEBAR.ABOUT_US' | translate}}</p>
           </span>
         </a>
       </li>
       <li>
-        <a
-          routerLink="./noticias"
-          (click)="triggerMenu()"
-          routerLinkActive="active"
-          aria-label="ir a Noticias"
-        >
+        <a routerLink="./noticias" (click)="triggerMenu()" routerLinkActive="active" aria-label="ir a Noticias">
           <span>
-            <p class="title">Noticias</p>
+            <p class="title">{{ 'SIDEBAR.NEWS' | translate}}</p>
           </span>
         </a>
       </li>
@@ -115,26 +77,17 @@
         </ul>
       </li> -->
       <li>
-        <a
-          href="https://todovioleta9z.mitiendanube.com/"
-          target="_blank"
-          (click)="triggerMenu()"
-          aria-label="Ir a Familia 9z"
-        >
+        <a href="https://todovioleta9z.mitiendanube.com/" target="_blank" (click)="triggerMenu()"
+          aria-label="Ir a Familia 9z">
           <span>
-            <p class="title">Tienda</p>
+            <p class="title">{{ 'SIDEBAR.STORE' | translate}}</p>
           </span>
         </a>
       </li>
       <li>
-        <a
-          routerLink="./contacto"
-          routerLinkActive="active"
-          (click)="triggerMenu()"
-          aria-label="Ir a Familia 9z"
-        >
+        <a routerLink="./contacto" routerLinkActive="active" (click)="triggerMenu()" aria-label="Ir a Familia 9z">
           <span>
-            <p class="title">Contacto</p>
+            <p class="title">{{ 'SIDEBAR.CONTACT' | translate}}</p>
           </span>
         </a>
       </li>

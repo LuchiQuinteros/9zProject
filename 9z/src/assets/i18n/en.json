@@ -46,5 +46,14 @@
     "EMAIL_CONTACT": "You can also contact us via email",
     "FIND_SOCIAL": "You can also find us on these social media",
     "SUBMIT": "Send"
+  },
+  "SIDEBAR" : {
+    "ALL_TEAMS": "TODOS",
+    "TEAMS": "TEAMS",
+    "ABOUT_US": "ABOUT US",
+    "NEWS": "NEWS",
+    "CONTACT": "CONTACT",
+    "STORE": "STORE",
+    "EXPAND_SIDEBAR": "EXPAND"
   }
 }
