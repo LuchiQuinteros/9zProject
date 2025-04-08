@@ -1,0 +1,50 @@
+{
+  "ABOUT": {
+    "ABOUT": "ABOUT US",
+    "WHO_ARE_WE": "Who are we?",
+    "WHO_ARE_WE_DESC": "We are an Esports organization from Argentina with global relevance, formed by video game lovers driven by the Latin American passion for competing in electronic sports.",
+    "WHERE_WE_COME_FROM": "Where do we come from?",
+    "WHERE_WE_COME_FROM_DESC": "Frankkaster founded 9z Team on August 8, 2018, after dedicating 3 years to creating digital content. His passion for esports, knowledge of the audience, and a team with experience in the industry allowed 9z to quickly become a model organization for the development of professional players and content creators. In 2021, he partnered with Dale Play Group to further enhance the company’s capabilities and take the club to the next level. Thanks to our sports achievements and the quality of our content, we’ve built in just 5 years a community of fans that sets 9z apart from other teams in the region.",
+    "WHERE_ARE_WE": "Where are we now?",
+    "WHERE_ARE_WE_DESC": "After years of intense competition, 9z has established itself as one of the most important esports teams in Argentina and Latin America, thanks to historic milestones for our region such as: First esports team to qualify for and win at a Major (Antwerp 2022, Rio 2022 CS:GO) First esports team to qualify for and reach Pro League 2023 playoffs (CS:GO) Top 5 (King) in the 2018 Fortnite World Cup LVP League of Legends champion in 2018 Qualified for the 2018 FIFA World Cup in London (Yago Fawaz) First international win at Blast Premier 2020 (CS:GO) vs Vitality (Top 8 in the world) Top 20 in the world in October 2023 and still maintaining (CS2) Qualified for two ESL Challengers: Katowice 2023 and ESL 2022 (CS:GO) Qualified for two IEMs: Rio 2023 and Dallas 2023, where we reached playoffs (CS:GO)",
+    "WHERE_ARE_WE_GOING": "Where are we going?",
+    "WHERE_ARE_WE_GOING_DESC": "We work every day to achieve our vision of becoming the number 1 Spanish-speaking esports team, along with the largest fan community in Latin America. Our next goal is to internationalize the brand in Europe, where we are already seen as a surprising team in terms of competitiveness."
+  },
+  "NAV": {
+    "HOME": "HOME",
+    "TEAMS": "TEAMS",
+    "ABOUT_US": "ABOUT US",
+    "NEWS": "NEWS",
+    "CONTACT": "CONTACT",
+    "STORE": "STORE"
+  },
+  "CLUB": {
+    "FEATURED_NEWS": "Featured news",
+    "SEE_MORE": "See More",
+    "CONTINUE_READING": "CONTINUE READING",
+    "READ_MORE": "Read More",
+    "BE_PART": "Be part of the violet family",
+    "WRITE_US": "Write to us"
+  },
+  "TEAMS": {
+    "ALL_TEAMS": "All teams",
+    "PLAYERS": "Players"
+  },
+  "PLAYERS": {
+    "AGE": "AGE",
+    "NATIONALITY": "NATIONALITY",
+    "TEAM": "TEAM"
+  },
+  "CONTACT": {
+    "TITLE": "CONTACT US",
+    "CONTACT_BODY": "If you would like to get in touch with 9z Team's commercial department on behalf of brands, organizations, or personal interests.\nIf you would like to cover 9z Team's world in audiovisual journalistic media with official exclusives.\nIf you are interested in being part of the 9z Team's work team.",
+    "FORM_NAME": "Name",
+    "FORM_EMAIL": "Email",
+    "FORM_MESSAGE": "Message",
+    "ACCEPT_THE": "I accept the",
+    "PROCESSING_TERMS": "data processing terms",
+    "EMAIL_CONTACT": "You can also contact us via email",
+    "FIND_SOCIAL": "You can also find us on these social media",
+    "SUBMIT": "Send"
+  }
+}

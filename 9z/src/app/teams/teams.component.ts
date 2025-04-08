@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialService } from '../services/social.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-teams',
@@ -46,10 +47,14 @@ export class TeamsComponent implements OnInit {
       }
   ];
 
-  constructor(private socialServices: SocialService, private router: Router) {}
+  constructor(private socialServices: SocialService, private router: Router,private translate: TranslateService) {
+    this.translate.setDefaultLang('es');
+  }
 
   ngOnInit(): void {
     this.socialServices.updateMetaTags('Teams');
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
   }
 
 

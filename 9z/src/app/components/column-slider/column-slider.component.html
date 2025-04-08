@@ -1,11 +1,8 @@
 <section class="pd column-slider">
   <div *ngIf="!allNews" class="title-row">
     <h2 class="title">{{ title }}</h2>
-    <button
-      [routerLink]="['/all-news']"
-      [queryParams]="{ category: title }"
-    >
-      Ver más
+    <button [routerLink]="['/all-news']" [queryParams]="{ category: title }">
+      {{ 'CLUB.SEE_MORE' | translate }}
     </button>
     <!-- <a
       [routerLink]="['/all-news']"
@@ -23,11 +20,9 @@
           <div class="new__info">
             <p class="new__title bold">{{ new.title }}</p>
             <div class="new__text" [innerHTML]="new.newSubheader"></div>
-            <button
-            aria-label="Ir a la noticia"
-            [routerLink]="[player ? '../../noticia/' + new.slug : '../noticia/' + new.slug]"
-            >
-              Leer mas
+            <button aria-label="Ir a la noticia"
+              [routerLink]="[player ? '../../noticia/' + new.slug : '../noticia/' + new.slug]">
+              {{ 'CLUB.READ_MORE' | translate }}
             </button>
           </div>
         </div>

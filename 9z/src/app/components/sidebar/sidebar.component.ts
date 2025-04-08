@@ -35,6 +35,18 @@ export class SidebarComponent implements OnInit {
     {
       name: "Streamers",
       url: "./equipo/streamers"
+    },
+    {
+      name: "PUBG Mobile",
+      url: "./equipo/PUBG-Mobile"
+    },
+    {
+      name: "Honor of Kings",
+      url: "./equipo/HONOR-OF-KINGS"
+    },
+    {
+      name: "Mobile Legends",
+      url: "./equipo/MOBILE-LEGENDS"
     }
   ];
   constructor() { }

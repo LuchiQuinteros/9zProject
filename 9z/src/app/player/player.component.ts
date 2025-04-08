@@ -4,6 +4,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { SocialService } from '../services/social.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-player',
@@ -27,6 +28,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     private socialServices: SocialService,
     private router: Router,
     private activeRoute: ActivatedRoute,
+    private translate: TranslateService
   ) {
       router.events.subscribe(async (val) => {
         if (val instanceof NavigationEnd) {
@@ -40,6 +42,8 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
 
   async ngOnInit() {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
     let data = window.location.href.split('/jugador/').pop();
     if (data) {
       this.data = data;

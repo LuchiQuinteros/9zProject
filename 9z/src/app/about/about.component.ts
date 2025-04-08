@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SwiperOptions } from 'swiper';
 import { SocialService } from '../services/social.service';
 import { SanityService } from '../services/sanity.services';
-
-// export interface Sponsor {
-//   img: string,
-//   name: string,
-//   small?: boolean
-// }
+import { TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
 
 export interface Sponsor {
   logo: string;
@@ -97,10 +93,20 @@ export class AboutComponent implements OnInit {
       }
     }
   }
+  
   constructor(
+    private translate: TranslateService,
+    private http: HttpClient,
     private socialServices: SocialService,
     private sanityServices: SanityService
-  ) { }
+  ) {
+    this.translate.setDefaultLang('es');
+  }
+  
+  setLanguage(lang: string) {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+  }
 
   async ngOnInit() {
     await this.getSocialNetworkData();

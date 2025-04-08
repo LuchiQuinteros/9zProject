@@ -5,6 +5,7 @@ import { SanityService } from 'src/app/services/sanity.services';
 import { SocialService } from 'src/app/services/social.service';
 import { TVComponent } from 'src/app/tv/tv.component';
 import { SwiperOptions } from 'swiper';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -109,10 +110,14 @@ export class TeamComponent implements OnInit {
     private sanityServices: SanityService,
     private socialServices: SocialService,
     private activeRoute: ActivatedRoute,
+    private translate: TranslateService
     // Removed unused router
   ) { }
 
   async ngOnInit() {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
+    
     this.getScreenWidth = window.innerWidth;
       this.getScreenHeight = window.innerHeight;
     this.activeRoute.params.subscribe(async routeParams => {

@@ -3,6 +3,7 @@ import SwiperCore, {
   SwiperOptions,
   Grid
 } from "swiper";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-column-slider',
@@ -29,9 +30,13 @@ export class ColumnSliderComponent implements OnInit {
     }
   };
 
-  constructor() { }
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang('es');
+  }
 
   ngOnInit(): void {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
     if (this.allNews) {
       this.config = {
         slidesPerView: 1.5,

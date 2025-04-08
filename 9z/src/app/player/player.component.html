@@ -13,7 +13,7 @@
       <div class="columns">
         <div>
           <div >
-            <p class="label">EDAD</p>
+            <p class="label">{{ 'PLAYERS.AGE' | translate }}</p>
             <p *ngIf="player.age" class="data">{{player.age}} AÑOS</p>
           </div>
           <div *ngIf="player.role">
@@ -27,7 +27,7 @@
         </div>
         <div>
           <div *ngIf="player.nationality">
-            <p class="label">NACIONALIDAD</p>
+            <p class="label">{{ 'PLAYERS.NATIONALITY' | translate }}</p>
             <p class="data">{{player.nationality}}</p>
           </div>
           <div>
@@ -52,7 +52,7 @@
         <div class="columns">
           <div>
             <div>
-              <p class="label">AÑOS</p>
+              <p class="label">{{ 'PLAYERS.AGE' | translate }}</p>
               <p *ngIf="player?.age" class="data">{{player.age}}</p>
             </div>
             <div *ngIf="player.role">
@@ -66,7 +66,7 @@
           </div>
           <div>
             <div *ngIf="player.nationality">
-              <p class="label">NACIONALIDAD</p>
+              <p class="label">{{ 'PLAYERS.NATIONALITY' | translate }}</p>
               <p class="data">{{player.nationality}}</p>
             </div>
             <div>

@@ -1,6 +1,6 @@
 <div class="page">
   <section class="hero pd">
-    <h1 class="title">{{ category }}</h1>
+    <h1 class="title">{{ 'CLUB.FEATURED_NEWS' | translate }}</h1>
   </section>
   <app-column-slider
     *ngIf="newsList.length > 0"
@@ -10,12 +10,12 @@
   <section class="newsletter pd">
     <div class="newsletter__container">
       <div class="newsletter__info">
-        <p class="title">Contactanos</p>
+        <p class="title">{{ 'CONTACT.TITLE' | translate }}</p>
         <p class="txt">
-          Se parte de la familia violeta
+          {{ 'CLUB.BE_PART' | translate }}
         </p>
         <a [routerLink]="['/contacto']">
-          <button class="primary-btn ripple-btn"><p>Escribinos</p></button>
+          <button class="primary-btn ripple-btn"><p>{{ 'CLUB.WRITE_US' | translate }}</p></button>
         </a>
       </div>
       <div class="newsletter__img">

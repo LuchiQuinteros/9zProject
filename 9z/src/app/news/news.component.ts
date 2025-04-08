@@ -8,6 +8,7 @@ import SwiperCore, {
 import { CommonService } from '../services/common.service';
 import { SanityService } from '../services/sanity.services';
 import { SocialService } from '../services/social.service';
+import { TranslateService } from '@ngx-translate/core';
 
 SwiperCore.use([Scrollbar, Autoplay, Pagination]);
 
@@ -56,10 +57,13 @@ export class NewsComponent implements OnInit {
   constructor(
     private sanityServices: SanityService,
     private commonServices: CommonService,
-    private socialServices: SocialService
-  ) {}
+    private socialServices: SocialService,
+    private translate: TranslateService
+  ) {this.translate.setDefaultLang('es');}
 
   async ngOnInit() {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
     await this.getPageNews();
     this.socialServices.updateMetaTags('News');
     const jsonMatches = JSON.parse(localStorage.getItem('matches')!);

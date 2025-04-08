@@ -4,44 +4,21 @@
 
   <section class="tabs-wrapper pd">
     <div class="tabs">
-      <button
-        aria-label="Ver jugadores"
-        (click)="changeTab($event.target)"
-        id="player"
-        [ngClass]="{ active: tabActive === 'player' }"
-        [disabled]="players.length === 0"
-        [hidden]="!players.length"
-      >
-        Jugadores
+      <button aria-label="Ver jugadores" (click)="changeTab($event.target)" id="player"
+        [ngClass]="{ active: tabActive === 'player' }" [disabled]="players.length === 0" [hidden]="!players.length">
+        {{ 'TEAMS.PLAYERS' | translate }}
       </button>
-      <button
-        aria-label="Ver coach"
-        (click)="changeTab($event.target)"
-        id="coach"
-        [ngClass]="{ active: tabActive === 'coach' }"
-        [disabled]="!coachs.length"
-        [hidden]="!coachs.length"
-      >
+      <button aria-label="Ver coach" (click)="changeTab($event.target)" id="coach"
+        [ngClass]="{ active: tabActive === 'coach' }" [disabled]="!coachs.length" [hidden]="!coachs.length">
         Coach
       </button>
-      <button
-        aria-label="Ver manager"
-        (click)="changeTab($event.target)"
-        id="manager"
-        [ngClass]="{ active: tabActive === 'manager' }"
-        [disabled]="!managers.length"
-        [hidden]="!managers.length"
-      >
+      <button aria-label="Ver manager" (click)="changeTab($event.target)" id="manager"
+        [ngClass]="{ active: tabActive === 'manager' }" [disabled]="!managers.length" [hidden]="!managers.length">
         Manager
       </button>
-      <button
-        aria-label="Ver streamers"
-        (click)="changeTab($event.target)"
-        id="streamers"
-        [ngClass]="{ active: tabActive === 'streamers' }"
-        [disabled]="!ambassadors.length"
-        [hidden]="!ambassadors.length"
-      >
+      <button aria-label="Ver streamers" (click)="changeTab($event.target)" id="streamers"
+        [ngClass]="{ active: tabActive === 'streamers' }" [disabled]="!ambassadors.length"
+        [hidden]="!ambassadors.length">
         Streamers
       </button>
       <hr [ngStyle]="{ 'width.px': hr.width, 'margin-left.px': hr.margin }" />
@@ -52,26 +29,17 @@
         <div class="player__role">
           <p class="bold">{{ card.role }}</p>
         </div>
-        <img
-          [src]="card.imageUrl ? card.imageUrl : '../../../assets/player/1.png'"
-          alt="Ilustracion de {{ card.slug }}"
-        />
+        <img [src]="card.imageUrl ? card.imageUrl : '../../../assets/player/1.png'"
+          alt="Ilustracion de {{ card.slug }}" />
         <span class="bg__img"></span>
         <div class="player__bottom">
           <p class="title bold">{{ card.slug }}</p>
           <a routerLink="/jugador/{{ card.slug }}">
             <button class="btn-arrow" aria-label="Ver jugador en detalle">
-              <svg
-                width="15"
-                height="8"
-                viewBox="0 0 15 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M14.5612 4.32758C14.7565 4.13232 14.7565 3.81574 14.5612 3.62048L11.3792 0.438497C11.184 0.243234 10.8674 0.243234 10.6721 0.438497C10.4769 0.633759 10.4769 0.950341 10.6721 1.1456L13.5006 3.97403L10.6721 6.80246C10.4769 6.99772 10.4769 7.3143 10.6721 7.50956C10.8674 7.70483 11.184 7.70483 11.3792 7.50956L14.5612 4.32758ZM0.701172 4.47403L14.2077 4.47403L14.2077 3.47403L0.701172 3.47403L0.701172 4.47403Z"
-                  fill="#DCDCDC"
-                />
+                  fill="#DCDCDC" />
               </svg>
             </button>
           </a>
@@ -79,36 +47,23 @@
       </div>
     </div>
 
-    <swiper
-      [config]="playerSlide"
-      class="swipper-wrapper team isMobile"
-      [@listAnimation]="sliderCards"
-    >
+    <swiper [config]="playerSlide" class="swipper-wrapper team isMobile" [@listAnimation]="sliderCards">
       <ng-template swiperSlide *ngFor="let card of sliderCards">
         <div class="player__container">
           <div class="player__role">
             <p class="bold">{{ card.role }}</p>
           </div>
-          <img
-            [src]="card.imageUrl ? card.imageUrl : '../../../assets/player/1.png'"
-            alt="Ilustracion de {{ card.slug }}"
-          />
+          <img [src]="card.imageUrl ? card.imageUrl : '../../../assets/player/1.png'"
+            alt="Ilustracion de {{ card.slug }}" />
           <span class="bg__img"></span>
           <div class="player__bottom">
             <p class="title">{{ card.slug }}</p>
             <a routerLink="/jugador/{{ card.slug }}">
               <button class="btn-arrow" aria-label="Ver jugador en detalle">
-                <svg
-                  width="11"
-                  height="9"
-                  viewBox="0 0 11 9"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M10.7166 4.92191C10.9119 4.72665 10.9119 4.41007 10.7166 4.21481L7.53461 1.03283C7.33935 0.837564 7.02277 0.837564 6.82751 1.03283C6.63225 1.22809 6.63225 1.54467 6.82751 1.73993L9.65593 4.56836L6.82751 7.39679C6.63224 7.59205 6.63224 7.90863 6.82751 8.10389C7.02277 8.29916 7.33935 8.29916 7.53461 8.10389L10.7166 4.92191ZM0.984375 5.06836L10.363 5.06836L10.363 4.06836L0.984375 4.06836L0.984375 5.06836Z"
-                    fill="#DCDCDC"
-                  />
+                    fill="#DCDCDC" />
                 </svg>
               </button>
             </a>

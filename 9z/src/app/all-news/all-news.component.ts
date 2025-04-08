@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-news',
@@ -11,10 +12,15 @@ export class AllNewsComponent implements OnInit {
   category: string = '';
 
   constructor(
+    private translate: TranslateService,
     private activeRoute: ActivatedRoute
-    ) { }
+  ) {
+    this.translate.setDefaultLang('es');
+  }
 
   async ngOnInit() {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
     this.activeRoute.queryParams.subscribe(async routeParams => {
       if (routeParams.category !== undefined) {
         this.category = routeParams.category;
@@ -70,8 +76,8 @@ export class AllNewsComponent implements OnInit {
       ripple.style.top = `${top}px`;
 
       ripple.style.animation = "rippleAnimLeave 0.2s forwards";
-      setTimeout(function() {
-          btn.removeChild(ripple);
+      setTimeout(function () {
+        btn.removeChild(ripple);
       }, 350);
 
     });

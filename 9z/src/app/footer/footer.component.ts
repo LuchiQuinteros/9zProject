@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface Link {
   name: string,
@@ -49,9 +50,13 @@ export class FooterComponent implements OnInit {
       url: '../terms/privacyPolicy'
     }
   ]
-  constructor(
-  ) { }
+  constructor(private translate: TranslateService)
+  {
+    this.translate.setDefaultLang('es');
+  }
 
   ngOnInit(): void {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
   }
 }

@@ -1,11 +1,8 @@
 <section class="gaming pd">
   <div class="title-row">
     <h2 class="title">{{ title }}</h2>
-    <button
-      [routerLink]="['/all-news']"
-      [queryParams]="{ category: title }"
-    >
-      Ver más
+    <button [routerLink]="['/all-news']" [queryParams]="{ category: title }">
+      {{ 'CLUB.SEE_MORE' | translate }}
     </button>
   </div>
 
@@ -23,89 +20,53 @@
   </swiper>
   <div class="news notMobile">
     <div class="news__card news__main" (click)="redirectToNoticia(newsList[index].slug)">
-      <img
-        [src]="newsList[index].coverImageUrl"
-        alt="Portada de la noticia"
-      />
+      <img [src]="newsList[index].coverImageUrl" alt="Portada de la noticia" />
       <span>{{ newsList[index].category }}</span>
       <div class="news__info">
         <p class="info__title">{{ newsList[index].title }}</p>
-        <div
-          [innerHTML]="newsList[index].newSubheader"
-          class="news__subheader"
-        ></div>
+        <div [innerHTML]="newsList[index].newSubheader" class="news__subheader"></div>
       </div>
     </div>
 
     <div class="news__card news__related" (click)="redirectToNoticia(newsList[index - 1].slug)">
-      <img
-        [src]="newsList[index - 1].coverImageUrl"
-        alt="Portada de la noticia"
-      />
+      <img [src]="newsList[index - 1].coverImageUrl" alt="Portada de la noticia" />
       <span>{{ newsList[index - 1].category }}</span>
       <div class="news__info">
         <p class="info__title">{{ newsList[index - 1].title }}</p>
-        <div
-          [innerHTML]="newsList[index - 1].newSubheader"
-          class="news__subheader"
-        ></div>
+        <div [innerHTML]="newsList[index - 1].newSubheader" class="news__subheader"></div>
       </div>
     </div>
 
     <div class="news__card news__related" (click)="redirectToNoticia(newsList[index - 2].slug)">
-      <img
-        [src]="newsList[index - 2].coverImageUrl"
-        alt="Portada de la noticia"
-      />
+      <img [src]="newsList[index - 2].coverImageUrl" alt="Portada de la noticia" />
       <span>{{ newsList[index - 2].category }}</span>
       <div class="news__info">
         <p class="info__title">{{ newsList[index - 2].title }}</p>
-        <div
-          [innerHTML]="newsList[index - 2].newSubheader"
-          class="news__subheader"
-        ></div>
+        <div [innerHTML]="newsList[index - 2].newSubheader" class="news__subheader"></div>
       </div>
     </div>
     <div class="news__card news__related" (click)="redirectToNoticia(newsList[index - 3].slug)">
-      <img
-        [src]="newsList[index - 3].coverImageUrl"
-        alt="Portada de la noticia"
-      />
+      <img [src]="newsList[index - 3].coverImageUrl" alt="Portada de la noticia" />
       <span>{{ newsList[index - 3].category }}</span>
       <div class="news__info">
         <p class="info__title">{{ newsList[index - 3].title }}</p>
-        <div
-          [innerHTML]="newsList[index - 3].newSubheader"
-          class="news__subheader"
-        ></div>
+        <div [innerHTML]="newsList[index - 3].newSubheader" class="news__subheader"></div>
       </div>
     </div>
     <div class="news__card news__related_first_bottom" (click)="redirectToNoticia(newsList[index - 4].slug)">
-      <img
-        [src]="newsList[index - 4].coverImageUrl"
-        alt="Portada de la noticia"
-      />
+      <img [src]="newsList[index - 4].coverImageUrl" alt="Portada de la noticia" />
       <span>{{ newsList[index - 4].category }}</span>
       <div class="news__info">
         <p class="info__title">{{ newsList[index - 4].title }}</p>
-        <div
-          [innerHTML]="newsList[index - 4].newSubheader"
-          class="news__subheader"
-        ></div>
+        <div [innerHTML]="newsList[index - 4].newSubheader" class="news__subheader"></div>
       </div>
     </div>
     <div class="news__card news__related_second_bottom" (click)="redirectToNoticia(newsList[index - 5].slug)">
-      <img
-        [src]="newsList[index - 5].coverImageUrl"
-        alt="Portada de la noticia"
-      />
+      <img [src]="newsList[index - 5].coverImageUrl" alt="Portada de la noticia" />
       <span>{{ newsList[index - 5].category }}</span>
       <div class="news__info">
         <p class="info__title">{{ newsList[index - 5].title }}</p>
-        <div
-          [innerHTML]="newsList[index - 5].newSubheader"
-          class="news__subheader"
-        ></div>
+        <div [innerHTML]="newsList[index - 5].newSubheader" class="news__subheader"></div>
       </div>
     </div>
   </div>

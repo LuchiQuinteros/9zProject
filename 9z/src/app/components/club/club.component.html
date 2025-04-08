@@ -1,8 +1,8 @@
 <section class="club__wrapper pd" *ngIf="mostPopularNew !== null">
   <div class="title-row">
-    <h2 class="title">Noticias destacadas</h2>
+    <h2 class="title">{{ 'CLUB.FEATURED_NEWS' | translate}}</h2>
     <button routerLink="../noticias">
-      Ver más
+      {{ 'CLUB.SEE_MORE' | translate}}
     </button>
   </div>
   <swiper [config]="config" class="isMobile">
@@ -46,7 +46,7 @@
           <h4>{{post.title}}</h4>
           <div  class="resume" [innerHtml]="post.newResume"></div>
           <a [routerLink]="['../noticia/' + post.slug]">
-            Seguir leyendo
+            {{ 'CLUB.CONTINUE_READING' | translate}}
           </a>
           <div class="icons">
             <div class="icon-wrapper">

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import SwiperCore, {
   SwiperOptions,
 } from "swiper";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-gaming',
@@ -19,7 +20,7 @@ export class GamingComponent implements OnInit {
     slidesPerView: 1.20,
     spaceBetween: 15,
     breakpoints: {
-       765: {
+      765: {
         slidesPerView: 2,
       },
       1024: {
@@ -29,7 +30,9 @@ export class GamingComponent implements OnInit {
   };
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private translate: TranslateService) {
+    this.translate.setDefaultLang('es');
+  }
 
   redirectToNoticia(slug: String) {
     // Redirige a la URL deseada al hacer clic en la tarjeta
@@ -37,6 +40,8 @@ export class GamingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
     this.index = this.newsList.length - 1;
     this.newsList = this.newsList.reverse();
   }

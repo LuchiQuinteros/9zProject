@@ -1,22 +1,23 @@
-  import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-  import SwiperCore, {
-    SwiperOptions,
-  } from "swiper";
+import SwiperCore, {
+  SwiperOptions,
+} from "swiper";
+import { TranslateService } from '@ngx-translate/core';
 
-  @Component({
-    selector: 'app-team-cards',
-    templateUrl: './team-cards.component.html',
-    styleUrls: ['./team-cards.component.scss']
-  })
-  export class TeamCardsComponent implements OnInit {
+@Component({
+  selector: 'app-team-cards',
+  templateUrl: './team-cards.component.html',
+  styleUrls: ['./team-cards.component.scss']
+})
+export class TeamCardsComponent implements OnInit {
 
   @Input() slides: Array<any> = [];
   @Input() title: string = '';
   @Input() player: any = null;
-  players:  Array<any> = [];
+  players: Array<any> = [];
   ready: any = false;
-    config: SwiperOptions = {
+  config: SwiperOptions = {
     slidesPerView: 1,
     centeredSlides: true,
     spaceBetween: 15,
@@ -37,14 +38,18 @@ import { ActivatedRoute } from '@angular/router';
         navigation: {
           nextEl: '.swiper-button-next-team',
           prevEl: '.swiper-button-prev-team',
-          },
         },
-      }
-    };
+      },
+    }
+  };
 
-    constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private translate: TranslateService) { 
+    this.translate.setDefaultLang('es');
+   }
 
   async ngOnInit() {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
     this.route.paramMap.subscribe((params) => {
       this.checkPlayers(params);
     });

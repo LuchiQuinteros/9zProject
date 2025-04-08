@@ -1,28 +1,35 @@
 .page {
-    padding-bottom: unset;
-    position: relative;
-    background: url('../../../assets/newsletter/background-newsletter.png') , linear-gradient(270deg, rgba(0, 0, 0, 0) 5.17%, rgba(126, 45, 249, 0.16) 20.21%, rgba(126, 45, 249, 0.2) 48.94%, rgba(126, 45, 249, 0.16) 66.27%, rgba(0, 0, 0, 0) 92.72%);
-    mix-blend-mode: exclusion;
+  padding-bottom: unset;
+  position: relative;
+  background: url("../../../assets/newsletter/background-newsletter.png"),
+    linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) 5.17%,
+      rgba(126, 45, 249, 0.16) 20.21%,
+      rgba(126, 45, 249, 0.2) 48.94%,
+      rgba(126, 45, 249, 0.16) 66.27%,
+      rgba(0, 0, 0, 0) 92.72%
+    );
+  mix-blend-mode: exclusion;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media (max-width: 767px) {
+    background-position: right center;
+    mix-blend-mode: unset;
+    background: url("../../../assets/newsletter/background-newsletter.png");
     background-repeat: no-repeat;
     background-size: cover;
 
-    @media (max-width: 767px) {
-        background-position: right center;
-        mix-blend-mode: unset;
-        background: url('../../../assets/newsletter/background-newsletter.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-
-
-        &::after {
-            content: '';
-            background:#0E001ECC;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            z-index: -1;
-        }
+    &::after {
+      content: "";
+      background: #0e001ecc;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: -1;
     }
+  }
 }
 
 .social {
@@ -44,7 +51,9 @@
 
     svg {
       fill: #838383;
-      transition: filter 150ms ease-in-out, fill 150ms ease-in-out;
+      transition:
+        filter 150ms ease-in-out,
+        fill 150ms ease-in-out;
 
       &:hover {
         fill: var(--9z-primary);
@@ -75,7 +84,9 @@
     flex-direction: column;
     svg {
       fill: #838383;
-      transition: filter 150ms ease-in-out, fill 150ms ease-in-out;
+      transition:
+        filter 150ms ease-in-out,
+        fill 150ms ease-in-out;
 
       &:hover {
         fill: var(--9z-primary);
@@ -85,160 +96,158 @@
   }
 }
 
-
 .form {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  margin-top: 15rem;
+  padding-block: 2rem 10rem;
+
+  .container {
+    max-width: 60rem;
+
+    @media (max-width: 767px) {
+      padding-inline: clamp(0vw, 0rem, 0vw);
+      place-items: center;
+      display: grid;
+    }
+  }
+  .form__container {
+    position: relative;
+    place-items: baseline;
+    border: 1px solid var(--9z-primary);
+    border-radius: 8px;
+    box-shadow: 15px 15px 50px 0px #170927;
+    background: linear-gradient(146.34deg, rgba(126, 45, 249, 0.35) 6.18%, rgba(66, 0, 145, 0.35) 100%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    padding: min(7rem, 5vw);
     display: flex;
-    flex-flow: column;
-    width: 100%;
-    margin-top: 15rem;
-    padding-block: 2rem 10rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+    @media (max-width: 767px) {
+      padding-inline: clamp(0vw, 0rem, 0vw);
 
-    .container {
-        max-width: 60rem;
-
-        @media (max-width: 767px) {
-            padding-inline: clamp(0vw, 0rem, 0vw);
-            place-items: center;
-            display: grid;
-        }
+      background: unset;
+      border: none;
+      box-shadow: none;
     }
-    .form__container {
-        position: relative;
-        place-items: baseline;
-        border: 1px solid var(--9z-primary);
-        border-radius: 8px;
-        box-shadow: 15px 15px 50px 0px #170927;
-        background: linear-gradient(146.34deg, rgba(126, 45, 249, 0.35) 6.18%, rgba(66, 0, 145, 0.35) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-        padding: min(7rem, 5vw);
-
-        @media (max-width: 767px) {
-          padding-inline: clamp(0vw, 0rem, 0vw);
-
-            background: unset;
-            border: none;
-            box-shadow: none;
-        }
-    }
- }
-
+  }
+}
 
 h1 {
-    font-size: 2.6rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    width: 100%;
+  font-size: 2.6rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
 }
 
 p {
-    text-align: center;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    flex-flow: column;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+.input-wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid rgba(151, 151, 151, 0.5);
+  margin-top: 4rem;
+  padding-bottom: 1rem;
+
+  input {
+    background: transparent;
     width: 100%;
-}
+    color: #f2eae4;
+    outline: none;
+    flex-grow: 1;
 
-.input-wrapper {
-  display: flex;
-  position: relative;
-  width: 100%;
-  border-bottom: 1px solid rgba(151, 151, 151, 0.5);
-  margin-top: 4rem;
-  padding-bottom: 1rem;
-
-    input {
-      background: transparent;
-      width: 100%;
-      color: #F2EAE4;
-      outline: none;
-      flex-grow: 1;
-
-      &::-webkit-calendar-picker-indicator {
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%2397979780" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
-      }
+    &::-webkit-calendar-picker-indicator {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%2397979780" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
     }
+  }
 
-    textarea {
-        background: transparent;
-        width: 100%;
-        color: #F2EAE4;
-        outline: none;
-        flex-grow: 1;
-      }
-      
-      textarea::-webkit-calendar-picker-indicator {
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%2397979780" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9-2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
-      }
+  textarea {
+    background: transparent;
+    width: 100%;
+    color: #f2eae4;
+    outline: none;
+    flex-grow: 1;
+  }
 
-    .svg-wrapper {
-        position: relative;
-        right: 0;
-        pointer-events: none;
+  textarea::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%2397979780" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9-2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+  }
 
-        svg {
-            fill: var(--9z-primary);
-            opacity: 0;
-            transition: opacity 250ms ease-in-out;
-        }
+  .svg-wrapper {
+    position: relative;
+    right: 0;
+    pointer-events: none;
 
-        &::after {
-            position: absolute;
-            content: 'Este campo es obligatorio';
-            font-size: 1.2rem;
-            padding: 0.5rem 1rem;
-            background: rgba(13, 13, 13, 0.7);
-            border: 1px solid var(--9z-primary);
-            border-radius: 4px;
-            right: 1rem;
-            top: -125%;
-            white-space: nowrap;
-            transform: scale(0);
-            transition: transform 250ms ease-in-out;
-            transform-origin: bottom right;
-        }
-
-        &:hover::after {
-            transform: scale(1);
-        }
-
-        &:active::after {
-            transform: scale(1);
-        }
+    svg {
+      fill: var(--9z-primary);
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
     }
-
-
 
     &::after {
-        content: '';
-        position: absolute;
-        bottom: -1px;
-        left: 50%;
-        width: 0;
-        height: 1px;
-        background: #6701E1;
-        box-shadow: 0px 0px 10px #6701E1;
-        z-index: 2;
-        transition: 400ms;
+      position: absolute;
+      content: "Este campo es obligatorio";
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+      background: rgba(13, 13, 13, 0.7);
+      border: 1px solid var(--9z-primary);
+      border-radius: 4px;
+      right: 1rem;
+      top: -125%;
+      white-space: nowrap;
+      transform: scale(0);
+      transition: transform 250ms ease-in-out;
+      transform-origin: bottom right;
     }
 
-    &:focus-within::after {
-        width: 100%;
-        left: 0;
+    &:hover::after {
+      transform: scale(1);
     }
 
-    &.error {
-        .svg-wrapper {
-            pointer-events: auto;
-
-            svg {
-                opacity: 1;
-            }
-        }
-
-
+    &:active::after {
+      transform: scale(1);
     }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: #6701e1;
+    box-shadow: 0px 0px 10px #6701e1;
+    z-index: 2;
+    transition: 400ms;
+  }
+
+  &:focus-within::after {
+    width: 100%;
+    left: 0;
+  }
+
+  &.error {
+    .svg-wrapper {
+      pointer-events: auto;
+
+      svg {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 button {
@@ -252,22 +261,27 @@ button {
   --x: 0;
   position: relative;
   overflow: hidden;
-  transition:border-color var(--transition), opacity var(--transition);
+  transition:
+    border-color var(--transition),
+    opacity var(--transition);
   display: flex;
   justify-content: center;
   place-items: center;
   cursor: pointer;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute !important;
     top: var(--y);
     left: var(--x);
     width: 0;
     height: 0;
-    background-color: #7E2DF9;
+    background-color: #7e2df9;
     opacity: 0.4;
-    transition: width var(--transition), height var(--transition), opacity var(--transition);
+    transition:
+      width var(--transition),
+      height var(--transition),
+      opacity var(--transition);
     transform: translate(-50%, -50%);
     border-radius: 50%;
     display: block;
@@ -279,9 +293,7 @@ button {
     z-index: 99;
     font-size: 1.6rem;
     font-weight: 400;
-
   }
-
 
   &:hover {
     border-color: transparent;
@@ -293,10 +305,9 @@ button {
     }
   }
 
-
   &:disabled {
-      opacity: 0.5;
-      pointer-events: none;
+    opacity: 0.5;
+    pointer-events: none;
   }
 }
 
@@ -308,85 +319,81 @@ button {
   margin-top: 4rem;
   padding-bottom: 1rem;
 
-    input {
-      background: transparent;
-      width: 100%;
-      color: #F2EAE4;
-      outline: none;
-      flex-grow: 1;
+  input {
+    background: transparent;
+    width: 100%;
+    color: #f2eae4;
+    outline: none;
+    flex-grow: 1;
 
-      &::-webkit-calendar-picker-indicator {
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%2397979780" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
-      }
+    &::-webkit-calendar-picker-indicator {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%2397979780" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
     }
+  }
 
-    .svg-wrapper {
-        position: relative;
-        right: 0;
-        pointer-events: none;
+  .svg-wrapper {
+    position: relative;
+    right: 0;
+    pointer-events: none;
 
-        svg {
-            fill: var(--9z-primary);
-            opacity: 0;
-            transition: opacity 250ms ease-in-out;
-        }
-
-        &::after {
-            position: absolute;
-            content: 'Este campo es obligatorio';
-            font-size: 1.2rem;
-            padding: 0.5rem 1rem;
-            background: rgba(13, 13, 13, 0.7);
-            border: 1px solid var(--9z-primary);
-            border-radius: 4px;
-            right: 1rem;
-            top: -125%;
-            white-space: nowrap;
-            transform: scale(0);
-            transition: transform 250ms ease-in-out;
-            transform-origin: bottom right;
-        }
-
-        &:hover::after {
-            transform: scale(1);
-        }
-
-        &:active::after {
-            transform: scale(1);
-        }
+    svg {
+      fill: var(--9z-primary);
+      opacity: 0;
+      transition: opacity 250ms ease-in-out;
     }
-
-
 
     &::after {
-        content: '';
-        position: absolute;
-        bottom: -1px;
-        left: 50%;
-        width: 0;
-        height: 1px;
-        background: #6701E1;
-        box-shadow: 0px 0px 10px #6701E1;
-        z-index: 2;
-        transition: 400ms;
+      position: absolute;
+      content: "Este campo es obligatorio";
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+      background: rgba(13, 13, 13, 0.7);
+      border: 1px solid var(--9z-primary);
+      border-radius: 4px;
+      right: 1rem;
+      top: -125%;
+      white-space: nowrap;
+      transform: scale(0);
+      transition: transform 250ms ease-in-out;
+      transform-origin: bottom right;
     }
 
-    &:focus-within::after {
-        width: 100%;
-        left: 0;
+    &:hover::after {
+      transform: scale(1);
     }
 
-    &.error {
-        .svg-wrapper {
-            pointer-events: auto;
-
-            svg {
-                opacity: 1;
-            }
-        }
-
-
+    &:active::after {
+      transform: scale(1);
     }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: #6701e1;
+    box-shadow: 0px 0px 10px #6701e1;
+    z-index: 2;
+    transition: 400ms;
+  }
+
+  &:focus-within::after {
+    width: 100%;
+    left: 0;
+  }
+
+  &.error {
+    .svg-wrapper {
+      pointer-events: auto;
+
+      svg {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 button {
@@ -400,22 +407,27 @@ button {
   --x: 0;
   position: relative;
   overflow: hidden;
-  transition:border-color var(--transition), opacity var(--transition);
+  transition:
+    border-color var(--transition),
+    opacity var(--transition);
   display: flex;
   justify-content: center;
   place-items: center;
   cursor: pointer;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute !important;
     top: var(--y);
     left: var(--x);
     width: 0;
     height: 0;
-    background-color: #7E2DF9;
+    background-color: #7e2df9;
     opacity: 0.4;
-    transition: width var(--transition), height var(--transition), opacity var(--transition);
+    transition:
+      width var(--transition),
+      height var(--transition),
+      opacity var(--transition);
     transform: translate(-50%, -50%);
     border-radius: 50%;
     display: block;
@@ -427,9 +439,7 @@ button {
     z-index: 99;
     font-size: 1.6rem;
     font-weight: 400;
-
   }
-
 
   &:hover {
     border-color: transparent;
@@ -441,87 +451,89 @@ button {
     }
   }
 
-
   &:disabled {
-      opacity: 0.5;
-      pointer-events: none;
+    opacity: 0.5;
+    pointer-events: none;
   }
 }
 
 .form__checkbox {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 2em auto;
+  gap: 2em;
+  margin-top: 4rem;
+  font-size: 1rem;
+  
+
+  p,
+  a {
+    color: #bcbcbc;
+    font-size: 1.4rem;
+    text-align: left;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
     display: grid;
-    align-items: center;
-    grid-template-columns: 2em auto;
-    gap: 2em;
-    margin-top: 4rem;
-    font-size: 1rem;
+    place-content: center;
+    background: rgba(126, 45, 249, 0.1);
+    box-shadow: 0px 0px 1px rgba(103, 1, 225, 0.3);
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 2em;
+    height: 2em;
+    border-radius: 2px;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    outline: 1px solid #7e2df9;
 
-    p, a {
-        color: #BCBCBC;
-        font-size: 1.4rem;
-        text-align: left;
+    &::before {
+      content: "";
+      width: 1.5em;
+      height: 1.5em;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em var(--9z-primary);
+      background-color: CanvasText;
+      transform-origin: bottom left;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
     }
 
-    a {
-        text-decoration: underline;
+    &:checked::before {
+      transform: scale(1);
     }
 
-    input[type="checkbox"] {
-        -webkit-appearance: none;
-        appearance: none;
-        display: grid;
-        place-content: center;
-        background: rgba(126, 45, 249, 0.1);
-        box-shadow: 0px 0px 1px rgba(103, 1, 225, 0.3);
-        margin: 0;
-        font: inherit;
-        color: currentColor;
-        width: 2em;
-        height: 2em;
-        border-radius: 2px;
-        border-radius: 0.15em;
-        transform: translateY(-0.075em);
-
-        &::before {
-            content: "";
-            width: 1.5em;
-            height: 1.5em;
-            transform: scale(0);
-            transition: 120ms transform ease-in-out;
-            box-shadow: inset 1em 1em var(--9z-primary);
-            background-color: CanvasText;
-            transform-origin: bottom left;
-            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        }
-
-        &:checked::before {
-            transform: scale(1);
-        }
-
-        &:focus {
-            outline: max(1px, 0.15em) solid var(--9z-primary);
-            outline-offset: max(2px, 0.15em);
-        }
+    &:focus {
+      outline: max(1px, 0.15em) solid var(--9z-primary);
+      outline-offset: max(2px, 0.15em);
     }
+  }
 }
-
 
 @media (min-width: 1023px) {
   /*   .form {
         padding-inline: 0;
     } */
 
-    h1 {
-        font-size: 3rem;
-    }
+  h1 {
+    font-size: 3rem;
+  }
 
-    p {
-        font-size: 2rem;
-    }
+  p {
+    font-size: 2rem;
+  }
 
-    .form__checkbox {
-        p, a{
-            font-size: 1.6rem;
-        }
+  .form__checkbox {
+    p,
+    a {
+      font-size: 1.6rem;
     }
+  }
 }

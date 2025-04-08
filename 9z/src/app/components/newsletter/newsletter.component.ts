@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SanityService } from 'src/app/services/sanity.services';
 import { Meta, Title } from '@angular/platform-browser';
 import { SocialService } from 'src/app/services/social.service';
+import { TranslateService } from '@ngx-translate/core';
 
 interface Form {
   name: string | boolean,
@@ -35,10 +36,13 @@ export class NewsletterComponent implements OnInit {
 
   constructor(
     private sanityService: SanityService,
-    private socialServices: SocialService
-  ) { }
+    private socialServices: SocialService,
+    private translate: TranslateService
+  ) { this.translate.setDefaultLang('es'); }
 
   ngOnInit(): void {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
     this.socialServices.updateMetaTags('Member');
     let today = new Date().toISOString().split("T")[0];
     let datePicker = document.getElementById('birthdate')!;
