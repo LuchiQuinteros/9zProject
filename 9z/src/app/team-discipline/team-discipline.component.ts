@@ -72,6 +72,13 @@ export class TeamDisciplineComponent implements OnInit {
       redirect: '/equipo/MOBILE-LEGENDS',
     },
   ];
+  teamRainbowSix: Array<any> = [
+    {
+      name: 'RAINBOW SIX SIEGUE',
+      image: '../../assets/teams/R6.png',
+      redirect: '/equipo/rainbow-six',
+    },
+  ];
 
 
   constructor(private socialServices: SocialService, private router: Router) {
@@ -102,6 +109,10 @@ export class TeamDisciplineComponent implements OnInit {
 
     if(pathFragment == '/disciplina/mobile-legends') {
       this.teams = this.teamMobileLegends;
+    }
+
+    if(pathFragment == '/disciplina/rainbow-six') {
+      this.teams = this.teamRainbowSix;
     }
   }
 

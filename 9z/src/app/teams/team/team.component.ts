@@ -75,6 +75,11 @@ export class TeamComponent implements OnInit {
       name: 'MOBILE-LEGENDS',
       image: '../../../assets/teams/ML.png',
       imageMb: '../../../assets/teams/ML.png',
+    },
+    {
+      name: 'rainbow-six',
+      image: '../../../assets/teams/R6.png',
+      imageMb: '../../../assets/teams/R6.png',
     }
   ];
 
@@ -218,8 +223,10 @@ export class TeamComponent implements OnInit {
       } else if (data === 'MOBILE-LEGENDS') {
         this.game = 'mobile-legends';
         this.team = 'main';
-      } 
-      else {
+      } else if (data === 'rainbow-six') {
+        this.game = 'rainbow-six';
+        this.team = 'main';
+      } else {
         this.game = data.replace('-', ' ');
       }
     }
