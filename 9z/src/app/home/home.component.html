@@ -1,6 +1,12 @@
 <div class="page">
-  <section class="hero home">
-    <img id="vid" src="/assets/home/Header.png" />
+  <section class="hero home" style="height: auto;">
+    <swiper [config]="configHero" class="hero-swiper" style="height: auto;">
+      <ng-template swiperSlide *ngFor="let slide of heroSlides">
+        <a [href]="slide.url" target="_blank">
+          <img [src]="slide.image" [alt]="slide.title" style="height: auto; width: 100%;" />
+        </a>
+      </ng-template>
+    </swiper>
   </section>
   <section class="socialSection isMobile">
     <a href="https://www.twitch.tv/9zteam/" target="_blank" title="Twitch">
