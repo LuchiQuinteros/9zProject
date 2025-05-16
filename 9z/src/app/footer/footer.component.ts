@@ -42,6 +42,10 @@ export class FooterComponent implements OnInit {
       url: './contacto'
     },
     {
+      name: "9Z PRO",
+      url: './9z-pro'
+    },
+    {
       name: "Términos y condiciones",
       url: '../terms/termsAndConditions'
     },

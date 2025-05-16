@@ -59,7 +59,7 @@ export class TeamsComponent implements OnInit {
   ngOnInit(): void {
     this.socialServices.updateMetaTags('Teams');
     const savedLang = localStorage.getItem('lang') || 'es';
-    this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
+    this.translate.use(savedLang);
   }
 
 

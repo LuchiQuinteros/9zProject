@@ -1,0 +1,33 @@
+<section>
+    <div class="z-pro">
+        <div class="title">
+            <h1>Soporte Tecnico</h1>
+        </div>
+
+        <div class="categories">
+            <h2>{{ selectedCategory === 'mouse' ? 'Mouse Software' : 'Teclado Software' }}</h2>
+            <div class="cats">
+                <div *ngFor="let cat of Cats" class="category" (click)="setCategory(cat.name)"
+                    [class.active]="selectedCategory === cat.name.toLowerCase()">
+                    <span [innerHTML]="cat.img"></span>
+                    <span>{{ cat.name }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content" *ngFor="let item of filteredCards">
+                <a [href]="item.url.replace('/file/d/', '/uc?export=download&id=').replace('/view?usp=sharing', '')"
+                    target="_blank" download>
+                    <div class="platform-info">
+                        <img [src]="item.img" [alt]="item.title">
+                        <span class="nombre">{{ item.title }}</span>
+                        <div class="hover-overlay">
+                            <span class="descargar">Descargar</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

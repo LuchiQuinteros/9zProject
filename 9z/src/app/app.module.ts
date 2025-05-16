@@ -39,6 +39,7 @@ import { PreloaderComponent } from './preloader/preloader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VideosComponent } from './videos/videos.component';
 import { AllNewsComponent } from './all-news/all-news.component';
+import { NinezPro } from './9zpro/Zpro.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { SponsorFooterComponent } from './sponsor-footer/sponsor-footer.component';
@@ -48,6 +49,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 
+import { CommonModule } from '@angular/common';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
@@ -93,6 +95,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PreloaderComponent,
     VideosComponent,
     AllNewsComponent,
+    NinezPro,
     ComingSoonComponent,
     TermsAndConditionsComponent,
     SponsorFooterComponent,
@@ -114,6 +117,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     SwiperModule,
     ShareButtonsModule,
+    CommonModule,
     ShareIconsModule,
     ScullyLibModule,
     FormsModule,

@@ -15,6 +15,7 @@ import { AllNewsComponent } from './all-news/all-news.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { TeamDisciplineComponent } from './team-discipline/team-discipline.component';
+import { NinezPro } from './9zpro/Zpro.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,12 @@ const routes: Routes = [
     component: NewsComponent,
     pathMatch: 'full',
     data: { animation: 'news' },
+  },
+  {
+    path: '9z-pro',
+    component: NinezPro,
+    pathMatch: 'full',
+    data: { animation: 'teams' },
   },
   {
     path: 'nosotros',
