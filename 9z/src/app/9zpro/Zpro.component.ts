@@ -13,39 +13,39 @@ export class NinezPro implements OnInit {
 
     CardInfo = [
         {
-            title: "Teclado Ghost Blanco",
+            title: "",
             url: 'https://drive.google.com/file/d/13G-kRKCcfTq1OG3avuwp1Ew-MBqfqjNk/view?usp=sharing',
-            img: '../../assets/media/k-ghost-w.webp',
+            img: '../../assets/media/Z-Ghost-White.webp',
             category: 'keyboard'
         },
         {
-            title: "Teclado Ghost Negro",
+            title: "",
             url: 'https://drive.google.com/file/d/13G-kRKCcfTq1OG3avuwp1Ew-MBqfqjNk/view?usp=sharing',
-            img: '../../assets/media/k-ghost.webp',
+            img: '../../assets/media/Z-Ghost-Black.webp',
             category: 'keyboard'
         },
         {
-            title: "Teclado Ghoul Blanco",
+            title: "",
             url: 'https://drive.google.com/file/d/1JIvAxvAFOvcEyuCjj5jzGOPWKVNI_yDK/view?usp=sharing',
-            img: '../../assets/media/k-ghoul.webp',
+            img: '../../assets/media/Z-Ghoul.webp',
             category: 'keyboard'
         },
         {
-            title: "Mouse 9Z Shade Lite Negro",
+            title: "",
             url: 'https://drive.google.com/file/d/1ceQXsfTa6bBdxOXqOzR5Jbu1S8d1UpRm/view?usp=sharing',
-            img: '../../assets/media/m-shade-lite.webp',
+            img: '../../assets/media/Z-Shade-Lite.webp',
             category: 'mouse'
         },
         {
-            title: "Mouse 9Z Shade Pro Negro",
+            title: "",
             url: 'https://drive.google.com/file/d/1oHTKQ4lIxv8tfNC9ThhzqpAvdR47BKMp/view?usp=sharing',
-            img: '../../assets/media/m-shade-n.webp',
+            img: '../../assets/media/Z-Shade-Pro.webp',
             category: 'mouse'
         },
         {
-            title: "Mouse 9Z Spectre Violeta",
+            title: "",
             url: 'https://drive.google.com/file/d/11n-lbnsGlghN0a1tR6KcioGvOIKJ-1hr/view?usp=sharing',
-            img: '../../assets/media/m-spectre-v.webp',
+            img: '../../assets/media/Z-Spectre.webp',
             category: 'mouse'
         },
     ];
