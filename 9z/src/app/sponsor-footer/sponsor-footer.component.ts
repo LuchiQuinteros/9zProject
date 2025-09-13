@@ -66,5 +66,9 @@ export class SponsorFooterComponent implements OnInit {
     if (response?.logos) {
       this.sponsors = response.logos;
     }
-  } 
+  }
+
+  redirectToSponsor() {
+    window.open('https://cropped.link/9zsite', '_blank');
+  }
 }

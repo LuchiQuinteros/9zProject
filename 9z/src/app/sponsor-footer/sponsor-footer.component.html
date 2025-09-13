@@ -1,8 +1,10 @@
 <header id="head" class="footer-sponsor sticky-footer">
-        <div class="content-icons">
+    <div class="content-icons">
 
-            <div class="sponsors">
-                <img [ngClass]="{'small': sponsor.name === 'Logitech'}" *ngFor="let sponsor of sponsors" [src]="sponsor.logo" [alt]="sponsor.name" [title]="sponsor.name" />
-            </div>
+        <div class="sponsors">
+            <img [ngClass]="{'small': sponsor.name === 'Logitech'}" *ngFor="let sponsor of sponsors"
+                [src]="sponsor.logo" [alt]="sponsor.name" [title]="sponsor.name" 
+                (click)="redirectToSponsor()" style="cursor: pointer;" />
         </div>
+    </div>
 </header>
