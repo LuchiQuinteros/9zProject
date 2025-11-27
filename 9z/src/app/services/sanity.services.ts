@@ -18,9 +18,63 @@ export class SanityService {
   token: string =
     'Bearer skL8NvFrTjCl0odLPnhpV8i7j7ra5ChjGzq1E8di4DKtV5jmvgyJGELp5CmInoaT0xwvoU93wLwFd5EspcKPqWGL6ZUzuw8CF1qdBkXmveK2Hzm8zcMS9X9lVdPnavjVjEJzeIY7rARiHfnkrElkqxVQHIH3anajESg02p8F5AAWbardLtzc';
 
+  private cacheExpiration: number = 30 * 60 * 1000;
+
   constructor(
     private http: HttpClient,
   ) {}
+
+  private isCacheValid(cacheKey: string): boolean {
+    const cached = localStorage.getItem(cacheKey);
+    if (!cached) return false;
+
+    try {
+      const data = JSON.parse(cached);
+      if (!data.timestamp) return false;
+
+      const now = new Date().getTime();
+      return (now - data.timestamp) < this.cacheExpiration;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  private setCache(cacheKey: string, data: any): void {
+    const cacheData = {
+      timestamp: new Date().getTime(),
+      data: data
+    };
+    localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+  }
+
+  private getCache(cacheKey: string): any {
+    const cached = localStorage.getItem(cacheKey);
+    if (!cached) return null;
+
+    try {
+      const cacheData = JSON.parse(cached);
+      return cacheData.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+
+  clearCache(cacheKey?: string): void {
+    if (cacheKey) {
+      localStorage.removeItem(cacheKey);
+      console.log(`Caché limpiado: ${cacheKey}`);
+    } else {
+      const keys = [
+        'news', 'games', 'teams', 'categories', 'matches', 
+        'achievements', 'shownCategories', 'teamMembers', 
+        'videoGalleries', 'home', 'pageNews', 'sponsors',
+        'streamers', 'youtubeRefreshToken'
+      ];
+      keys.forEach(key => localStorage.removeItem(key));
+      console.log('Todo el caché de Sanity ha sido limpiado');
+    }
+  }
 
   async registerUser(form: any) {
 
@@ -31,11 +85,6 @@ export class SanityService {
       email: form.email,
       nationality: form.nationality,
     }
-
-    // const result = await client.create(member);
-
-    // console.log(result);
-
     let r: any = await this.http
     .post<any>(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/mutate/production`,
@@ -53,11 +102,18 @@ export class SanityService {
   }
 
   async getNews() {
+    if (this.isCacheValid('news')) {
+      console.log('Usando noticias desde caché');
+      return;
+    }
+
+    console.log('Descargando noticias desde Sanity');
+    
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=*[_type == 'news']{
         date,
-        "coverImageUrl": cover_image.asset->url,
+        "coverImageUrl": cover_image.asset->url + "?w=800&h=450&fit=crop&auto=format&q=75",
         title,
         subtitle,
         subheader,
@@ -67,41 +123,18 @@ export class SanityService {
         readingTime,
         isFeaturedNew,
         "category": category->title,
-        "game": game->{ name, "logo": logo.asset->url },
+        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
         teamMember
       }
       `
     )
     .toPromise();
 
-    // const query = `*[_type == 'news']{
-    //   date,
-    //   "coverImageUrl": cover_image.asset->url,
-    //   title,
-    //   subtitle,
-    //   subheader,
-    //   resume,
-    //   content,
-    //   urlNew,
-    //   readingTime,
-    //   isFeaturedNew,
-    //   isBannerNew,
-    //   isHeroNew,
-    //   "category": categoryNews->title,
-    //   "game": game->{ name, logo },
-    //   teamMember
-    // }`;
-
-    // let response = await client.fetch(query)
-
     response.result.forEach((post: any) => {
       var dateMomentObject = moment(post.date, 'DD/MM/YYYY');
       post.newDate = dateMomentObject.toDate();
       if (post.title) {
         post.slug = this.getName(post.title);
-      }
-      if (post.coverImageUrl) {
-        post.coverImageUrl += '?auto=format'
       }
       if (post.content) {
         post.newContent = this.convertBlockContentToHtml(post.content);
@@ -120,74 +153,65 @@ export class SanityService {
     if (response !== undefined) {
       response.result.sort((a: any, b: any) => a.newDate - b.newDate).reverse();
 
-      localStorage.setItem('news', JSON.stringify(response));
+      this.setCache('news', response);
     }
   }
 
   async getGames() {
+    if (this.isCacheValid('games')) {
+      const cached = this.getCache('games');
+      return cached?.result;
+    }
+
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
       *[_type == 'game']{
         _id,
         name,
-        "logoImageUrl": logo.asset->url
+        "logoImageUrl": logo.asset->url + "?w=200&h=200&fit=crop&auto=format&q=80"
       }`
     )
     .toPromise();
 
-    // const query = `*[_type == 'game']{
-    //   _id,
-    //   name,
-    //   "logoImageUrl": logo.asset->url
-    // }`;
-
-    // let response = await client.fetch(query);
-
-    response.result.forEach((game: any) => {
-      if (game.logoImageUrl) {
-        game.logoImageUrl += '?auto=format'
-      }
-    })
-
     if (response?.result) {
+      this.setCache('games', response);
       return response.result;
     }
   }
 
   async getTeams() {
+    if (this.isCacheValid('teams')) {
+      console.log('Usando equipos desde caché');
+      return;
+    }
+
+    console.log('Descargando equipos desde Sanity');
+    
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
       *[_type == 'team']{
         _id,
         name,
-        "logoImageUrl": logo.asset->url
+        "logoImageUrl": logo.asset->url + "?w=200&h=200&fit=crop&auto=format&q=80"
       }`
     )
     .toPromise();
 
-    // const query = `*[_type == 'team']{
-    //   _id,
-    //   name,
-    //   "logoImageUrl": logo.asset->url
-    // }`;
-
-    // let response = await client.fetch(query);
-
-    response.result.forEach((game: any) => {
-      if (game.logoImageUrl) {
-        game.logoImageUrl += '?auto=format'
-      }
-    })
-
-
     if (response !== undefined) {
-      localStorage.setItem('teams', JSON.stringify(response));
+      this.setCache('teams', response);
     }
   }
 
   async getCategories() {
+    if (this.isCacheValid('categories')) {
+      console.log('Usando categorías desde caché');
+      return;
+    }
+
+    console.log('Descargando categorías desde Sanity');
+    
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -198,19 +222,19 @@ export class SanityService {
     )
     .toPromise();
 
-    // const query = `*[_type == 'categoryNews']{
-    //   _id,
-    //   title,
-    // }`;
-
-    // let response = await client.fetch(query);
-
     if (response !== undefined) {
-      localStorage.setItem('categories', JSON.stringify(response));
+      this.setCache('categories', response);
     }
   }
 
   async getMatches() {
+    if (this.isCacheValid('matches')) {
+      console.log('Usando partidas desde caché');
+      return;
+    }
+
+    console.log('Descargando partidas desde Sanity');
+    
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -218,9 +242,9 @@ export class SanityService {
         date,
         time,
         tournament,
-        "team1": team1->{ name, "logo": logo.asset->url },
-        "team2": team2->{ name, "logo": logo.asset->url },
-        "game": game->{ name, "logo": logo.asset->url },
+        "team1": team1->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
+        "team2": team2->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
+        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
         result1,
         result2,
         "teamMember": teamMember->slug,
@@ -230,22 +254,6 @@ export class SanityService {
     )
     .toPromise();
 
-    // const query = `*[_type == 'match']{
-    //   date,
-    //   time,
-    //   tournament,
-    //   "team1": team->{ name, logo },
-    //   "team2": team->{ name, logo },
-    //   "game": game->{ name, logo },
-    //   result1,
-    //   result2,
-    //   "teamMember": teamMember->slug,
-    //   position,
-    //   streamUrl,
-    // }`;
-
-    // let response = await client.fetch(query);
-
     response.result.forEach((match: any) => {
       var dateMomentObject = moment(match.date, 'DD/MM/YYYY');
       match.newDate = dateMomentObject.toDate()
@@ -253,11 +261,18 @@ export class SanityService {
 
     if (response !== undefined) {
       response.result.sort((a: any, b: any) => a.newDate - b.newDate).reverse();
-      localStorage.setItem('matches', JSON.stringify(response));
+      this.setCache('matches', response);
     }
   }
 
   async getAchievements() {
+    if (this.isCacheValid('achievements')) {
+      console.log('Usando logros desde caché');
+      return;
+    }
+
+    console.log('Descargando logros desde Sanity');
+    
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -265,19 +280,10 @@ export class SanityService {
         date,
         position,
         tournament,
-        "game": game->{ name, "logo": logo.asset->url }
+        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" }
       }`
     )
     .toPromise();
-
-    // const query = `*[_type == 'achievement']{
-    //   date,
-    //   position,
-    //   tournament,
-    //   "game": game->{ name, logo }
-    // }`;
-
-    // let response = await client.fetch(query);
 
     response.result.forEach((achievement: any) => {
       var dateMomentObject = moment(achievement.date, 'DD/MM/YYYY');
@@ -285,11 +291,18 @@ export class SanityService {
     })
 
     if (response !== undefined) {
-      localStorage.setItem('achievements', JSON.stringify(response));
+      this.setCache('achievements', response);
     }
   }
 
   async getShownCategories() {
+    if (this.isCacheValid('shownCategories')) {
+      console.log('Usando categorías mostradas desde caché');
+      return;
+    }
+
+    console.log('Descargando categorías mostradas desde Sanity');
+    
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -301,16 +314,8 @@ export class SanityService {
     )
     .toPromise();
 
-    // const query = `*[_type == 'shownCategories']{
-    //   "category1": categoryNews->title,
-    //   "category2": categoryNews->title,
-    //   "category3": categoryNews->title
-    // }`;
-
-    // let response = await client.fetch(query);
-
     if (response !== undefined) {
-      localStorage.setItem('shownCategories', JSON.stringify(response));
+      this.setCache('shownCategories', response);
     }
   }
 
@@ -359,6 +364,11 @@ export class SanityService {
   }
 
   async getStreamers() {
+    if (this.isCacheValid('streamers')) {
+      const cached = this.getCache('streamers');
+      return cached;
+    }
+
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -369,7 +379,8 @@ export class SanityService {
     .toPromise();
 
     if (response?.result) {
-      return response?.result;
+      this.setCache('streamers', response.result);
+      return response.result;
     }
   }
 
@@ -384,6 +395,11 @@ export class SanityService {
   }
 
   async getVideoGalleries() {
+    if (this.isCacheValid('videoGalleries')) {
+      const cached = this.getCache('videoGalleries');
+      return cached;
+    }
+
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -393,7 +409,7 @@ export class SanityService {
         "videos": videos[]{
           title,
           tag,
-          "preview": preview.asset->url,
+          "preview": preview.asset->url + "?w=640&h=360&fit=crop&auto=format&q=75",
           url
         },
       }`
@@ -401,18 +417,25 @@ export class SanityService {
     .toPromise();
 
     if (response!.result) {
-      return response.result.reverse();
+      const result = response.result.reverse();
+      this.setCache('videoGalleries', result);
+      return result;
     }
   }
 
   async getHome() {
+    if (this.isCacheValid('home')) {
+      const cached = this.getCache('home');
+      return cached;
+    }
+
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
       *[_type == 'home']{
         title,
-        "imageHero": heroImage.asset->url,
-        "imageHeroMob": heroImageMob.asset->url,
+        "imageHero": heroImage.asset->url + "?w=1920&h=1080&fit=crop&auto=format&q=80",
+        "imageHeroMob": heroImageMob.asset->url + "?w=768&h=1024&fit=crop&auto=format&q=75",
         titleCTA,
         localRedirect,
         urlCTA
@@ -421,26 +444,33 @@ export class SanityService {
     .toPromise();
 
     if (response!.result) {
-      return response.result[0];
+      const result = response.result[0];
+      this.setCache('home', result);
+      return result;
     }
   }
 
   async getPageNews() {
+    if (this.isCacheValid('pageNews')) {
+      const cached = this.getCache('pageNews');
+      return cached;
+    }
+
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
       *[_type == 'pageNews']{
-        "imageHero": heroImage.asset->url,
+        "imageHero": heroImage.asset->url + "?w=1920&h=600&fit=crop&auto=format&q=80",
         "heroNews": heroNews[]->{
           date,
-          "coverImageUrl": cover_image.asset->url,
+          "coverImageUrl": cover_image.asset->url + "?w=600&h=400&fit=crop&auto=format&q=75",
           title,
           subtitle,
           urlNew,
         },
         "featuredNews": featuredNews[]->{
           date,
-          "coverImageUrl": cover_image.asset->url,
+          "coverImageUrl": cover_image.asset->url + "?w=400&h=300&fit=crop&auto=format&q=75",
           title,
           readingTime,
           urlNew,
@@ -448,7 +478,7 @@ export class SanityService {
         },
         "bannerNew": bannerNew->{
           date,
-          "coverImageUrl": cover_image.asset->url,
+          "coverImageUrl": cover_image.asset->url + "?w=800&h=450&fit=crop&auto=format&q=75",
           title,
           subtitle,
           urlNew,
@@ -463,17 +493,27 @@ export class SanityService {
         post.newResume = this.convertBlockContentToHtml(post.resume)
       })
       response.result[0].bannerNew.newResume = this.convertBlockContentToHtml(response.result[0].bannerNew.resume);
-      return response.result[0];
+      
+      const result = response.result[0];
+      this.setCache('pageNews', result);
+      return result;
     }
   }
 
   async getSponsorsByPage(page: string) {
+    const cacheKey = `sponsors_${page}`;
+  
+    if (this.isCacheValid(cacheKey)) {
+      const cached = this.getCache(cacheKey);
+      return cached;
+    }
+
     const queryUrl: string = 'https://31xtqrng.api.sanity.io/v2021-10-21/data/query/production?query=';
     const query: string = `*[_type == 'sponsors' && pageName == '${page}']{
       pageName,
       "logos": logos[]{
         name,
-        "logo": logo.asset->url
+        "logo": logo.asset->url + "?w=300&h=150&fit=max&auto=format&q=80"
       }
     }`;
     const url = `${queryUrl}${encodeURIComponent(query)}`
@@ -481,11 +521,18 @@ export class SanityService {
     let response: any = await this.http.get(url).toPromise();
 
     if (response!.result) {
-      return response.result[0];
+      const result = response.result[0];
+      this.setCache(cacheKey, result);
+      return result;
     }
   }
 
   async getYoutubeRefreshToken() {
+    if (this.isCacheValid('youtubeRefreshToken')) {
+      const cached = this.getCache('youtubeRefreshToken');
+      return cached.result[0].refreshToken;
+    }
+
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -496,20 +543,24 @@ export class SanityService {
     )
     .toPromise();
 
-    // const query = `*[_type == 'youtubeRefreshToken']{
-    //   _id,
-    //   refreshToken
-    // }`;
-
-    // let response = await client.fetch(query);
-
     if (response !== undefined) {
-      localStorage.setItem('youtubeRefreshToken', JSON.stringify(response));
+      this.setCache('youtubeRefreshToken', response);
       return response.result[0].refreshToken;
     }
   }
 
   async getTwitchAccessToken() {
+    const cached = localStorage.getItem('twitchAccessToken');
+    if (cached) {
+      try {
+        const cacheData = JSON.parse(cached);
+        const now = new Date().getTime();
+        if (cacheData.timestamp && (now - cacheData.timestamp) < 5 * 60 * 1000) {
+          return cacheData.data;
+        }
+      } catch (e) {}
+    }
+
     let response: any = await this.http
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -520,14 +571,12 @@ export class SanityService {
     )
     .toPromise();
 
-    // const query = `*[_type == 'twitchAccessToken']{
-    //   _id,
-    //   accessToken
-    // }`;
-
-    // let response = await client.fetch(query);
-
     if (response !== undefined) {
+      const cacheData = {
+        timestamp: new Date().getTime(),
+        data: response.result[0]
+      };
+      localStorage.setItem('twitchAccessToken', JSON.stringify(cacheData));
       return response.result[0];
     }
   }
@@ -555,6 +604,13 @@ export class SanityService {
   }
 
   async getTeamMembers() {
+    if (this.isCacheValid('teamMembers')) {
+      console.log('Usando miembros del equipo desde caché');
+      return;
+    }
+
+    console.log('Descargando miembros del equipo desde Sanity');
+    
     let response: any = await this.http
       .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
@@ -562,13 +618,13 @@ export class SanityService {
         _id,
         name,
         slug,
-        "imageUrl": picture.asset->url,
+        "imageUrl": picture.asset->url + "?w=600&h=600&fit=crop&auto=format&q=80",
         description,
         nationality,
         age,
         role,
         team,
-        "game": game->{ name, "logo": logo.asset->url },
+        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
         twitch,
         instagram,
         twitter
@@ -576,57 +632,19 @@ export class SanityService {
     )
     .toPromise();
 
-    // const query = `*[_type == 'teamMember']{
-    //   _id,
-    //   name,
-    //   slug,
-    //   "imageUrl": picture.asset->url,
-    //   description,
-    //   nationality,
-    //   age,
-    //   role,
-    //   "team": team->{ name, logo },
-    //   "game": game->{ name, logo },
-    //   twitch,
-    //   instagram,
-    //   twitter
-    // }`;
-
-    // let response = await client.fetch(query);
-
-
     response.result.forEach((member: any) => {
       if (member.description) {
         member.newDescription = this.convertBlockContentToHtml(member.description);
       }
-
-      if (member.imageUrl) {
-        member.imageUrl += '?auto=format'
-      }
     });
 
-    // for (let i = 0; i < response.result.length; i++) {
-    //   if (response.result[i].description !== null) {
-    //     response.result[i].newDescription = this.convertBlockContentToHtml(
-    //       response.result[i].description
-    //     );
-    //   }
-
-    //   // if (response.result[i].imageUrl) {
-    //   //   response.result[i].imageUrl += '?auto=format';
-    //   // }
-    // }
-
     if (response !== undefined) {
-      localStorage.setItem('teamMembers', JSON.stringify(response));
+      this.setCache('teamMembers', response);
     }
   }
 
   convertBlockContentToHtml(article: any) {
     const blocksToHtml = require('@sanity/block-content-to-html');
-
-    // `h` is a way to build HTML known as hyperscript
-    // See https://github.com/hyperhype/hyperscript for more info
     const h = blocksToHtml.h;
 
     const highlight = (props: { mark: { color: any }; children: any }) =>
