@@ -2,3 +2,6 @@
 9z/.angular
 9z/dist
 9zsanity/node_modules
+DEPLOY_EMERGENCY.bat
+.gitignore
+ACCIONES_INMEDIATAS.md
