@@ -14,8 +14,21 @@ export class AchievementsComponent implements OnInit {
     private sanityServices: SanityService
   ) { }
 
+  private getCacheData(key: string): any {
+    const cacheItem = localStorage.getItem(key);
+    if (cacheItem) {
+      try {
+        const parsed = JSON.parse(cacheItem);
+        return parsed.data || parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   async ngOnInit() {
-    const achievements = JSON.parse(localStorage.getItem('achievements')!);
+    const achievements = this.getCacheData('achievements');
 
 
     if (!achievements) {
@@ -23,7 +36,7 @@ export class AchievementsComponent implements OnInit {
       await this.sanityServices.getAchievements();
       
       setTimeout(async () => {
-        const achievements = JSON.parse(localStorage.getItem('achievements')!);
+        const achievements = this.getCacheData('achievements');
 
         this.achievementsList = achievements;
         

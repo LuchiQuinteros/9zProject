@@ -41,6 +41,19 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     });
   }
 
+  private getCacheData(key: string): any {
+    const cacheItem = localStorage.getItem(key);
+    if (cacheItem) {
+      try {
+        const parsed = JSON.parse(cacheItem);
+        return parsed.data || parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   async ngOnInit() {
     const savedLang = localStorage.getItem('lang') || 'es';
     this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
@@ -54,7 +67,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
 
   async getParams() {
-    this.players = JSON.parse(localStorage.getItem('teamMembers')!);
+    this.players = this.getCacheData('teamMembers');
 
     if (!this.players) {
       await this.sanityServices.getCategories();
@@ -65,7 +78,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
       await this.sanityServices.getAchievements();
 
       setTimeout(() => {
-        this.players = JSON.parse(localStorage.getItem('teamMembers')!);
+        this.players = this.getCacheData('teamMembers');
         this.getPlayer();
         this.newsList = [];
         this.getDataByPlayer(this.player);
@@ -100,11 +113,9 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
 
   async getDataByPlayer(player: any) {
-    let jsonNews = JSON.parse(localStorage.getItem('news') || 'null');
-    const jsonMatches = JSON.parse(localStorage.getItem('matches') || 'null');
-    const jsonAchievements = JSON.parse(
-      localStorage.getItem('achievements') || 'null'
-    );
+    let jsonNews = this.getCacheData('news');
+    const jsonMatches = this.getCacheData('matches');
+    const jsonAchievements = this.getCacheData('achievements');
     jsonNews.result.forEach((post: any) => {
       if (post.teamMember && post.teamMember._ref === player._id) {
         post.newTitle = post.title.split(' ').join('-');

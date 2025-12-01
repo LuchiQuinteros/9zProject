@@ -18,6 +18,19 @@ export class AllNewsComponent implements OnInit {
     this.translate.setDefaultLang('es');
   }
 
+  private getCacheData(key: string): any {
+    const cacheItem = localStorage.getItem(key);
+    if (cacheItem) {
+      try {
+        const parsed = JSON.parse(cacheItem);
+        return parsed.data || parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   async ngOnInit() {
     const savedLang = localStorage.getItem('lang') || 'es';
     this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
@@ -26,7 +39,7 @@ export class AllNewsComponent implements OnInit {
         this.category = routeParams.category;
       }
 
-      const jsonNews = JSON.parse(localStorage.getItem('news') || 'null');
+      const jsonNews = this.getCacheData('news');
 
       this.getNewsList(jsonNews);
     });

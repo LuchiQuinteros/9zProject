@@ -119,6 +119,20 @@ export class TeamComponent implements OnInit {
     // Removed unused router
   ) { }
 
+  // Helper para leer caché con nueva estructura {timestamp, data}
+  private getCacheData(key: string): any {
+    const cacheItem = localStorage.getItem(key);
+    if (cacheItem) {
+      try {
+        const parsed = JSON.parse(cacheItem);
+        return parsed.data || parsed; // Soporta tanto nueva como vieja estructura
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   async ngOnInit() {
     const savedLang = localStorage.getItem('lang') || 'es';
     this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
@@ -132,9 +146,10 @@ export class TeamComponent implements OnInit {
       data = data.split('-').join(' ');
       this.socialServices.updateMetaTags(this.capitalize(data));
 
-      const teamMembers = JSON.parse(localStorage.getItem('teamMembers')!);
-      const matches = JSON.parse(localStorage.getItem('matches')!);
-      const achievements = JSON.parse(localStorage.getItem('achievements')!);
+      // Leer caché con nueva estructura {timestamp, data}
+      let teamMembers = this.getCacheData('teamMembers');
+      let matches = this.getCacheData('matches');
+      let achievements = this.getCacheData('achievements');
 
       if (!teamMembers || !matches || !achievements) {
         await this.sanityServices.getTeams();
@@ -144,9 +159,9 @@ export class TeamComponent implements OnInit {
         await this.sanityServices.getAchievements();
 
         setTimeout(async () => {
-          const teamMembers = JSON.parse(localStorage.getItem('teamMembers')!);
-          const matches = JSON.parse(localStorage.getItem('matches')!);
-          const achievements = JSON.parse(localStorage.getItem('achievements')!);
+          teamMembers = this.getCacheData('teamMembers');
+          matches = this.getCacheData('matches');
+          achievements = this.getCacheData('achievements');
           this.getDataCards(teamMembers);
           this.getMatches(matches);
           this.getAchievements(achievements);
@@ -264,6 +279,17 @@ export class TeamComponent implements OnInit {
   }
   getDataCards(data: any) {
     console.log(data);
+    
+    // Validar que data y data.result existen
+    if (!data || !data.result) {
+      console.warn('No hay datos de teamMembers disponibles');
+      this.players = [];
+      this.coachs = [];
+      this.managers = [];
+      this.ambassadors = [];
+      return;
+    }
+    
     this.players = [];
     this.coachs = [];
     this.managers = [];

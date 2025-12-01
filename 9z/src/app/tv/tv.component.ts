@@ -37,12 +37,25 @@ export class TVComponent implements OnInit {
     });
   }
 
+  private getCacheData(key: string): any {
+    const cacheItem = localStorage.getItem(key);
+    if (cacheItem) {
+      try {
+        const parsed = JSON.parse(cacheItem);
+        return parsed.data || parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   async ngOnInit() {
     this.socialServices.getPlaylist();
     await this.getVideoGalleries();
-    this.streamersList = JSON.parse(localStorage.getItem('streamers') || 'null');
-    const jsonMatches = JSON.parse(localStorage.getItem('matches')!);
-    const claroVideos = JSON.parse(localStorage.getItem('claroVideos') || 'null');
+    this.streamersList = this.getCacheData('streamers');
+    const jsonMatches = this.getCacheData('matches');
+    const claroVideos = this.getCacheData('claroVideos');
     this.twitchStreamList = [];
     this.youtubeVideosList = [];
     this.videosIds = [];

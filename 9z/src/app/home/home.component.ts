@@ -92,6 +92,19 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) {}
 
+  private getCacheData(key: string): any {
+    const cacheItem = localStorage.getItem(key);
+    if (cacheItem) {
+      try {
+        const parsed = JSON.parse(cacheItem);
+        return parsed.data || parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   async ngOnInit() {
     await this.getHomeData();
     await this.getSponsors();
@@ -100,7 +113,7 @@ export class HomeComponent implements OnInit {
 
     this.socialServices.updateMetaTags('Home');
 
-    let json = JSON.parse(localStorage.getItem('matches')!);
+    let json = this.getCacheData('matches');
 
     if (!json) {
       await this.sanityServices.getTeams();
@@ -128,7 +141,7 @@ export class HomeComponent implements OnInit {
       this.getMatches(json);
     }
 
-    let result = JSON.parse(localStorage.getItem('streamers')!);
+    let result = this.getCacheData('streamers');
     if (result === 'null' || result === null) {
       // DESHABILITADO: Twitch consume mucho bandwidth
       // setTimeout(async () => {

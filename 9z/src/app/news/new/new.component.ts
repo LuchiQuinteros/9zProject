@@ -22,6 +22,19 @@ export class NewComponent implements OnInit {
     private environmentServices: EnvironmentVariablesService
   ) {}
 
+  private getCacheData(key: string): any {
+    const cacheItem = localStorage.getItem(key);
+    if (cacheItem) {
+      try {
+        const parsed = JSON.parse(cacheItem);
+        return parsed.data || parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   async ngOnInit() {
     let title = decodeURI(window.location.href);
     title = title.split(`/noticia/`).pop()!;
@@ -29,12 +42,12 @@ export class NewComponent implements OnInit {
     this.url = `${this.environmentServices.netlifyUrl}/noticia/${title}`;
     // title = title.split('-').join(' ');
     this.socialServices.updateMetaTags(this.capitalize(title));
-    const jsonNews = JSON.parse(localStorage.getItem('news')!);
+    const jsonNews = this.getCacheData('news');
     if (!jsonNews) {
       await this.sanityServices.getNews();
 
       setTimeout(async () => {
-        const jsonNews = JSON.parse(localStorage.getItem('news')!);
+        const jsonNews = this.getCacheData('news');
         console.log(jsonNews)
         this.new = jsonNews.result.find((post: any) => post.slug === title)
         this.getNewLists(jsonNews);

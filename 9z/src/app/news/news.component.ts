@@ -61,16 +61,27 @@ export class NewsComponent implements OnInit {
     private translate: TranslateService
   ) {this.translate.setDefaultLang('es');}
 
+  private getCacheData(key: string): any {
+    const cacheItem = localStorage.getItem(key);
+    if (cacheItem) {
+      try {
+        const parsed = JSON.parse(cacheItem);
+        return parsed.data || parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+    return null;
+  }
+
   async ngOnInit() {
     const savedLang = localStorage.getItem('lang') || 'es';
     this.translate.use(savedLang); // Esto asegura que tenga el idioma correcto
     await this.getPageNews();
     this.socialServices.updateMetaTags('News');
-    const jsonMatches = JSON.parse(localStorage.getItem('matches')!);
-    const jsonShownCategories = JSON.parse(
-      localStorage.getItem('shownCategories')!
-    );
-    const jsonNews = JSON.parse(localStorage.getItem('news')!);
+    const jsonMatches = this.getCacheData('matches');
+    const jsonShownCategories = this.getCacheData('shownCategories');
+    const jsonNews = this.getCacheData('news');
 
     if (
       !jsonMatches ||
@@ -83,13 +94,9 @@ export class NewsComponent implements OnInit {
       await this.sanityServices.getMatches();
 
       setTimeout(async () => {
-        const jsonMatches = JSON.parse(
-          localStorage.getItem('matches')!
-        );
-        const jsonShownCategories = JSON.parse(
-          localStorage.getItem('shownCategories')!
-        );
-        const jsonNews = JSON.parse(localStorage.getItem('news')!);
+        const jsonMatches = this.getCacheData('matches');
+        const jsonShownCategories = this.getCacheData('shownCategories');
+        const jsonNews = this.getCacheData('news');
 
         this.getShownCategories(jsonShownCategories);
         this.getNewsList(jsonNews);
