@@ -12,12 +12,12 @@ export class TeamDisciplineComponent implements OnInit {
   teamsCsgo: Array<any> = [
     {
       name: 'CS 2 MAIN',
-      image: '../../assets/teams/cs2-main.png',
+      image: '../../assets/teams/CS2-MAIN.png',
       redirect: '/equipo/CS2-MAIN',
     },
     {
       name: 'CS 2 ACADEMY',
-      image: '../../assets/teams/cs2-ac.png',
+      image: '../../assets/teams/CS2-AC.png',
       redirect: '/equipo/CS2-ACADEMY',
     },
   ];
