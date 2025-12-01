@@ -73,15 +73,17 @@ export class AppComponent {
         this.lastScroll = currentScroll;
       });
     }
-    const streamers: any = await this.sanityServices.getStreamers()
-    .catch(error => {
-      console.log(error);
-    });
+    
+    // DESHABILITADO: Twitch consume mucho bandwidth
+    // const streamers: any = await this.sanityServices.getStreamers()
+    // .catch(error => {
+    //   console.log(error);
+    // });
 
-    if (streamers) {
-      this.streamersList = streamers;
-      await this.getStreamersIds(this.streamersList);
-    }
+    // if (streamers) {
+    //   this.streamersList = streamers;
+    //   await this.getStreamersIds(this.streamersList);
+    // }
 
 
     // if (this.streamersList === undefined || this.streamersList.length === 0) {

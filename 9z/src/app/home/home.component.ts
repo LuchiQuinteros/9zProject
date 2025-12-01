@@ -130,29 +130,27 @@ export class HomeComponent implements OnInit {
 
     let result = JSON.parse(localStorage.getItem('streamers')!);
     if (result === 'null' || result === null) {
-      setTimeout(async () => {
-        this.streamersList = JSON.parse(
-          localStorage.getItem('streamers') || '[]'
-        );
-        this.twitchStreamList = [];
-        await this.getStreams(this.streamersList);
-        this.streamersList.forEach(async (streamer: any) => {
-          await this.getStreamsByUserId(streamer.user_id);
-        });
-        // for (let i = 0; i < this.streamersList.length; i++) {
-        //   await this.getStreamsByUserId(this.streamersList[i].user_id);
-        // }
-        this.commonServices.sendStreamsDataUpdate(this.twitchStreamList);
-      }, 1500);
+      // DESHABILITADO: Twitch consume mucho bandwidth
+      // setTimeout(async () => {
+      //   this.streamersList = JSON.parse(
+      //     localStorage.getItem('streamers') || '[]'
+      //   );
+      //   this.twitchStreamList = [];
+      //   await this.getStreams(this.streamersList);
+      //   this.streamersList.forEach(async (streamer: any) => {
+      //     await this.getStreamsByUserId(streamer.user_id);
+      //   });
+      //   this.commonServices.sendStreamsDataUpdate(this.twitchStreamList);
+      // }, 1500);
     } else {
-      this.streamersList = result;
-      this.twitchStreamList = [];
-      await this.getStreams(this.streamersList);
-
-      this.streamersList.forEach(async (streamer: any) => {
-        await this.getStreamsByUserId(streamer.user_id);
-      });
-      this.commonServices.sendStreamsDataUpdate(this.twitchStreamList);
+      // DESHABILITADO: Twitch consume mucho bandwidth
+      // this.streamersList = result;
+      // this.twitchStreamList = [];
+      // await this.getStreams(this.streamersList);
+      // this.streamersList.forEach(async (streamer: any) => {
+      //   await this.getStreamsByUserId(streamer.user_id);
+      // });
+      // this.commonServices.sendStreamsDataUpdate(this.twitchStreamList);
     }
   }
 

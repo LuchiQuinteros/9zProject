@@ -48,11 +48,12 @@ export class TVComponent implements OnInit {
     this.videosIds = [];
     // this.claroVideosList = [];
 
-    if  (!jsonMatches || !this.streamersList) {
-      const streamers: any = await this.sanityServices.getStreamers()
-      .catch(error => {
-        console.log(error);
-      });
+    if  (!jsonMatches) {
+      // DESHABILITADO: Twitch consume mucho bandwidth
+      // const streamers: any = await this.sanityServices.getStreamers()
+      // .catch(error => {
+      //   console.log(error);
+      // });
 
       await this.sanityServices.getMatches();
       setTimeout(async () => {
@@ -62,26 +63,28 @@ export class TVComponent implements OnInit {
         this.getMatchesLists(jsonMatches);
       }, 1000);
 
-      if (streamers) {
-        this.streamersList = streamers;
-        await this.appComponent.getStreamersIds(this.streamersList);
-      }
+      // if (streamers) {
+      //   this.streamersList = streamers;
+      //   await this.appComponent.getStreamersIds(this.streamersList);
+      // }
 
       // this.sanityServices.getClaroVideos();
       setTimeout(async() => {
-        this.streamersList = JSON.parse(localStorage.getItem('streamers')!);
+        // this.streamersList = JSON.parse(localStorage.getItem('streamers')!);
         const claroVideos = JSON.parse(localStorage.getItem('claroVideos') || 'null');
         if (claroVideos?.result) {
           this.claroVideosList = claroVideos.result.slice(0, 3)
         }
 
-        await this.getStreams(this.streamersList);
+        // DESHABILITADO: Twitch
+        // await this.getStreams(this.streamersList);
         await this.getYoutubePlaylistVideos();
-        this.streamersList.forEach(async (streamer: any) => await this.getStreamsByUserId(streamer.user_id))
+        // this.streamersList.forEach(async (streamer: any) => await this.getStreamsByUserId(streamer.user_id))
 
       }, 1000);
     } else {
-      await this.getStreams(this.streamersList);
+      // DESHABILITADO: Twitch
+      // await this.getStreams(this.streamersList);
       this.getMatchesLists(jsonMatches);
 
       if (claroVideos?.result) {
@@ -94,7 +97,7 @@ export class TVComponent implements OnInit {
         }
       }
       await this.getYoutubePlaylistVideos();
-      this.streamersList.forEach(async (streamer: any) => await this.getStreamsByUserId(streamer.user_id))
+      // this.streamersList.forEach(async (streamer: any) => await this.getStreamsByUserId(streamer.user_id))
     }
     this.socialServices.updateMetaTags('TV');
   }
