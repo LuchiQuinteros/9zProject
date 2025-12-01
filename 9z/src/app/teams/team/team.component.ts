@@ -31,13 +31,13 @@ export class TeamComponent implements OnInit {
   teams: Array<any> = [
     {
       name: 'CS2-MAIN',
-      image: '../../../assets/teams/cs2-main.png',
-      imageMb: '../../../assets/teams/cs2-main.png',
+      image: '../../../assets/teams/CS2-MAIN.png',
+      imageMb: '../../../assets/teams/CS2-MAIN.png',
     },
     {
       name: 'CS2-ACADEMY',
-      image: '../../../assets/teams/cs2-ac.png',
-      imageMb: '../../../assets/teams/cs2-ac.png',
+      image: '../../../assets/teams/CS2-AC.png',
+      imageMb: '../../../assets/teams/CS2-AC.png',
     },
 
     {
