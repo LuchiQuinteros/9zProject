@@ -1,6 +1,6 @@
 [build]
-  publish = "dist/web9z"
-  command = "npm run build"
+  publish = "dist/static"
+  command = "npm run build:prod"
   functions = "./functions"
 
 [functions]
