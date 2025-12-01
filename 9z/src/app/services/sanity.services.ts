@@ -113,7 +113,7 @@ export class SanityService {
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=*[_type == 'news']{
         date,
-        "coverImageUrl": cover_image.asset->url + "?w=800&h=450&fit=crop&auto=format&q=75",
+        "coverImageUrl": cover_image.asset->url + "?w=800&h=450",
         title,
         subtitle,
         subheader,
@@ -123,7 +123,7 @@ export class SanityService {
         readingTime,
         isFeaturedNew,
         "category": category->title,
-        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
+        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100" },
         teamMember
       }
       `
@@ -169,7 +169,7 @@ export class SanityService {
       *[_type == 'game']{
         _id,
         name,
-        "logoImageUrl": logo.asset->url + "?w=200&h=200&fit=crop&auto=format&q=80"
+        "logoImageUrl": logo.asset->url + "?w=200&h=200"
       }`
     )
     .toPromise();
@@ -194,7 +194,7 @@ export class SanityService {
       *[_type == 'team']{
         _id,
         name,
-        "logoImageUrl": logo.asset->url + "?w=200&h=200&fit=crop&auto=format&q=80"
+        "logoImageUrl": logo.asset->url + "?w=200&h=200"
       }`
     )
     .toPromise();
@@ -242,9 +242,9 @@ export class SanityService {
         date,
         time,
         tournament,
-        "team1": team1->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
-        "team2": team2->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
-        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
+        "team1": team1->{ name, "logo": logo.asset->url + "?w=100&h=100" },
+        "team2": team2->{ name, "logo": logo.asset->url + "?w=100&h=100" },
+        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100" },
         result1,
         result2,
         "teamMember": teamMember->slug,
@@ -280,7 +280,7 @@ export class SanityService {
         date,
         position,
         tournament,
-        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" }
+        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100" }
       }`
     )
     .toPromise();
@@ -409,7 +409,7 @@ export class SanityService {
         "videos": videos[]{
           title,
           tag,
-          "preview": preview.asset->url + "?w=640&h=360&fit=crop&auto=format&q=75",
+          "preview": preview.asset->url + "?w=640&h=360",
           url
         },
       }`
@@ -434,8 +434,8 @@ export class SanityService {
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
       *[_type == 'home']{
         title,
-        "imageHero": heroImage.asset->url + "?w=1920&h=1080&fit=crop&auto=format&q=80",
-        "imageHeroMob": heroImageMob.asset->url + "?w=768&h=1024&fit=crop&auto=format&q=75",
+        "imageHero": heroImage.asset->url + "?w=1920&h=1080",
+        "imageHeroMob": heroImageMob.asset->url + "?w=768&h=1024",
         titleCTA,
         localRedirect,
         urlCTA
@@ -460,17 +460,17 @@ export class SanityService {
     .get(
       `https://31xtqrng.api.sanity.io/v2022-01-12/data/query/production?query=
       *[_type == 'pageNews']{
-        "imageHero": heroImage.asset->url + "?w=1920&h=600&fit=crop&auto=format&q=80",
+        "imageHero": heroImage.asset->url + "?w=1920&h=600",
         "heroNews": heroNews[]->{
           date,
-          "coverImageUrl": cover_image.asset->url + "?w=600&h=400&fit=crop&auto=format&q=75",
+          "coverImageUrl": cover_image.asset->url + "?w=600&h=400",
           title,
           subtitle,
           urlNew,
         },
         "featuredNews": featuredNews[]->{
           date,
-          "coverImageUrl": cover_image.asset->url + "?w=400&h=300&fit=crop&auto=format&q=75",
+          "coverImageUrl": cover_image.asset->url + "?w=400&h=300",
           title,
           readingTime,
           urlNew,
@@ -478,7 +478,7 @@ export class SanityService {
         },
         "bannerNew": bannerNew->{
           date,
-          "coverImageUrl": cover_image.asset->url + "?w=800&h=450&fit=crop&auto=format&q=75",
+          "coverImageUrl": cover_image.asset->url + "?w=800&h=450",
           title,
           subtitle,
           urlNew,
@@ -513,7 +513,7 @@ export class SanityService {
       pageName,
       "logos": logos[]{
         name,
-        "logo": logo.asset->url + "?w=300&h=150&fit=max&auto=format&q=80"
+        "logo": logo.asset->url + "?w=300&h=150"
       }
     }`;
     const url = `${queryUrl}${encodeURIComponent(query)}`
@@ -618,13 +618,13 @@ export class SanityService {
         _id,
         name,
         slug,
-        "imageUrl": picture.asset->url + "?w=600&h=600&fit=crop&auto=format&q=80",
+        "imageUrl": picture.asset->url + "?w=600&h=600",
         description,
         nationality,
         age,
         role,
         team,
-        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100&fit=crop&auto=format&q=80" },
+        "game": game->{ name, "logo": logo.asset->url + "?w=100&h=100" },
         twitch,
         instagram,
         twitter
